@@ -12,6 +12,11 @@ const Intro = () => {
           placeholder="blur"
           className="img-logo"
         />
+        <p>
+          KB Order
+          <br />
+          <span>오늘 김밥 드실분?</span>
+        </p>
       </IntroUI>
     </>
   );

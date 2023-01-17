@@ -7,6 +7,11 @@ const LogoMotion = keyframes`
   100%{transform:scale(1,1);}
 `;
 
+const TextMotion = keyframes`
+  0%{transform:scale(1,.1);}
+  100%{transform:scale(1,1);}
+`;
+
 export const IntroUI = styled.div`
   display: block;
   padding: 5rem 0;
@@ -24,6 +29,10 @@ export const IntroUI = styled.div`
     font-size: 2.4rem;
     color: #1a1a1a;
     text-align: center;
+    animation: ${TextMotion} 1s forwards;
+    & + p {
+      padding-top: 0;
+    }
     span {
       font-weight: 300;
       font-size: 1.4rem;

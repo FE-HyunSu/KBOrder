@@ -1,3 +1,4 @@
+import React from "react";
 import { SkeletonUi } from "./style";
 
 interface PropsStyle {

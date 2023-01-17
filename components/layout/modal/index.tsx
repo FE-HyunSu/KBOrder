@@ -1,3 +1,4 @@
+import React from "react";
 import ReactDOM from "react-dom";
 import { PropsWithChildren } from "react";
 import { ModalTemplate, ModalBackground, ModalInner } from "./style";

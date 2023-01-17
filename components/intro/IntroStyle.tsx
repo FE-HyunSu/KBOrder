@@ -7,9 +7,17 @@ const LogoMotion = keyframes`
   100%{transform:scale(1,1);}
 `;
 
-const TextMotion = keyframes`
-  0%{transform:scale(1,.1);}
+const BounceMotion = keyframes`
+  0%{transform:scale(1,1);}
+  85%{transform:scale(1,1);}
+  90%{transform:scale(.9,1.1);}
+  95%{transform:scale(1.1,.9);}
   100%{transform:scale(1,1);}
+`;
+
+const TextMotion = keyframes`
+  0%{transform:scale(1,.1); opacity:0;}
+  100%{transform:scale(1,1); opacity:1;}
 `;
 
 export const IntroUI = styled.div`
@@ -21,7 +29,7 @@ export const IntroUI = styled.div`
     width: 8rem;
     height: 8rem;
     margin: auto;
-    animation: ${LogoMotion} 1s forwards;
+    animation: ${LogoMotion} 1s forwards, ${BounceMotion} 7s 1s infinite;
   }
   p {
     padding-top: 1rem;
@@ -30,13 +38,28 @@ export const IntroUI = styled.div`
     color: #1a1a1a;
     text-align: center;
     animation: ${TextMotion} 1s forwards;
+    opacity: 0;
     & + p {
       padding-top: 0;
+      animation: ${TextMotion} 1s 0.5s forwards;
     }
     span {
       font-weight: 300;
       font-size: 1.4rem;
       color: #3a3a3a;
     }
+  }
+  button {
+    display: block;
+    min-width: 20rem;
+    margin: 1.2rem auto 0;
+    padding: 1.3rem;
+    border-radius: 0.5rem;
+    background-color: #1a1a1a;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #fff;
+    opacity: 0;
+    animation: ${TextMotion} 1s 1s forwards;
   }
 `;

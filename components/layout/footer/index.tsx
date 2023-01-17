@@ -1,3 +1,4 @@
+import React from "react";
 import { FooterBox } from "./style";
 
 const Footer = () => {

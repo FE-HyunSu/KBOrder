@@ -1,9 +1,9 @@
-import Sample from '../components/sample/body';
+import Intro from "../components/intro/Intro";
 
 const Index = () => {
   return (
     <>
-      <Sample />
+      <Intro />
     </>
   );
 };

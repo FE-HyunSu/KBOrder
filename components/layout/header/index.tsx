@@ -1,9 +1,9 @@
-import { HeaderBox } from './style';
+import { HeaderBox } from "./style";
 
 const Header = () => {
   return (
     <>
-      <HeaderBox>header</HeaderBox>
+      <HeaderBox>Header</HeaderBox>
     </>
   );
 };

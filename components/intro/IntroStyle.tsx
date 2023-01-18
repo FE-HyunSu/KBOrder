@@ -22,7 +22,7 @@ const TextMotion = keyframes`
 
 export const IntroUI = styled.div`
   display: block;
-  padding: 5rem 0;
+  padding: 5rem 0 10rem;
   box-sizing: border-box;
   .img-logo {
     display: block;
@@ -52,8 +52,8 @@ export const IntroUI = styled.div`
   button {
     display: block;
     min-width: 20rem;
-    height: 4.8rem;
-    margin: 1.2rem auto 0;
+    height: 4.6rem;
+    margin: 2.5rem auto 0;
     padding: 0 1.3rem;
     border-radius: 0.5rem;
     background-color: #1a1a1a;

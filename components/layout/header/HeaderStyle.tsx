@@ -29,4 +29,15 @@ export const HeaderUI = styled.header`
     flex: 1 auto;
     justify-content: flex-end;
   }
+  & + main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: calc(100vh - 10rem);
+    overflow: hidden;
+    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+      min-height: calc(100vh - 10rem);
+    }
+  }
 `;

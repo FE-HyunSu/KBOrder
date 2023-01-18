@@ -1,12 +1,12 @@
 import React from "react";
-import { FooterBox } from "./style";
+import { FooterUI } from "./FooterStyle";
 
 const Footer = () => {
   return (
     <>
-      <FooterBox>
+      <FooterUI>
         <p>KHS. ALL RIGHT RESERVED.</p>
-      </FooterBox>
+      </FooterUI>
     </>
   );
 };

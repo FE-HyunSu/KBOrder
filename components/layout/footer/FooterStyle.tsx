@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const FooterBox = styled.footer`
+export const FooterUI = styled.footer`
   display: block;
   height: 5rem;
   background-color: #fff;

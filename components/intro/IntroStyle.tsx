@@ -52,8 +52,9 @@ export const IntroUI = styled.div`
   button {
     display: block;
     min-width: 20rem;
+    height: 4.8rem;
     margin: 1.2rem auto 0;
-    padding: 1.3rem;
+    padding: 0 1.3rem;
     border-radius: 0.5rem;
     background-color: #1a1a1a;
     font-weight: 500;
@@ -61,5 +62,10 @@ export const IntroUI = styled.div`
     color: #fff;
     opacity: 0;
     animation: ${TextMotion} 1s 1s forwards;
+    transition: 0.2s;
+    &:hover {
+      font-size: 1.6rem;
+      background-color: #000;
+    }
   }
 `;

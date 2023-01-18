@@ -1,10 +1,10 @@
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from '../styles/global-style';
-import { theme } from '../styles/theme';
-import Header from '../components/layout/header';
-import Footer from '../components/layout/footer';
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import { ThemeProvider } from "styled-components";
+import { GlobalStyle } from "../styles/global-style";
+import { theme } from "../styles/theme";
+import Header from "../components/layout/header/Header";
+import Footer from "../components/layout/footer";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

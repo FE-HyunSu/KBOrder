@@ -41,6 +41,7 @@ export const IntroUI = styled.div`
     opacity: 0;
     & + p {
       padding-top: 0;
+      padding-bottom: 1rem;
       animation: ${TextMotion} 1s 0.5s forwards;
     }
     span {
@@ -49,19 +50,31 @@ export const IntroUI = styled.div`
       color: #3a3a3a;
     }
   }
+  input {
+    width: 20rem;
+    padding: 1.2rem;
+    border-radius: 0.4rem;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    outline: none;
+    animation: ${TextMotion} 1s 0.8s both;
+    &:active,
+    &:hover {
+      border: 1px solid #999;
+    }
+  }
   button {
     display: block;
     min-width: 20rem;
     height: 4.6rem;
-    margin: 2.5rem auto 0;
+    margin: 0.8rem auto 0;
     padding: 0 1.3rem;
     border-radius: 0.5rem;
     background-color: #1a1a1a;
     font-weight: 500;
     font-size: 1.4rem;
     color: #fff;
-    opacity: 0;
-    animation: ${TextMotion} 1s 1s forwards;
+    animation: ${TextMotion} 1s 1.2s both;
     transition: 0.2s;
     &:hover {
       font-size: 1.6rem;

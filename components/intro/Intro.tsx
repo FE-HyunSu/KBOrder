@@ -1,4 +1,4 @@
-import React, { ElementRef, useRef } from "react";
+import React, { useRef } from "react";
 import { IntroUI } from "./IntroStyle";
 import Image from "next/image";
 import ImgLogo from "../../public/images/img_logo.png";
@@ -6,7 +6,14 @@ import ImgLogo from "../../public/images/img_logo.png";
 const Intro = () => {
   const nameRef: any = useRef();
   const keyupEvent = () => {
-    console.log(nameRef.current.value);
+    const keyValue = nameRef.current.value;
+    console.log(keyValue);
+  };
+  const loginCheck = () => {
+    const keyValue = nameRef.current.value;
+    if (keyValue.length < 3) {
+      alert("이름을 2자 이상 입력해 주세요.");
+    }
   };
   return (
     <>
@@ -27,7 +34,9 @@ const Intro = () => {
           ref={nameRef}
           onKeyUp={() => keyupEvent()}
         />
-        <button type="button">주문하기</button>
+        <button type="button" onClick={() => loginCheck()}>
+          주문하기
+        </button>
       </IntroUI>
     </>
   );

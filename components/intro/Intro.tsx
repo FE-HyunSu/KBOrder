@@ -19,17 +19,6 @@ const Intro = () => {
       inputItem.focus();
     }
   };
-  const joinGo = async () => {
-    try {
-      authJoin(emailRef.current.value, passwordRef.current.value).then(
-        (data) => {
-          console.log(data);
-        }
-      );
-    } catch (e) {
-      console.log(e);
-    }
-  };
   return (
     <>
       <IntroUI>
@@ -43,15 +32,11 @@ const Intro = () => {
         <p>
           <span>오늘 김밥 드실분?</span>
         </p>
-        <input
-          type="text"
-          placeholder="이름을 입력해 주세요"
-          ref={nameRef}
-          onKeyUp={() => keyupEvent()}
-        />
+        <input type="text" placeholder="이름을 입력해 주세요" ref={nameRef} />
         <button type="button" onClick={() => loginCheck()}>
           주문하기
         </button>
+        <a href="/join">회원가입</a>
       </IntroUI>
     </>
   );

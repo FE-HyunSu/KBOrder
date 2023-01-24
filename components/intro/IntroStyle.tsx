@@ -81,4 +81,14 @@ export const IntroUI = styled.div`
       background-color: #000;
     }
   }
+  a {
+    display: inline-block;
+    float: right;
+    padding: 0.8rem 0.2rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: #3a3a3a;
+    text-decoration: none;
+    animation: ${TextMotion} 1s 1.5s both;
+  }
 `;

@@ -13,12 +13,7 @@ const Header = () => {
             KBOrder
           </a>
         </h1>
-        <nav>
-          <ul>
-            <li>map</li>
-            <li>주문하기</li>
-          </ul>
-        </nav>
+        <nav></nav>
       </HeaderUI>
     </>
   );

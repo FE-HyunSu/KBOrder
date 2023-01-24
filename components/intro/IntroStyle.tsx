@@ -32,7 +32,7 @@ export const IntroUI = styled.div`
     animation: ${LogoMotion} 1s forwards, ${BounceMotion} 7s 1s infinite;
   }
   p {
-    padding-top: 1rem;
+    padding: 1rem;
     font-weight: 500;
     font-size: 2.4rem;
     color: #1a1a1a;
@@ -41,13 +41,18 @@ export const IntroUI = styled.div`
     opacity: 0;
     & + p {
       padding-top: 0;
-      padding-bottom: 1rem;
+      font-size: 1.4rem;
       animation: ${TextMotion} 1s 0.5s forwards;
     }
     span {
       font-weight: 300;
-      font-size: 1.4rem;
       color: #3a3a3a;
+    }
+    em {
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: #ff3333;
+      letter-spacing: -0.05rem;
     }
   }
   input {

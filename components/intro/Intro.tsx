@@ -6,16 +6,18 @@ import { authJoin } from "../../api/firestore";
 
 const Intro = () => {
   const nameRef: any = useRef();
-  const emailRef: any = useRef();
-  const passwordRef: any = useRef();
+  const loginInfoRef: any = useRef();
   const keyupEvent = () => {
     const keyValue = nameRef.current.value;
     console.log(keyValue);
   };
+  const loginInfo = (comment: string) => {
+    loginInfoRef.current.innerHTML = comment;
+  };
   const loginCheck = () => {
     const inputItem = nameRef.current;
     if (inputItem.value.length < 3) {
-      alert("이름을 2자 이상 입력해 주세요.");
+      loginInfo("이름을 2자 이상 입력해 주세요.");
       inputItem.focus();
     }
   };
@@ -31,6 +33,9 @@ const Intro = () => {
         <p>KB Order</p>
         <p>
           <span>오늘 김밥 드실분?</span>
+        </p>
+        <p>
+          <em ref={loginInfoRef}></em>
         </p>
         <input type="text" placeholder="이름을 입력해 주세요" ref={nameRef} />
         <button type="button" onClick={() => loginCheck()}>

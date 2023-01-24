@@ -8,7 +8,7 @@ const Header = () => {
     <>
       <HeaderUI>
         <h1>
-          <a href="">
+          <a href="/">
             <Image src={ImgLogo} alt="LOGO" placeholder="blur" />
             KBOrder
           </a>

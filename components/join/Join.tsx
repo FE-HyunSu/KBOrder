@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { IntroUI } from "./IntroStyle";
+import { JoinUI } from "./JoinStyle";
 import Image from "next/image";
 import ImgLogo from "../../public/images/img_logo.png";
 import { authJoin } from "../../api/firestore";
@@ -32,7 +32,7 @@ const Intro = () => {
   };
   return (
     <>
-      <IntroUI>
+      <JoinUI>
         <Image
           src={ImgLogo}
           alt="LOGO"
@@ -49,10 +49,19 @@ const Intro = () => {
           ref={nameRef}
           onKeyUp={() => keyupEvent()}
         />
+        <input type="text" placeholder="이메일 입력해 주세요" ref={emailRef} />
+        <input
+          type="password"
+          placeholder="패스워드 입력해 주세요"
+          ref={passwordRef}
+        />
+        <button type="button" onClick={() => joinGo()}>
+          회원가입
+        </button>
         <button type="button" onClick={() => loginCheck()}>
           주문하기
         </button>
-      </IntroUI>
+      </JoinUI>
     </>
   );
 };

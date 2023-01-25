@@ -39,22 +39,38 @@ const Intro = () => {
           placeholder="blur"
           className="img-logo"
         />
-        <p>KB Order</p>
+        <p>JOIN</p>
         <p>
-          <span>오늘 김밥 드실분?</span>
+          <span>회원가입</span>
         </p>
-        <input
-          type="text"
-          placeholder="이름을 입력해 주세요"
-          ref={nameRef}
-          onKeyUp={() => keyupEvent()}
-        />
-        <input type="text" placeholder="이메일 입력해 주세요" ref={emailRef} />
-        <input
-          type="password"
-          placeholder="패스워드 입력해 주세요"
-          ref={passwordRef}
-        />
+        <dl>
+          <dt>이름</dt>
+          <dd>
+            <input
+              type="text"
+              placeholder="이름을 입력해 주세요"
+              ref={nameRef}
+              onKeyUp={() => keyupEvent()}
+            />
+          </dd>
+          <dt>이메일</dt>
+          <dd>
+            <input
+              type="text"
+              placeholder="이메일을 입력해 주세요"
+              ref={emailRef}
+            />
+          </dd>
+          <dt>패스워드</dt>
+          <dd>
+            <input
+              type="password"
+              placeholder="패스워드 입력해 주세요"
+              ref={passwordRef}
+            />
+          </dd>
+        </dl>
+
         <button type="button" onClick={() => joinGo()}>
           회원가입
         </button>

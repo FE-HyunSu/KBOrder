@@ -13,8 +13,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <RecoilRoot>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta property="og:title" content="Project title" />
-          <meta property="og:description" content="Project description" />
+          <meta property="og:title" content="KBOrder" />
+          <meta property="og:description" content="KBOrder" />
           <meta property="og:image" content="" />
           <link rel="icon" href="/favicon.ico" />
           <title>Project Name</title>

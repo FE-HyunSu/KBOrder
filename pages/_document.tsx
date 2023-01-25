@@ -42,7 +42,7 @@ class MyDocument extends Document {
           <meta property="og:title" content="" />
           <meta property="og:image" content="" />
           <meta property="og:description" content="" />
-          <meta property="og:url" content="//" />
+          <meta property="og:url" content="/" />
           <meta name="description" content="" />
           <meta name="keywords" content="" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />

@@ -4,10 +4,16 @@ import Image from "next/image";
 import ImgLogo from "../../public/images/img_logo.png";
 import { authJoin } from "../../api/firestore";
 
-const Intro = () => {
+const Join = () => {
   const nameRef: any = useRef();
   const emailRef: any = useRef();
   const passwordRef: any = useRef();
+  const passwordChkRef: any = useRef();
+
+  const validation = () => {
+    console.log("check");
+  };
+
   const keyupEvent = () => {
     const keyValue = nameRef.current.value;
     console.log(keyValue);
@@ -67,11 +73,10 @@ const Intro = () => {
             <input
               type="password"
               placeholder="패스워드를 확인해 주세요"
-              ref={passwordRef}
+              ref={passwordChkRef}
             />
           </dd>
         </dl>
-
         <button type="button" onClick={() => joinGo()}>
           회원가입 완료
         </button>
@@ -82,4 +87,4 @@ const Intro = () => {
     </>
   );
 };
-export default Intro;
+export default Join;

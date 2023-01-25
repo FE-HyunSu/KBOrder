@@ -12,13 +12,6 @@ const Intro = () => {
     const keyValue = nameRef.current.value;
     console.log(keyValue);
   };
-  const loginCheck = () => {
-    const inputItem = nameRef.current;
-    if (inputItem.value.length < 3) {
-      alert("이름을 2자 이상 입력해 주세요.");
-      inputItem.focus();
-    }
-  };
   const joinGo = async () => {
     try {
       authJoin(emailRef.current.value, passwordRef.current.value).then(
@@ -69,14 +62,22 @@ const Intro = () => {
               ref={passwordRef}
             />
           </dd>
+          <dt>패스워드 확인</dt>
+          <dd>
+            <input
+              type="password"
+              placeholder="패스워드를 확인해 주세요"
+              ref={passwordRef}
+            />
+          </dd>
         </dl>
 
         <button type="button" onClick={() => joinGo()}>
-          회원가입
+          회원가입 완료
         </button>
-        <button type="button" onClick={() => loginCheck()}>
-          주문하기
-        </button>
+        <p className="text-links">
+          <a href="/">로그인</a>
+        </p>
       </JoinUI>
     </>
   );

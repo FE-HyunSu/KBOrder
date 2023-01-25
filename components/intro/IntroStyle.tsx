@@ -56,7 +56,7 @@ export const IntroUI = styled.div`
     }
   }
   input {
-    width: 20rem;
+    width: 30rem;
     padding: 1.2rem;
     border-radius: 0.4rem;
     box-sizing: border-box;
@@ -70,7 +70,7 @@ export const IntroUI = styled.div`
   }
   button {
     display: block;
-    min-width: 20rem;
+    min-width: 30rem;
     height: 4.6rem;
     margin: 0.8rem auto 0;
     padding: 0 1.3rem;
@@ -86,14 +86,32 @@ export const IntroUI = styled.div`
       background-color: #000;
     }
   }
-  a {
-    display: inline-block;
-    float: right;
-    padding: 0.8rem 0.2rem;
-    font-weight: 500;
-    font-size: 1.2rem;
-    color: #3a3a3a;
-    text-decoration: none;
-    animation: ${TextMotion} 1s 1.5s both;
+  .text-links {
+    padding: 0;
+    text-align: right;
+    a {
+      display: inline-block;
+      position: relative;
+      padding: 0.8rem 0.2rem;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: #3a3a3a;
+      text-decoration: none;
+      animation: ${TextMotion} 1s 1.5s both;
+      & + a {
+        margin-left: 0.8rem;
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: -0.5rem;
+          width: 0.1rem;
+          height: 0.8rem;
+          margin: auto;
+          border-right: 0.1rem solid #999;
+        }
+      }
+    }
   }
 `;

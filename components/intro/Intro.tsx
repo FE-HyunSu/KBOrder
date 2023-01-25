@@ -37,11 +37,31 @@ const Intro = () => {
         <p>
           <em ref={loginInfoRef}></em>
         </p>
-        <input type="text" placeholder="이름을 입력해 주세요" ref={nameRef} />
+        <dl>
+          <dt>&nbsp;</dt>
+          <dd>
+            <input
+              type="text"
+              placeholder="이메일을 입력해 주세요"
+              ref={nameRef}
+            />
+          </dd>
+          <dt>&nbsp;</dt>
+          <dd>
+            <input
+              type="password"
+              placeholder="패스워드를 입력해 주세요"
+              ref={nameRef}
+            />
+          </dd>
+        </dl>
         <button type="button" onClick={() => loginCheck()}>
-          주문하기
+          로그인
         </button>
-        <a href="/join">회원가입</a>
+        <p className="text-links">
+          <a href="/join">비회원 로그인</a>
+          <a href="/join">회원가입</a>
+        </p>
       </IntroUI>
     </>
   );

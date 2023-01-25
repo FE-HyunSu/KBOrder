@@ -38,7 +38,7 @@ const Intro = () => {
           <em ref={loginInfoRef}></em>
         </p>
         <dl>
-          <dt>&nbsp;</dt>
+          <dt className="hide">이메일</dt>
           <dd>
             <input
               type="text"
@@ -46,7 +46,7 @@ const Intro = () => {
               ref={nameRef}
             />
           </dd>
-          <dt>&nbsp;</dt>
+          <dt className="hide">패스워드</dt>
           <dd>
             <input
               type="password"
@@ -59,7 +59,7 @@ const Intro = () => {
           로그인
         </button>
         <p className="text-links">
-          <a href="/join">비회원 로그인</a>
+          <a href="/list">비회원 로그인</a>
           <a href="/join">회원가입</a>
         </p>
       </IntroUI>

@@ -37,12 +37,12 @@ export const JoinUI = styled.div`
     font-size: 2.4rem;
     color: #1a1a1a;
     text-align: center;
-    animation: ${TextMotion} 1s forwards;
+    animation: ${TextMotion} 0.6s forwards;
     opacity: 0;
     & + p {
       padding-top: 0;
       padding-bottom: 1rem;
-      animation: ${TextMotion} 1s 0.5s forwards;
+      animation: ${TextMotion} 0.6s 0.5s forwards;
     }
     span {
       font-weight: 300;
@@ -55,9 +55,12 @@ export const JoinUI = styled.div`
       padding: 0.5rem 0;
       font-weight: 500;
       font-size: 1.2rem;
+      color: #aaa;
+      animation: ${TextMotion} 0.6s 0.7s both;
     }
     dd {
       padding-bottom: 0.2rem;
+      animation: ${TextMotion} 0.6s 0.8s both;
     }
   }
   input {
@@ -67,7 +70,6 @@ export const JoinUI = styled.div`
     box-sizing: border-box;
     border: 1px solid #999;
     outline: none;
-    animation: ${TextMotion} 1s 0.8s both;
     &:active,
     &:hover {
       border: 1px solid #999;
@@ -84,7 +86,7 @@ export const JoinUI = styled.div`
     font-weight: 500;
     font-size: 1.4rem;
     color: #fff;
-    animation: ${TextMotion} 1s 1.2s both;
+    animation: ${TextMotion} 0.6s 1.2s both;
     transition: 0.2s;
     &:hover {
       font-size: 1.6rem;
@@ -102,7 +104,7 @@ export const JoinUI = styled.div`
       font-size: 1.2rem;
       color: #3a3a3a;
       text-decoration: none;
-      animation: ${TextMotion} 1s 1.5s both;
+      animation: ${TextMotion} 0.6s 1.5s both;
       & + a {
         margin-left: 0.8rem;
         &:before {

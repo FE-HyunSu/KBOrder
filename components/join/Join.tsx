@@ -9,15 +9,30 @@ const Join = () => {
   const emailRef: any = useRef();
   const passwordRef: any = useRef();
   const passwordChkRef: any = useRef();
+  const joinInfoRef: any = useRef();
 
   const validation = () => {
-    console.log("check");
+    const emailRegExp =
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    const nameVal = nameRef.current.value;
+    const emailVal = emailRef.current.value;
+    const passwordVal = passwordRef.current.value;
+    const passwordChkVal = passwordChkRef.current.value;
+    let infoText = "";
+
+    if (nameVal.length <= 2 && nameVal.length !== 0) {
+      infoText = "이름을 2자 이상 입력해 주세요.";
+    } else if (!emailVal.match(emailRegExp) && emailVal.length !== 0) {
+      infoText = "이메일 형식을 맞춰 주세요.";
+    } else if (passwordVal.length <= 4 && passwordVal.length !== 0) {
+      infoText = "패스워드를 4자 이상 입력해 주세요.";
+    } else if (passwordVal !== passwordChkVal && passwordChkVal.length !== 0) {
+      infoText = "패스워드가 서로 다릅니다.";
+    }
+
+    joinInfoRef.current.innerHTML = infoText;
   };
 
-  const keyupEvent = () => {
-    const keyValue = nameRef.current.value;
-    console.log(keyValue);
-  };
   const joinGo = async () => {
     try {
       authJoin(emailRef.current.value, passwordRef.current.value).then(
@@ -41,6 +56,8 @@ const Join = () => {
         <p>JOIN</p>
         <p>
           <span>회원가입</span>
+          <br />
+          <em ref={joinInfoRef}></em>
         </p>
         <dl>
           <dt>이름</dt>
@@ -49,7 +66,7 @@ const Join = () => {
               type="text"
               placeholder="이름을 입력해 주세요."
               ref={nameRef}
-              onKeyUp={() => keyupEvent()}
+              onKeyUp={() => validation()}
             />
           </dd>
           <dt>이메일</dt>
@@ -58,6 +75,7 @@ const Join = () => {
               type="text"
               placeholder="이메일을 입력해 주세요."
               ref={emailRef}
+              onKeyUp={() => validation()}
             />
           </dd>
           <dt>패스워드</dt>
@@ -66,6 +84,7 @@ const Join = () => {
               type="password"
               placeholder="패스워드를 입력해 주세요."
               ref={passwordRef}
+              onKeyUp={() => validation()}
             />
           </dd>
           <dt>패스워드 확인</dt>
@@ -74,6 +93,7 @@ const Join = () => {
               type="password"
               placeholder="패스워드를 확인해 주세요."
               ref={passwordChkRef}
+              onKeyUp={() => validation()}
             />
           </dd>
         </dl>

@@ -49,6 +49,14 @@ export const JoinUI = styled.div`
       font-size: 1.4rem;
       color: #3a3a3a;
     }
+    em {
+      display: inline-block;
+      height: 1.2rem;
+      font-weight: 500;
+      font-size: 1.2rem;
+      color: #ff3333;
+      letter-spacing: -0.05rem;
+    }
   }
   dl {
     dt {

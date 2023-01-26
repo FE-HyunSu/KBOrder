@@ -96,9 +96,16 @@ export const JoinUI = styled.div`
     color: #fff;
     animation: ${TextMotion} 0.6s 1.2s both;
     transition: 0.2s;
+    &:disabled {
+      background-color: #bbb;
+    }
     &:hover {
       font-size: 1.6rem;
       background-color: #000;
+      &:disabled {
+        font-size: 1.4rem;
+        background-color: #bbb;
+      }
     }
   }
   .text-links {

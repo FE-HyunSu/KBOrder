@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useRef } from "react";
 import { JoinUI } from "./JoinStyle";
 import Image from "next/image";
 import ImgLogo from "../../public/images/img_logo.png";
@@ -10,6 +10,7 @@ const Join = () => {
   const passwordRef: any = useRef();
   const passwordChkRef: any = useRef();
   const joinInfoRef: any = useRef();
+  const [isValidation, setValidation] = useState(false);
 
   const validation = () => {
     const emailRegExp =
@@ -31,6 +32,13 @@ const Join = () => {
     }
 
     joinInfoRef.current.innerHTML = infoText;
+    if (
+      nameVal.length > 2 &&
+      emailVal.match(emailRegExp) &&
+      passwordVal.length > 4 &&
+      passwordVal === passwordChkVal
+    )
+      setValidation(true);
   };
 
   const joinGo = async () => {
@@ -97,7 +105,7 @@ const Join = () => {
             />
           </dd>
         </dl>
-        <button type="button" onClick={() => joinGo()}>
+        <button type="button" onClick={() => joinGo()} disabled={!isValidation}>
           회원가입 완료
         </button>
         <p className="text-links">

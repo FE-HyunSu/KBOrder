@@ -47,7 +47,7 @@ const Join = () => {
           <dd>
             <input
               type="text"
-              placeholder="이름을 입력해 주세요"
+              placeholder="이름을 입력해 주세요."
               ref={nameRef}
               onKeyUp={() => keyupEvent()}
             />
@@ -56,7 +56,7 @@ const Join = () => {
           <dd>
             <input
               type="text"
-              placeholder="이메일을 입력해 주세요"
+              placeholder="이메일을 입력해 주세요."
               ref={emailRef}
             />
           </dd>
@@ -64,7 +64,7 @@ const Join = () => {
           <dd>
             <input
               type="password"
-              placeholder="패스워드 입력해 주세요"
+              placeholder="패스워드를 입력해 주세요."
               ref={passwordRef}
             />
           </dd>
@@ -72,7 +72,7 @@ const Join = () => {
           <dd>
             <input
               type="password"
-              placeholder="패스워드를 확인해 주세요"
+              placeholder="패스워드를 확인해 주세요."
               ref={passwordChkRef}
             />
           </dd>

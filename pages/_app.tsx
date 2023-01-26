@@ -17,7 +17,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <meta property="og:description" content="KBOrder" />
           <meta property="og:image" content="" />
           <link rel="icon" href="/favicon.ico" />
-          <title>Project Name</title>
+          <title>🍙 KBOrder</title>
         </Head>
         <GlobalStyle />
         <ThemeProvider theme={theme}>

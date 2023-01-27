@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
-import { JoinUI } from "./JoinStyle";
 import Image from "next/image";
-import ImgLogo from "../../public/images/img_logo.png";
+import { useRouter } from "next/router";
 import { authJoin } from "../../api/firestore";
 import Loading from "../loading/Loading";
-import { useRouter } from "next/router";
+import { JoinUI } from "./JoinStyle";
+import ImgLogo from "../../public/images/img_logo.png";
 
 interface ErrorType {
   name: string;

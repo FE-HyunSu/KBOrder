@@ -2,15 +2,12 @@ import React, { useRef } from "react";
 import { IntroUI } from "./IntroStyle";
 import Image from "next/image";
 import ImgLogo from "../../public/images/img_logo.png";
-import { authJoin } from "../../api/firestore";
+import { loginAuth } from "../../api/firestore";
 
 const Intro = () => {
   const nameRef: any = useRef();
   const loginInfoRef: any = useRef();
-  const keyupEvent = () => {
-    const keyValue = nameRef.current.value;
-    console.log(keyValue);
-  };
+
   const loginInfo = (comment: string) => {
     loginInfoRef.current.innerHTML = comment;
   };

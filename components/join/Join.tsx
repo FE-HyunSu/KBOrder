@@ -4,8 +4,16 @@ import Image from "next/image";
 import ImgLogo from "../../public/images/img_logo.png";
 import { authJoin } from "../../api/firestore";
 import Loading from "../loading/Loading";
+import { useRouter } from "next/router";
+
+interface ErrorType {
+  name: string;
+  code: string;
+  message: string;
+}
 
 const Join = () => {
+  const router = useRouter();
   const nameRef: any = useRef();
   const emailRef: any = useRef();
   const passwordRef: any = useRef();
@@ -51,10 +59,20 @@ const Join = () => {
         await authJoin(emailRef.current.value, passwordRef.current.value).then(
           (data) => {
             console.log(data);
+            alert("회원가입이 완료 되었습니다.\n로그인 페이지로 이동합니다.");
+            router.push("/");
           }
         );
       } catch (e) {
         console.log(e);
+        const err = e as ErrorType;
+        switch (err.code) {
+          case "auth/email-already-in-use":
+            alert("이미 가입된 이메일 주소 입니다.");
+            break;
+          default:
+            alert("오류가 발생 되었습니다. 다시 시도해 주세요.");
+        }
       } finally {
         setLoading(false);
       }

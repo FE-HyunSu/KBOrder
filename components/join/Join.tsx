@@ -3,6 +3,7 @@ import { JoinUI } from "./JoinStyle";
 import Image from "next/image";
 import ImgLogo from "../../public/images/img_logo.png";
 import { authJoin } from "../../api/firestore";
+import Loading from "../loading/Loading";
 
 const Join = () => {
   const nameRef: any = useRef();
@@ -10,7 +11,8 @@ const Join = () => {
   const passwordRef: any = useRef();
   const passwordChkRef: any = useRef();
   const joinInfoRef: any = useRef();
-  const [isValidation, setValidation] = useState(false);
+  const [isValidation, setValidation] = useState<boolean>(false);
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const validation = () => {
     const emailRegExp =
@@ -41,19 +43,29 @@ const Join = () => {
       setValidation(true);
   };
 
-  const joinGo = async () => {
-    try {
-      authJoin(emailRef.current.value, passwordRef.current.value).then(
-        (data) => {
-          console.log(data);
-        }
-      );
-    } catch (e) {
-      console.log(e);
+  const joinAction = async () => {
+    setLoading(true);
+    validation();
+    if (isValidation) {
+      try {
+        await authJoin(emailRef.current.value, passwordRef.current.value).then(
+          (data) => {
+            console.log(data);
+          }
+        );
+      } catch (e) {
+        console.log(e);
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      setLoading(false);
+      alert("입력 정보를 확인해 주세요.");
     }
   };
   return (
     <>
+      {isLoading && isLoading ? <Loading /> : null}
       <JoinUI>
         <Image
           src={ImgLogo}
@@ -105,7 +117,11 @@ const Join = () => {
             />
           </dd>
         </dl>
-        <button type="button" onClick={() => joinGo()} disabled={!isValidation}>
+        <button
+          type="button"
+          onClick={() => joinAction()}
+          disabled={!isValidation}
+        >
           회원가입 완료
         </button>
         <p className="text-links">

@@ -14,35 +14,51 @@ interface ErrorType {
 
 const Join = () => {
   const router = useRouter();
-  const nameRef: any = useRef();
-  const emailRef: any = useRef();
-  const passwordRef: any = useRef();
-  const passwordChkRef: any = useRef();
-  const joinInfoRef: any = useRef();
+  const nameRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
+  const passwordChkRef = useRef<HTMLInputElement>(null);
+  const joinInfoRef = useRef<HTMLElement>(null);
   const [isValidation, setValidation] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
 
   const validation = () => {
     const emailRegExp =
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    const nameVal = nameRef.current.value;
-    const emailVal = emailRef.current.value;
-    const passwordVal = passwordRef.current.value;
-    const passwordChkVal = passwordChkRef.current.value;
+    const nameVal = nameRef.current?.value;
+    const emailVal = emailRef.current?.value;
+    const passwordVal = passwordRef.current?.value;
+    const passwordChkVal = passwordChkRef.current?.value;
     let infoText = "";
 
-    if (nameVal.length <= 2 && nameVal.length !== 0) {
+    if (nameVal && nameVal.length <= 2 && nameVal.length !== 0) {
       infoText = "이름을 2자 이상 입력해 주세요.";
-    } else if (!emailVal.match(emailRegExp) && emailVal.length !== 0) {
+    } else if (
+      emailVal &&
+      !emailVal.match(emailRegExp) &&
+      emailVal.length !== 0
+    ) {
       infoText = "이메일 형식을 맞춰 주세요.";
-    } else if (passwordVal.length <= 4 && passwordVal.length !== 0) {
+    } else if (
+      passwordVal &&
+      passwordVal.length <= 4 &&
+      passwordVal.length !== 0
+    ) {
       infoText = "패스워드를 4자 이상 입력해 주세요.";
-    } else if (passwordVal !== passwordChkVal && passwordChkVal.length !== 0) {
+    } else if (
+      passwordChkVal &&
+      passwordVal !== passwordChkVal &&
+      passwordChkVal.length !== 0
+    ) {
       infoText = "패스워드가 서로 다릅니다.";
     }
 
-    joinInfoRef.current.innerHTML = infoText;
+    if (joinInfoRef && joinInfoRef.current)
+      joinInfoRef.current.innerHTML = infoText;
     if (
+      nameVal &&
+      emailVal &&
+      passwordVal &&
       nameVal.length > 2 &&
       emailVal.match(emailRegExp) &&
       passwordVal.length > 4 &&
@@ -56,13 +72,15 @@ const Join = () => {
     validation();
     if (isValidation) {
       try {
-        await authJoin(emailRef.current.value, passwordRef.current.value).then(
-          (data) => {
-            console.log(data);
-            alert("회원가입이 완료 되었습니다.\n로그인 페이지로 이동합니다.");
-            router.push("/");
-          }
-        );
+        const email: string =
+          emailRef && emailRef.current ? emailRef.current.value : "";
+        const password: string =
+          passwordRef && passwordRef.current ? passwordRef.current?.value : "";
+        await authJoin(email, password).then((data) => {
+          console.log(data);
+          alert("회원가입이 완료 되었습니다.\n로그인 페이지로 이동합니다.");
+          router.push("/");
+        });
       } catch (e) {
         console.log(e);
         const err = e as ErrorType;

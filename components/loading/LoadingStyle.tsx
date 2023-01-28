@@ -37,6 +37,9 @@ export const LoadingUI = styled.div`
   width: 100%;
   height: 100vh;
   z-index: 20;
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    height: -webkit-fill-available;
+  }
 
   &:before {
     content: "";

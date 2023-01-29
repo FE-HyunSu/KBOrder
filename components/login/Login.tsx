@@ -33,7 +33,7 @@ const Login = () => {
       passwordVal.length <= 4 &&
       passwordVal.length !== 0
     ) {
-      infoText = "패스워드를 4자 이상 입력해 주세요.";
+      infoText = "패스워드는 4자 이상 입력해 주세요.";
     }
 
     if (loginInfoRef && loginInfoRef.current)

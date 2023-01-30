@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { authJoin } from "../../api/firestore";
+import { authJoin, setData } from "../../api/firestore";
 import Loading from "../loading/Loading";
 import { JoinUI } from "./JoinStyle";
 import ImgLogo from "../../public/images/img_logo.png";
@@ -67,6 +67,11 @@ const Join = () => {
       setValidation(true);
   };
 
+  const addUser = async (uid: string, name: string) => {
+    setLoading(true);
+    await setData("user", { uid: uid, name: name });
+  };
+
   const joinAction = async () => {
     setLoading(true);
     validation();
@@ -76,9 +81,11 @@ const Join = () => {
           emailRef && emailRef.current ? emailRef.current.value : "";
         const password: string =
           passwordRef && passwordRef.current ? passwordRef.current?.value : "";
+        const nameVal: string | undefined = nameRef.current?.value;
         await authJoin(email, password).then((data) => {
           console.log(data);
           alert("회원가입이 완료 되었습니다.\n로그인 페이지로 이동합니다.");
+          if (nameVal) addUser(data.user.uid, nameVal);
           router.push("/");
         });
       } catch (e) {

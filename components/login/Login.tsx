@@ -3,7 +3,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Loading from "../loading/Loading";
 import { LoginUI } from "./LoginStyle";
-import { loginAuth } from "../../api/firestore";
+import { getData, loginAuth } from "../../api/firestore";
+import { useRecoilState } from "recoil";
+import { userAtom } from "../../store/store";
 import ImgLogo from "../../public/images/img_logo.png";
 
 interface ErrorType {
@@ -19,6 +21,7 @@ const Login = () => {
   const loginInfoRef = useRef<HTMLElement>(null);
   const [isValidation, setValidation] = useState<boolean>(false);
   const [isLoading, setLoading] = useState<boolean>(false);
+  const [isUserInfo, setUserInfo] = useRecoilState(userAtom);
 
   const validation = () => {
     const emailRegExp =
@@ -47,6 +50,10 @@ const Login = () => {
       setValidation(true);
   };
 
+  const getUserInfo = (key: string) => {
+    // getData("user");
+  };
+
   const loginAction = async () => {
     setLoading(true);
     validation();
@@ -58,6 +65,8 @@ const Login = () => {
           passwordRef && passwordRef.current ? passwordRef.current?.value : "";
         await loginAuth(email, password).then((data) => {
           console.log(data);
+          console.log(data.user.uid);
+          console.log(data.user.accessToken);
           router.push("/list");
         });
       } catch (e) {

@@ -19,8 +19,7 @@ const Header = () => {
         <p>
           {userInfo && userInfo.name !== `` ? (
             <>
-              안녕하세요. {userInfo.name}님
-              <button type="button">로그아웃</button>
+              <em>{userInfo.name}</em>님<button type="button">로그아웃</button>
             </>
           ) : (
             ``

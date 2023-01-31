@@ -28,10 +28,16 @@ export const HeaderUI = styled.header`
     display: flex;
     flex: 1 auto;
     justify-content: flex-end;
+    align-items: center;
     font-size: 1.3rem;
+    em {
+      display: inlin-block;
+      padding: 0 0.3rem;
+      color: #299438;
+    }
     button {
       display: inline-block;
-      margin-left: 0.4rem;
+      margin-left: 0.8rem;
       padding: 0.5rem;
       font-size: 1.2rem;
       color: #fff;

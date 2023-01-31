@@ -33,10 +33,10 @@ const Login = () => {
       infoText = "이메일 형식을 맞춰 주세요.";
     } else if (
       passwordVal &&
-      passwordVal.length <= 4 &&
+      passwordVal.length < 6 &&
       passwordVal.length !== 0
     ) {
-      infoText = "패스워드는 4자 이상 입력해 주세요.";
+      infoText = "패스워드는 6자 이상 입력해 주세요.";
     }
 
     if (loginInfoRef && loginInfoRef.current)
@@ -45,14 +45,26 @@ const Login = () => {
       emailVal &&
       passwordVal &&
       emailVal.match(emailRegExp) &&
-      passwordVal.length > 4
+      passwordVal.length >= 6
     )
       setValidation(true);
   };
 
-  const getUserInfo = (key: string) => {
+  const getUserInfo = async (key: string) => {
+    setLoading(true);
+    try {
+      await getData("user").then((data) => {
+        console.log(data);
+      });
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setLoading(false);
+    }
     // getData("user");
     console.log(key);
+
+    // setUserInfo
   };
 
   const loginAction = async () => {

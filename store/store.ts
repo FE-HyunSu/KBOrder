@@ -10,5 +10,6 @@ export const userAtom = atom({
   default: {
     uid: "",
     name: "",
+    email: "",
   },
 });

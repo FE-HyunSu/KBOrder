@@ -67,9 +67,9 @@ const Join = () => {
       setValidation(true);
   };
 
-  const addUser = async (uid: string, name: string) => {
+  const addUser = async (uid: string, name: string, email: string) => {
     setLoading(true);
-    await setData("user", { uid: uid, name: name });
+    await setData("user", { uid: uid, name: name, email: email });
   };
 
   const joinAction = async () => {
@@ -85,7 +85,7 @@ const Join = () => {
         await authJoin(email, password).then((data) => {
           console.log(data);
           alert("회원가입이 완료 되었습니다.\n로그인 페이지로 이동합니다.");
-          if (nameVal) addUser(data.user.uid, nameVal);
+          if (nameVal) addUser(data.user.uid, nameVal, email);
           router.push("/");
         });
       } catch (e) {

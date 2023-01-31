@@ -52,6 +52,7 @@ const Login = () => {
 
   const getUserInfo = (key: string) => {
     // getData("user");
+    console.log(key);
   };
 
   const loginAction = async () => {
@@ -65,8 +66,7 @@ const Login = () => {
           passwordRef && passwordRef.current ? passwordRef.current?.value : "";
         await loginAuth(email, password).then((data) => {
           console.log(data);
-          console.log(data.user.uid);
-          console.log(data.user.accessToken);
+          getUserInfo(data.user.uid);
           router.push("/list");
         });
       } catch (e) {

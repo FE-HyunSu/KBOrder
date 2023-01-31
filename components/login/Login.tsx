@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Loading from "../loading/Loading";
 import { LoginUI } from "./LoginStyle";
 import { getData, loginAuth } from "../../api/firestore";
-import { useRecoilState } from "recoil";
+import { useRecoilState, selector } from "recoil";
 import { userAtom } from "../../store/store";
 import ImgLogo from "../../public/images/img_logo.png";
 
@@ -54,17 +54,22 @@ const Login = () => {
     setLoading(true);
     try {
       await getData("user").then((data) => {
-        console.log(data);
+        const userList = data.docs.map((item: any) => {
+          return { ...item.data(), id: item.id };
+        });
+        const userInfo = userList.filter((item: any) => item.uid === key);
+        setUserInfo({
+          uid: userInfo[0].uid,
+          name: userInfo[0].name,
+          email: userInfo[0].email,
+        });
       });
     } catch (e) {
       console.log(e);
     } finally {
       setLoading(false);
     }
-    // getData("user");
     console.log(key);
-
-    // setUserInfo
   };
 
   const loginAction = async () => {

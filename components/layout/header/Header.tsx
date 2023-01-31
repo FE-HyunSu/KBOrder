@@ -2,8 +2,11 @@ import React from "react";
 import { HeaderUI } from "./HeaderStyle";
 import Image from "next/image";
 import ImgLogo from "../../../public/images/img_logo.png";
+import { userAtom } from "../../../store/store";
+import { useRecoilValue } from "recoil";
 
 const Header = () => {
+  const userInfo = useRecoilValue(userAtom);
   return (
     <>
       <HeaderUI>
@@ -13,7 +16,11 @@ const Header = () => {
             KBOrder
           </a>
         </h1>
-        <nav></nav>
+        <nav>
+          <ul>
+            <li>{userInfo && userInfo.name}</li>
+          </ul>
+        </nav>
       </HeaderUI>
     </>
   );

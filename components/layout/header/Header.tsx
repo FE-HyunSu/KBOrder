@@ -16,11 +16,16 @@ const Header = () => {
             KBOrder
           </a>
         </h1>
-        <nav>
-          <ul>
-            <li>{userInfo && userInfo.name}</li>
-          </ul>
-        </nav>
+        <p>
+          {userInfo && userInfo.name !== `` ? (
+            <>
+              안녕하세요. {userInfo.name}님
+              <button type="button">로그아웃</button>
+            </>
+          ) : (
+            ``
+          )}
+        </p>
       </HeaderUI>
     </>
   );

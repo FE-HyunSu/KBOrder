@@ -24,10 +24,20 @@ export const HeaderUI = styled.header`
       margin-right: 0.5rem;
     }
   }
-  nav {
+  p {
     display: flex;
     flex: 1 auto;
     justify-content: flex-end;
+    font-size: 1.3rem;
+    button {
+      display: inline-block;
+      margin-left: 0.4rem;
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      color: #fff;
+      background-color: #3a3a3a;
+      border-radius: 0.4rem;
+    }
   }
   & + main {
     display: flex;

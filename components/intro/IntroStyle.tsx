@@ -75,20 +75,20 @@ export const IntroUI = styled.div`
   }
   input {
     width: 30rem;
-    padding: 1.2rem;
+    padding: 1.5rem 1.2rem;
     border-radius: 0.4rem;
     box-sizing: border-box;
-    border: 1px solid #999;
+    border: 1px solid #ccc;
     outline: none;
     &:active,
     &:hover {
-      border: 1px solid #999;
+      border: 1px solid #ccc;
     }
   }
   button {
     display: block;
     min-width: 30rem;
-    height: 4.6rem;
+    height: 5rem;
     margin: 0.8rem auto 0;
     padding: 0 1.3rem;
     border-radius: 0.5rem;

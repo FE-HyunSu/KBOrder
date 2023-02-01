@@ -84,6 +84,7 @@ const Login = () => {
         await loginAuth(email, password).then((data) => {
           console.log(data);
           getUserInfo(data.user.uid);
+          window.localStorage.setItem("userUid", data.user.uid);
           router.push("/list");
         });
       } catch (e) {
@@ -152,4 +153,10 @@ const Login = () => {
     </>
   );
 };
+
+export const getServerSideProps = async () => {
+  console.log("SSR");
+  console.log(window.localStorage.getItem("userUid"));
+};
+
 export default Login;

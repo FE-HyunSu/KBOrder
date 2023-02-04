@@ -19,7 +19,7 @@ const ISR = ({ userList }: any) => {
       <RenderNav />
       <RenderTestBox>
         <h1>ISR (Incremental Static Regeneration)</h1>
-        <p>회원 이름 목록 (업데이트 간격 20초) {isCount}초 경과</p>
+        <p>회원 이름 목록 (revalidate 10초) {isCount}초 경과</p>
         <ul>
           {userList &&
             userList.map((item: any, idx: number) => {
@@ -45,7 +45,7 @@ export const getStaticProps = async () => {
     });
   });
 
-  return { props: { userList }, revalidate: 20 };
+  return { props: { userList }, revalidate: 10 };
 };
 
 export default ISR;

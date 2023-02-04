@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import RenderNav from "../../components/renderNav/RenderNav";
 import { getData } from "../../api/firestore";
 
 const ISR = ({ userList }: any) => {
+  const [isCount, setCount] = useState<number>(0);
+  useEffect(() => {
+    let count = 0;
+    let countInterval = setInterval(() => {
+      setCount(count++);
+    }, 1000);
+    return () => {
+      clearInterval(countInterval);
+    };
+  }, []);
   return (
     <>
       <RenderNav />
       <RenderTestBox>
         <h1>ISR (Incremental Static Regeneration)</h1>
-        <p>회원 이름 목록 (업데이트 간격 20초)</p>
+        <p>회원 이름 목록 (업데이트 간격 20초) {isCount}초 경과</p>
         <ul>
           {userList &&
-            userList.map((item: any, idx: any) => {
+            userList.map((item: any, idx: number) => {
               return (
                 <>
                   <li key={idx}>

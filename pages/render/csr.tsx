@@ -32,7 +32,9 @@ const CSR = () => {
             userList.map((item: any, idx: any) => {
               return (
                 <>
-                  <li key={idx}>{item.name}</li>
+                  <li key={idx}>
+                    {idx + 1}. {item.name}
+                  </li>
                 </>
               );
             })}
@@ -47,8 +49,10 @@ export default CSR;
 const RenderTestBox = styled.section`
   width: 100%;
   max-width: 102.4rem;
-  padding: 2rem;
+  padding: 5rem;
   box-sizing: border-box;
+  background-color: #f7e07c;
+  border-radius: 2rem;
   h1 {
     display: block;
     width: 100%;
@@ -69,9 +73,9 @@ const RenderTestBox = styled.section`
       padding: 1rem 0;
       font-weight: 400;
       font-size: 1.4rem;
-      border-bottom: 0.1rem solid #eee;
+      border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
       &:first-child {
-        border-top: 0.1rem solid #eee;
+        border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
       }
     }
   }

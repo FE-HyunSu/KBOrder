@@ -33,7 +33,7 @@ export const getStaticProps = async () => {
     });
   });
 
-  return { props: { userList }, revalidate: 60 };
+  return { props: { userList }, revalidate: 20 };
 };
 
 export default ISR;

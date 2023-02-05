@@ -29,7 +29,7 @@ const CSR = () => {
         <p>회원 이름 목록</p>
         <ul>
           {userList &&
-            userList.map((item: any, idx: any) => {
+            userList.map((item: any, idx: number) => {
               return (
                 <>
                   <li key={idx}>

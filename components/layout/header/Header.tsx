@@ -1,5 +1,6 @@
 import React from "react";
 import { HeaderUI } from "./HeaderStyle";
+import Link from "next/link";
 import Image from "next/image";
 import ImgLogo from "../../../public/images/img_logo.png";
 import { userAtom } from "../../../store/store";
@@ -11,12 +12,13 @@ const Header = () => {
     <>
       <HeaderUI>
         <h1>
-          <a href="/">
+          <Link href={"/"}>
             <Image src={ImgLogo} alt="LOGO" placeholder="blur" />
             KBOrder
-          </a>
+          </Link>
         </h1>
         <p>
+          <Link href={"/render/csr"}>DEV(RenderType)</Link>
           {userInfo && userInfo.name !== `` ? (
             <>
               <em>{userInfo.name}</em>님<button type="button">로그아웃</button>

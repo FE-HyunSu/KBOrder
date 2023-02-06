@@ -10,6 +10,7 @@ export const NavBox = styled.nav`
   ul {
     display: flex;
     justify-content: center;
+    background-color: #fff;
     li {
       border-right: 0.1rem solid #eee;
       &:first-child {

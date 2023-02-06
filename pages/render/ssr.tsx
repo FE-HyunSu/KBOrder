@@ -14,11 +14,9 @@ const SSR = ({ userList }: any) => {
           {userList &&
             userList.map((item: any, idx: number) => {
               return (
-                <>
-                  <li key={idx}>
-                    {idx + 1}. {item.name}
-                  </li>
-                </>
+                <li key={idx}>
+                  {idx + 1}. {item.name}
+                </li>
               );
             })}
         </ul>
@@ -43,6 +41,7 @@ export default SSR;
 const RenderTestBox = styled.section`
   width: 100%;
   max-width: 102.4rem;
+  margin-top: 10rem;
   padding: 5rem;
   box-sizing: border-box;
   background-color: #b8d0f0;

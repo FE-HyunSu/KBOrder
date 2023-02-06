@@ -6,6 +6,7 @@ import { getData } from "../../api/firestore";
 const ISR = ({ userList }: any) => {
   const [isCount, setCount] = useState<number>(0);
   useEffect(() => {
+    console.log(userList);
     let count = 0;
     let countInterval = setInterval(() => {
       setCount(count++);
@@ -24,11 +25,9 @@ const ISR = ({ userList }: any) => {
           {userList &&
             userList.map((item: any, idx: number) => {
               return (
-                <>
-                  <li key={idx}>
-                    {idx + 1}. {item.name}
-                  </li>
-                </>
+                <li key={idx}>
+                  {idx + 1}. {item.name}
+                </li>
               );
             })}
         </ul>
@@ -53,6 +52,7 @@ export default ISR;
 const RenderTestBox = styled.section`
   width: 100%;
   max-width: 102.4rem;
+  margin-top: 10rem;
   padding: 5rem;
   box-sizing: border-box;
   background-color: #ffcbc1;

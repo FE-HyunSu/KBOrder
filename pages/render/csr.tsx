@@ -31,11 +31,9 @@ const CSR = () => {
           {userList &&
             userList.map((item: any, idx: number) => {
               return (
-                <>
-                  <li key={idx}>
-                    {idx + 1}. {item.name}
-                  </li>
-                </>
+                <li key={idx}>
+                  {idx + 1}. {item.name}
+                </li>
               );
             })}
         </ul>
@@ -49,6 +47,7 @@ export default CSR;
 const RenderTestBox = styled.section`
   width: 100%;
   max-width: 102.4rem;
+  margin-top: 10rem;
   padding: 5rem;
   box-sizing: border-box;
   background-color: #f7e07c;

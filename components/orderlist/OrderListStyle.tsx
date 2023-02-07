@@ -13,11 +13,26 @@ export const OrderListUI = styled.section`
     box-sizing: border-box;
     h1 {
       display: block;
-      padding-bottom: 1rem;
+      padding: 2rem 0;
       font-weight: 700;
       font-size: 2.4rem;
       color: #1a1a1a;
       text-align: left;
+    }
+    ul {
+      li {
+        border-bottom: 0.1rem solid #eee;
+        &:first-child {
+          border-top: 0.1rem solid #eee;
+        }
+        a {
+          display: block;
+          padding: 2rem 0;
+          font-size: 1.4rem;
+          color: #111;
+          text-decoration: none;
+        }
+      }
     }
   }
 `;

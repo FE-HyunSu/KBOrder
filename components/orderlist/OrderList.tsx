@@ -11,6 +11,9 @@ const OrderList = () => {
       orderList = data.docs.map((item: any) => {
         return { ...item.data() };
       });
+      orderList.sort((a: any, b: any) => {
+        return b.seq - a.seq;
+      });
       setList(orderList);
     });
   };
@@ -27,7 +30,7 @@ const OrderList = () => {
               isList.map((item: any, idx: any) => {
                 return (
                   <li key={idx}>
-                    <Link href={`/list`}>{item.date}</Link>
+                    <Link href={`/list`}>{item.title}</Link>
                   </li>
                 );
               })}

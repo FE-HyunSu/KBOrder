@@ -27,7 +27,7 @@ const OrderList = () => {
               isList.map((item: any, idx: any) => {
                 return (
                   <li key={idx}>
-                    <Link href={`/list/` + item.date}>{item.date}</Link>
+                    <Link href={`/list`}>{item.date}</Link>
                   </li>
                 );
               })}

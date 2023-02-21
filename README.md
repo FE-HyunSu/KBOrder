@@ -9,7 +9,7 @@
 - (진행중)
 - Firebase 회원가입, 로그인.
 - Firebase firestore 를 통한 Database 연동.
-- 페이지별 SSR, CSR 기능 구현.
+- 페이지별 SSR, CSR, SSG, ISG 기능 구현.
 - vercel 배포.
 
 ### 🏂 URL.

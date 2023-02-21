@@ -25,12 +25,37 @@ export const OrderListUI = styled.section`
         &:first-child {
           border-top: 0.1rem solid #eee;
         }
+        &.open {
+          dd {
+            color: #ff7111;
+          }
+        }
+        &.closed {
+          a {
+            cursor: default;
+          }
+          dt,
+          dd {
+            color: #ccc;
+          }
+        }
         a {
           display: block;
-          padding: 2rem 0;
+          padding: 2rem 1rem;
           font-size: 1.4rem;
           color: #111;
           text-decoration: none;
+          box-sizing: border-box;
+          dl {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            dt {
+              flex: 1 auto;
+            }
+            dd {
+            }
+          }
         }
       }
     }

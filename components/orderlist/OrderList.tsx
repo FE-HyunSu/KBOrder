@@ -4,7 +4,6 @@ import { OrderListUI, BtnCreateOrder } from "./OrderListStyle";
 import apiOrder from "../../was/order";
 import Loading from "../loading/Loading";
 import { useRouter } from "next/router";
-import { apiAuth } from "../../was/auth";
 
 interface orderListType {
   date: string;
@@ -24,7 +23,6 @@ const OrderList = () => {
   };
   useEffect(() => {
     getList();
-    // apiAuth("inga", "get") ? console.log("good") : router.push("login");
   }, []);
   return (
     <>
@@ -49,6 +47,10 @@ const OrderList = () => {
                   );
                 })}
             </ul>
+            <br />
+            <br />
+            <br />
+            <Link href={"/render/csr"}>DEV(RenderType)</Link>
             <BtnCreateOrder onClick={() => console.log("버튼클릭")}>
               주문하기
             </BtnCreateOrder>

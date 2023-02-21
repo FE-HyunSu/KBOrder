@@ -1,24 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { HeaderUI } from "./HeaderStyle";
 import Link from "next/link";
 import Image from "next/image";
 import ImgLogo from "../../../public/images/img_logo.png";
 import { userAtom } from "../../../store/store";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useRouter } from "next/router";
 
 const Header = () => {
-  const [isStoreUserInfo, setStoreUserInfo] = useRecoilState(userAtom);
+  const [isAtomUserInfo, setAtomUserInfo] = useRecoilState(userAtom);
+  const storeUserInfo = useRecoilValue(userAtom);
+  const [isUserUid, setUserUid] = useState<string | undefined | null>(null);
   const router = useRouter();
   const logout = () => {
     window.localStorage.removeItem("userUid");
-    setStoreUserInfo({
+    setAtomUserInfo({
       uid: "",
       name: "",
       email: "",
     });
     router.push("/");
   };
+
+  useEffect(() => {
+    setUserUid(window.localStorage.getItem("userUid"));
+  }, [isUserUid]);
+
   return (
     <>
       <HeaderUI>
@@ -29,10 +36,9 @@ const Header = () => {
           </Link>
         </h1>
         <p>
-          {/* <Link href={"/render/csr"}>DEV(RenderType)</Link> */}
-          {isStoreUserInfo && isStoreUserInfo.name !== `` ? (
+          {isUserUid !== null || storeUserInfo.uid !== "" ? (
             <>
-              <em>{isStoreUserInfo.name}</em>님
+              <em>{isAtomUserInfo.name}</em>님
               <button type="button" onClick={() => logout()}>
                 로그아웃
               </button>

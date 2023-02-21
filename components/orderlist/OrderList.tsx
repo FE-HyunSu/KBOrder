@@ -1,21 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { OrderListUI, BtnCreateOrder } from "./OrderListStyle";
-import { getData } from "../../api/firestore";
+// import { getData } from "../../api/firestore";
+import getOrderList from "../../api/order";
 
 const OrderList = () => {
   const [isList, setList] = useState([]);
   const getList = async () => {
-    await getData("order").then((data) => {
-      let orderList: any = {};
-      orderList = data.docs.map((item: any) => {
-        return { ...item.data() };
-      });
-      orderList.sort((a: any, b: any) => {
-        return b.seq - a.seq;
-      });
-      setList(orderList);
-    });
+    const dataList = await getOrderList();
+    setList(dataList);
   };
   useEffect(() => {
     getList();

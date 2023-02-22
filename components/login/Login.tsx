@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Loading from "../loading/Loading";
 import { LoginUI } from "./LoginStyle";
 import { getData, loginAuth } from "../../api/firestore";
-import { useRecoilState, selector } from "recoil";
+import { useRecoilState } from "recoil";
 import { userAtom } from "../../store/store";
 import ImgLogo from "../../public/images/img_logo.png";
 
@@ -84,7 +84,7 @@ const Login = () => {
         await loginAuth(email, password).then((data) => {
           console.log(data);
           getUserInfo(data.user.uid);
-          window.localStorage.setItem("userUid", data.user.uid);
+          // window.localStorage.setItem("userUid", data.user.uid);
           router.push("/list");
         });
       } catch (e) {

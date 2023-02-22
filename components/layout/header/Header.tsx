@@ -7,9 +7,16 @@ import { userAtom } from "../../../store/store";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useRouter } from "next/router";
 
+interface userDataType {
+  uid: string;
+  name: string;
+  email: string;
+}
+
 const Header = () => {
   const [isAtomUserInfo, setAtomUserInfo] = useRecoilState(userAtom);
   const storeUserInfo = useRecoilValue(userAtom);
+  const [isUserData, setUserData] = useState<userDataType>();
   const [isUserUid, setUserUid] = useState<string | undefined | null>(null);
   const router = useRouter();
   const logout = () => {
@@ -23,8 +30,8 @@ const Header = () => {
   };
 
   useEffect(() => {
-    setUserUid(window.localStorage.getItem("userUid"));
-  }, [isUserUid]);
+    setUserData(storeUserInfo);
+  }, [storeUserInfo]);
 
   return (
     <>
@@ -36,9 +43,9 @@ const Header = () => {
           </Link>
         </h1>
         <p>
-          {isUserUid !== null || storeUserInfo.uid !== "" ? (
+          {isUserData && isUserData.uid !== "" ? (
             <>
-              <em>{isAtomUserInfo.name}</em>님
+              <em>{isUserData.name}</em>님
               <button type="button" onClick={() => logout()}>
                 로그아웃
               </button>

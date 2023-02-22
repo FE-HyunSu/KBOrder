@@ -8,12 +8,9 @@ const Intro = () => {
   const router = useRouter();
   const storeUserInfo = useRecoilValue(userAtom);
   const [isLogin, setLogin] = useState(storeUserInfo.uid !== "");
-  const loginCheck = () => {
-    isLogin ? router.push("/list") : null;
-  };
   useEffect(() => {
     setLogin(storeUserInfo.uid !== "");
-    loginCheck();
+    isLogin ? router.push("/list") : null;
   }, []);
   return <Login />;
 };

@@ -4,10 +4,16 @@ export const HeaderUI = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 5rem;
   padding: 0 1.4rem;
+  background-color: #fff;
   border: 0.1rem solid #eee;
   box-sizing: border-box;
+  z-index: 10;
   a {
     display: flex;
     justify-content: center;
@@ -51,6 +57,7 @@ export const HeaderUI = styled.header`
     align-items: center;
     width: 100%;
     min-height: calc(100vh - 10rem);
+    padding-top: 5rem;
     overflow: hidden;
     @supports (-webkit-appearance: none) and (stroke-color: transparent) {
       min-height: calc(100vh - 10rem);

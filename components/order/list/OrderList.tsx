@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { OrderListUI, BtnCreateOrder } from "./OrderListStyle";
-import apiOrder from "../../was/order";
-import Loading from "../loading/Loading";
+import apiOrder from "../../../was/order";
+import Loading from "../../loading/Loading";
 import { useRouter } from "next/router";
 
 interface orderListType {
@@ -31,7 +31,9 @@ const OrderList = () => {
       ) : (
         <OrderListUI>
           <div className="inner">
-            <h1>주문 목록</h1>
+            <h1>
+              <em>🦉</em> 주문 목록
+            </h1>
             <ul>
               {isOrderList &&
                 isOrderList.map((item: orderListType, idx: number) => {

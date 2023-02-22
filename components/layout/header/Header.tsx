@@ -17,7 +17,6 @@ const Header = () => {
   const [isAtomUserInfo, setAtomUserInfo] = useRecoilState(userAtom);
   const storeUserInfo = useRecoilValue(userAtom);
   const [isUserData, setUserData] = useState<userDataType>();
-  const [isUserUid, setUserUid] = useState<string | undefined | null>(null);
   const router = useRouter();
   const logout = () => {
     window.localStorage.removeItem("userUid");
@@ -51,7 +50,7 @@ const Header = () => {
               </button>
             </>
           ) : (
-            ``
+            ""
           )}
         </p>
       </HeaderUI>

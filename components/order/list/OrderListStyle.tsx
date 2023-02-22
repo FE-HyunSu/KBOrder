@@ -18,6 +18,9 @@ export const OrderListUI = styled.section`
       font-size: 2.4rem;
       color: #1a1a1a;
       text-align: left;
+      em {
+        font-size: 4rem;
+      }
     }
     ul {
       li {

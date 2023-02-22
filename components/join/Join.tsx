@@ -41,7 +41,7 @@ const Join = () => {
       infoText = "이메일 형식을 맞춰 주세요.";
     } else if (
       passwordVal &&
-      passwordVal.length <= 6 &&
+      passwordVal.length < 6 &&
       passwordVal.length !== 0
     ) {
       infoText = "패스워드를 6자 이상 입력해 주세요.";

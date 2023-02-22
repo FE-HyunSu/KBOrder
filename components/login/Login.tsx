@@ -82,9 +82,7 @@ const Login = () => {
         const password: string =
           passwordRef && passwordRef.current ? passwordRef.current?.value : "";
         await loginAuth(email, password).then((data) => {
-          console.log(data);
           getUserInfo(data.user.uid);
-          // window.localStorage.setItem("userUid", data.user.uid);
           router.push("/list");
         });
       } catch (e) {
@@ -146,7 +144,7 @@ const Login = () => {
           로그인
         </button>
         <p className="text-links">
-          <a href="/list">비회원 로그인</a>
+          <a href="/list">구경하기</a>
           <a href="/join">회원가입</a>
         </p>
       </LoginUI>

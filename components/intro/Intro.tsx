@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from "react";
 import Login from "../login/Login";
-import { apiAuth } from "../../was/auth";
 import { useRouter } from "next/router";
+import { useRecoilValue } from "recoil";
+import { userAtom } from "../../store/store";
 
 const Intro = () => {
   const router = useRouter();
-  const [isInga, setInga] = useState(false);
+  const storeUserInfo = useRecoilValue(userAtom);
+  const [isLogin, setLogin] = useState(storeUserInfo.uid !== "");
+  const loginCheck = () => {
+    isLogin ? router.push("/list") : null;
+  };
   useEffect(() => {
-    if (apiAuth("inga", "get")) router.push("list");
-  }, [isInga]);
+    setLogin(storeUserInfo.uid !== "");
+    loginCheck();
+  }, []);
   return <Login />;
 };
 

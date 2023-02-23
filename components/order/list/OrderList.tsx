@@ -17,7 +17,7 @@ const OrderList = () => {
   const [isOrderList, setOrderList] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const getList = async () => {
-    const dataList = await apiOrder("list", "get");
+    const dataList = await apiOrder("dateList", "get", null);
     setOrderList(dataList);
     setLoading(false);
   };

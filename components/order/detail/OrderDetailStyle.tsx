@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { media } from "../../../styles/theme";
 
 export const OrderDetailUI = styled.section`
   display: block;
@@ -40,6 +41,7 @@ export const OrderDetailUI = styled.section`
         color: #777;
         strong {
           display: inline-block;
+          line-height: 1.3;
           & + strong {
             padding-left: 0.4rem;
             &:before {
@@ -54,6 +56,9 @@ export const OrderDetailUI = styled.section`
         em {
           font-weight: 700;
           color: #299438;
+        }
+        ${media.mobile} {
+          text-align: right;
         }
       }
     }

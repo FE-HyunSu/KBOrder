@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { OrderDetailUI } from "./OrderDetailStyle";
 import apiOrder from "../../../was/order";
-import Loading from "../../loading/Loading";
+import Loading from "../../common/loading/Loading";
+
+import * as commonFn from "../../common/CommonFn";
 
 const OrderDetail = () => {
   const router = useRouter();
@@ -45,7 +47,7 @@ const OrderDetail = () => {
                       return (
                         <strong key={idx}>
                           <span>{item.name}</span>(<em>{item.user.length}줄</em>{" "}
-                          * {item.price}원)
+                          * {commonFn.unitWon(item.price)})
                         </strong>
                       );
                     })}

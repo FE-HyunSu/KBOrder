@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { authJoin, setData } from "../../api/firestore";
-import Loading from "../loading/Loading";
+import Loading from "../common/loading/Loading";
 import { JoinUI } from "./JoinStyle";
 import ImgLogo from "../../public/images/img_logo.png";
 

@@ -21,13 +21,13 @@ const apiOrder = async (code: string, method: string, param: any) => {
     });
     return orderList;
   } else if (code === "orderDetail" && method === "get") {
-    let orderDetailData = [];
+    let orderDetailData: any = [];
     await getData("orderDetail").then((data) => {
       orderDetailData = data.docs.map((item: any) => {
         return { ...item.data() };
       });
-      console.log(orderDetailData);
     });
+    return orderDetailData.filter((item: any) => item.seq === Number(param))[0];
   }
 };
 

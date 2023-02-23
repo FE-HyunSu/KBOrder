@@ -15,11 +15,46 @@ export const OrderDetailUI = styled.section`
       display: block;
       padding: 2rem 0;
       font-weight: 700;
-      font-size: 2.4rem;
+      font-size: 1.8rem;
       color: #1a1a1a;
       text-align: left;
       em {
         font-size: 4rem;
+      }
+      strong {
+        display: inline-block;
+        padding-left: 1rem;
+        color: #299438;
+      }
+    }
+    .order-info {
+      width: 100%;
+      margin: 2rem auto;
+      padding: 2rem;
+      font-size: 1.4rem;
+      text-align: right;
+      border: 0.1rem solid #ddd;
+      border-radius: 0.8rem;
+      box-sizing: border-box;
+      p {
+        color: #777;
+        strong {
+          display: inline-block;
+          & + strong {
+            padding-left: 0.4rem;
+            &:before {
+              content: "+ ";
+            }
+          }
+        }
+        span {
+          font-weight: 700;
+          color: #111;
+        }
+        em {
+          font-weight: 700;
+          color: #299438;
+        }
       }
     }
     ul {
@@ -42,21 +77,30 @@ export const OrderDetailUI = styled.section`
             color: #ccc;
           }
         }
-        a {
-          display: block;
-          padding: 2rem 1rem;
-          font-size: 1.4rem;
-          color: #111;
-          text-decoration: none;
-          box-sizing: border-box;
-          dl {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            dt {
-              flex: 1 auto;
+        dl {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          dt {
+            flex: 1 auto;
+            padding: 2rem 0;
+            font-size: 1.6rem;
+            em {
+              display: inline-block;
+              padding: 0.6rem;
+              font-size: 1.4rem;
+              color: #299438;
             }
-            dd {
+          }
+          dd {
+            strong {
+              display: inline-block;
+              margin: 0.2rem;
+              padding: 0.6rem 1rem;
+              font-size: 1.4rem;
+              color: #fff;
+              background-color: #299438;
+              border-radius: 2rem;
             }
           }
         }

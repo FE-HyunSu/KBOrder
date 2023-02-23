@@ -37,7 +37,7 @@ export const HeaderUI = styled.header`
     align-items: center;
     font-size: 1.3rem;
     em {
-      display: inlin-block;
+      display: inline-block;
       padding: 0 0.3rem;
       color: #299438;
     }

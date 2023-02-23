@@ -8,7 +8,7 @@ const ListDetail = () => {
   return (
     <>
       <OrderDetail />
-      {id}
+      {/* {id} */}
     </>
   );
 };

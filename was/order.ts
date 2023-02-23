@@ -8,7 +8,7 @@ interface orderListType {
 }
 
 // 'code === list' -> 목록 조회 및 seq 기준으로 정렬하여 return.
-const apiOrder = async (code: string, method: string) => {
+const apiOrder = async (code: string, method: string, param: any) => {
   if (code === "list" && method === "get") {
     let orderList: any = {};
     await getData("order").then((data) => {
@@ -20,6 +20,14 @@ const apiOrder = async (code: string, method: string) => {
       return b.seq - a.seq;
     });
     return orderList;
+  } else if (code === "orderDetail" && method === "get") {
+    let orderDetailData = [];
+    await getData("orderDetail").then((data) => {
+      orderDetailData = data.docs.map((item: any) => {
+        return { ...item.data() };
+      });
+      console.log(orderDetailData);
+    });
   }
 };
 

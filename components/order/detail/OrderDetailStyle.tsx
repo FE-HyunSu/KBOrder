@@ -13,7 +13,7 @@ export const OrderDetailUI = styled.section`
     box-sizing: border-box;
     h1 {
       display: block;
-      padding: 2rem 0;
+      padding: 2rem 0 0.5rem;
       font-weight: 700;
       font-size: 1.8rem;
       color: #1a1a1a;
@@ -32,7 +32,7 @@ export const OrderDetailUI = styled.section`
       margin: 2rem auto;
       padding: 2rem;
       font-size: 1.4rem;
-      text-align: right;
+      text-align: left;
       border: 0.1rem solid #ddd;
       border-radius: 0.8rem;
       box-sizing: border-box;

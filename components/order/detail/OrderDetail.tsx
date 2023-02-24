@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { OrderDetailUI } from "./OrderDetailStyle";
 import apiOrder from "../../../was/order";
 import Loading from "../../common/loading/Loading";
-
 import * as commonFn from "../../common/CommonFn";
 
 const OrderDetail = () => {
@@ -30,8 +29,6 @@ const OrderDetail = () => {
         <OrderDetailUI>
           <div className="inner">
             <h1>
-              {/* <span className="open">모집중</span>
-            <span className="closed">마감</span> */}
               <em>🍙</em>
               <strong>
                 {isOrderData && isOrderData.title ? isOrderData.title : null}

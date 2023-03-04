@@ -1,10 +1,30 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { media } from "../../../styles/theme";
+
+const IntroMotion = keyframes`
+  0%{
+    width:0;
+    height: .5rem;
+    text-indent:-30rem;
+  }
+  20%{
+    width:1rem;
+    height: 4.5rem;
+    text-indent:-30rem;
+  }
+  100%{
+    width:80%;
+    height: 4.5rem;
+    text-indent:0;
+  }
+`;
 
 export const OrderDetailUI = styled.section`
   display: block;
   width: 100%;
   min-height: calc(100vh - 10rem);
+  padding-bottom: 10rem;
+  box-sizing: border-box;
   .inner {
     max-width: 102.4rem;
     min-height: 20rem;
@@ -58,7 +78,7 @@ export const OrderDetailUI = styled.section`
           color: #299438;
         }
         ${media.mobile} {
-          text-align: right;
+          text-align: center;
         }
       }
     }
@@ -112,4 +132,23 @@ export const OrderDetailUI = styled.section`
       }
     }
   }
+`;
+
+export const BtnOrderUI = styled.button`
+  position: fixed;
+  right: 0;
+  bottom: 7rem;
+  left: 0;
+  width: 0;
+  max-width: 16rem;
+  height: 0.5rem;
+  margin: auto;
+  font-weight: 500;
+  font-size: 1.4rem;
+  color: #fff;
+  background-color: #299438;
+  border-radius: 6rem;
+  overflow: hidden;
+  animation: ${IntroMotion} 2s forwards;
+  z-index: 2;
 `;

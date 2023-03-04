@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { OrderDetailUI } from "./OrderDetailStyle";
+import { OrderDetailUI, BtnOrderUI } from "./OrderDetailStyle";
 import apiOrder from "../../../was/order";
 import Loading from "../../common/loading/Loading";
 import * as commonFn from "../../common/CommonFn";
@@ -70,6 +70,7 @@ const OrderDetail = () => {
                   );
                 })}
             </ul>
+            <BtnOrderUI type="button">주문하기</BtnOrderUI>
           </div>
         </OrderDetailUI>
       )}

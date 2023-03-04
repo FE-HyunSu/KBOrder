@@ -23,12 +23,10 @@ const Modal = (props: PropsWithChildren<ModalProps>) => {
     return (
       <>
         {ReactDOM.createPortal(
-          <>
-            <ModalTemplate>
-              <ModalContents>{props.children}</ModalContents>
-              <ModalBgDimed onClose={props.onClose}></ModalBgDimed>
-            </ModalTemplate>
-          </>,
+          <ModalTemplate>
+            <ModalContents>{props.children}</ModalContents>
+            <ModalBgDimed onClose={props.onClose}></ModalBgDimed>
+          </ModalTemplate>,
           modalElement
         )}
       </>

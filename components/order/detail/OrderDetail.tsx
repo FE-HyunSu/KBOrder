@@ -4,18 +4,26 @@ import { OrderDetailUI, BtnOrderUI } from "./OrderDetailStyle";
 import apiOrder from "../../../was/order";
 import Loading from "../../common/loading/Loading";
 import * as commonFn from "../../common/CommonFn";
+import ModalKbSelect from "../../modal/kbSelect";
 
 const OrderDetail = () => {
   const router = useRouter();
   const { id } = router.query;
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState<Boolean>(true);
   const [isOrderData, setOrderData] = useState<any>(null);
+  const [isModalOpen, setModalOpen] = useState<Boolean>(false);
   const getData = () => {
     const orderData = apiOrder("orderList", "get", id);
     orderData.then((data) => {
       setOrderData(data);
       setLoading(false);
     });
+  };
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+  const handleModalClose = () => {
+    setModalOpen(false);
   };
   useEffect(() => {
     if (!router.isReady) return;
@@ -70,10 +78,15 @@ const OrderDetail = () => {
                   );
                 })}
             </ul>
-            <BtnOrderUI type="button">주문하기</BtnOrderUI>
+            <BtnOrderUI type="button" onClick={() => handleModalOpen()}>
+              주문하기
+            </BtnOrderUI>
           </div>
         </OrderDetailUI>
       )}
+      {isModalOpen && isModalOpen ? (
+        <ModalKbSelect onClose={handleModalClose} />
+      ) : null}
     </>
   );
 };

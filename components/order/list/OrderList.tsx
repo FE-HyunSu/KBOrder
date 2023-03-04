@@ -15,7 +15,7 @@ interface orderListType {
 const OrderList = () => {
   const router = useRouter();
   const [isOrderList, setOrderList] = useState([]);
-  const [isLoading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState<Boolean>(true);
   const getList = async () => {
     const dataList = await apiOrder("dateList", "get", null);
     setOrderList(dataList);

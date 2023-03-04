@@ -1,16 +1,42 @@
 import React, { useRef, useState, useEffect } from "react";
 import Modal from "../../layout/modal/index";
 import { BtnClose, ModalOrderUI } from "./style";
+import { getData } from "../../../api/firestore";
 
 interface ModalProps {
   onClose: () => void;
 }
+interface menuListType {
+  id: string;
+  name: string;
+  price: number;
+}
 
 const ModalKbSelect = (props: ModalProps) => {
-  const [isModalView, setModalView] = useState<boolean>(false);
+  const [isModalView, setModalView] = useState<Boolean>(false);
+  const [isLoading, setLoading] = useState<Boolean>(true);
+  const [dataList, setDataList] = useState<any>([]);
+  const getMenuList = async () => {
+    setLoading(true);
+    try {
+      await getData("menuList").then((data) => {
+        const menuList = data.docs.map((item: any) => {
+          return { ...item.data(), id: item.id };
+        });
+        console.log(menuList);
+        setDataList(menuList);
+        console.log(dataList);
+      });
+    } catch (e) {
+      console.log(e);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     setModalView(true);
+    getMenuList();
   }, []);
 
   return (
@@ -19,27 +45,16 @@ const ModalKbSelect = (props: ModalProps) => {
       <ModalOrderUI className={isModalView ? `active` : ``}>
         <h1>주문하기</h1>
         <ul>
-          <li>
-            <label>
-              <input type="checkbox" />
-              <span>참치김밥</span>
-              <em>5000</em>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" />
-              <span>참치김밥</span>
-              <em>5000</em>
-            </label>
-          </li>
-          <li>
-            <label>
-              <input type="checkbox" />
-              <span>참치김밥</span>
-              <em>5000</em>
-            </label>
-          </li>
+          {dataList &&
+            dataList.map((item: menuListType, idx: number) => (
+              <li key={idx}>
+                <label>
+                  <input type="checkbox" />
+                  <span>{item.name}</span>
+                  <em>{item.price}</em>
+                </label>
+              </li>
+            ))}
         </ul>
       </ModalOrderUI>
     </Modal>

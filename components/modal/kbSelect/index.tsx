@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "../../layout/modal/index";
 import { BtnClose, ModalOrderUI } from "./style";
 import { getData } from "../../../api/firestore";
@@ -24,9 +24,7 @@ const ModalKbSelect = (props: ModalProps) => {
         const menuList = data.docs.map((item: any) => {
           return { ...item.data(), id: item.id };
         });
-        console.log(menuList);
         setDataList(menuList);
-        console.log(dataList);
       });
     } catch (e) {
       console.log(e);
@@ -37,9 +35,7 @@ const ModalKbSelect = (props: ModalProps) => {
 
   useEffect(() => {
     setModalView(true);
-    setTimeout(() => {
-      getMenuList();
-    }, 2000);
+    getMenuList();
   }, []);
 
   return (

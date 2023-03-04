@@ -16,7 +16,7 @@ interface menuListType {
 const ModalKbSelect = (props: ModalProps) => {
   const [isModalView, setModalView] = useState<Boolean>(false);
   const [isLoading, setLoading] = useState<Boolean>(true);
-  const [dataList, setDataList] = useState<any>([]);
+  const [dataList, setDataList] = useState<menuListType[]>([]);
   const getMenuList = async () => {
     setLoading(true);
     try {
@@ -42,7 +42,7 @@ const ModalKbSelect = (props: ModalProps) => {
     <Modal onClose={props.onClose}>
       <BtnClose onClick={props.onClose}>닫기</BtnClose>
       <ModalOrderUI className={isModalView ? `active` : ``}>
-        <h1>주문하기</h1>
+        <h1>📝 주문하기</h1>
         <ul>
           {isLoading && isLoading ? (
             <Loading />
@@ -61,6 +61,7 @@ const ModalKbSelect = (props: ModalProps) => {
             </>
           )}
         </ul>
+        <button type="button">선택완료</button>
       </ModalOrderUI>
     </Modal>
   );

@@ -22,12 +22,12 @@ const apiOrder = async (code: string, method: string, param: any) => {
     return orderList;
   } else if (code === "orderList" && method === "get") {
     let orderDetailData: any = [];
-    await getData("orderDetail").then((data) => {
+    await getData("orderList").then((data) => {
       orderDetailData = data.docs.map((item: any) => {
         return { ...item.data() };
       });
     });
-    return orderDetailData.filter((item: any) => item.seq === Number(param))[0];
+    return orderDetailData.filter((item: any) => item.seq === String(param));
   }
 };
 

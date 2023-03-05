@@ -60,7 +60,7 @@ export const ModalOrderUI = styled.div`
         display: flex;
         align-items: center;
         position: relative;
-        padding: 2rem 1.6rem;
+        padding: 2rem 1.2rem;
         cursor: pointer;
         box-sizing: border-box;
         input {
@@ -77,7 +77,7 @@ export const ModalOrderUI = styled.div`
               content: "";
               position: absolute;
               top: 0;
-              left: 2.2rem;
+              left: 1.4rem;
               bottom: 0.6rem;
               width: 1.2rem;
               height: 0.7rem;
@@ -107,7 +107,7 @@ export const ModalOrderUI = styled.div`
             content: "";
             position: absolute;
             top: 0;
-            left: 1.6rem;
+            left: 1rem;
             bottom: 0;
             width: 2rem;
             height: 2rem;

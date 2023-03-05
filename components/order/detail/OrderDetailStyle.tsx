@@ -36,15 +36,15 @@ export const OrderDetailUI = styled.section`
       display: block;
       padding: 2rem 0 0.5rem;
       font-weight: 700;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
       color: #1a1a1a;
       text-align: left;
       em {
-        font-size: 4rem;
+        font-size: 3rem;
       }
       strong {
         display: inline-block;
-        padding-left: 1rem;
+        padding-left: 0.5rem;
         color: #299438;
       }
     }
@@ -151,4 +151,20 @@ export const BtnOrderUI = styled.button`
   overflow: hidden;
   animation: ${IntroMotion} 2s forwards;
   z-index: 2;
+`;
+
+export const NoneOrderUI = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+  font-size: 1.4rem;
+  line-height: 1.3;
+  text-align: center;
+  strong {
+    font-weight: 400;
+    em {
+      color: #299438;
+    }
+  }
 `;

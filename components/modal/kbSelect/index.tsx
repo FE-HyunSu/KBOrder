@@ -7,6 +7,7 @@ import Loading from "../../common/loading/Loading";
 
 interface ModalProps {
   onClose: () => void;
+  returnFn: () => void;
 }
 interface menuListType {
   id: string;
@@ -62,7 +63,9 @@ const ModalKbSelect = (props: ModalProps) => {
             </>
           )}
         </ul>
-        <BtnComplete type="button">선택완료</BtnComplete>
+        <BtnComplete type="button" onClick={() => props.returnFn()}>
+          선택완료
+        </BtnComplete>
       </ModalOrderUI>
     </Modal>
   );

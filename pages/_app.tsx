@@ -6,6 +6,11 @@ import { GlobalStyle } from "../styles/global-style";
 import { theme } from "../styles/theme";
 import Header from "../components/layout/header/Header";
 import Footer from "../components/layout/footer/Footer";
+import dayjs from "dayjs";
+import isLeapYear from "dayjs/plugin/isLeapYear"; // 윤년 판단 플러그인.
+import "dayjs/locale/ko"; // 한국어 가져오기.
+dayjs.extend(isLeapYear); // 플러그인 등록.
+dayjs.locale("ko"); // 언어 등록.
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (

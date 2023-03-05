@@ -46,7 +46,7 @@ export const ModalOrderUI = styled.div`
   padding: 3rem;
   h1 {
     padding-bottom: 1.5rem;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 1.6rem;
     color: #1a1a1a;
     border-bottom: 0.1rem solid #eee;
@@ -60,7 +60,9 @@ export const ModalOrderUI = styled.div`
         display: flex;
         align-items: center;
         position: relative;
-        padding: 2rem 0;
+        padding: 2rem 1.6rem;
+        cursor: pointer;
+        box-sizing: border-box;
         input {
           -webkit-appearance: none;
           -moz-appearance: none;
@@ -75,7 +77,7 @@ export const ModalOrderUI = styled.div`
               content: "";
               position: absolute;
               top: 0;
-              left: 0.6rem;
+              left: 2.2rem;
               bottom: 0.6rem;
               width: 1.2rem;
               height: 0.7rem;
@@ -89,6 +91,9 @@ export const ModalOrderUI = styled.div`
             & + em {
               font-weight: 700;
               color: #299438;
+              &:before {
+                background-color: #f2fcf1;
+              }
             }
           }
         }
@@ -102,7 +107,7 @@ export const ModalOrderUI = styled.div`
             content: "";
             position: absolute;
             top: 0;
-            left: 0;
+            left: 1.6rem;
             bottom: 0;
             width: 2rem;
             height: 2rem;
@@ -113,8 +118,32 @@ export const ModalOrderUI = styled.div`
         }
         em {
           font-size: 1.4rem;
+          &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            transition: 0.3s;
+            z-index: -1;
+          }
         }
       }
     }
   }
+`;
+
+export const BtnComplete = styled.button`
+  display: block;
+  width: 100%;
+  margin-top: 2rem;
+  padding: 1.4rem 0;
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: #fff;
+  background-color: #299438;
+  cursor: pointer;
+  transition: 0.3s;
 `;

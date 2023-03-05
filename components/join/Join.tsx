@@ -19,8 +19,8 @@ const Join = () => {
   const passwordRef = useRef<HTMLInputElement>(null);
   const passwordChkRef = useRef<HTMLInputElement>(null);
   const joinInfoRef = useRef<HTMLElement>(null);
-  const [isValidation, setValidation] = useState<boolean>(false);
-  const [isLoading, setLoading] = useState<boolean>(false);
+  const [isValidation, setValidation] = useState<Boolean>(false);
+  const [isLoading, setLoading] = useState<Boolean>(false);
 
   const validation = () => {
     const emailRegExp =

@@ -3,6 +3,7 @@ import {
   collection,
   addDoc,
   getDocs,
+  updateDoc,
   deleteDoc,
   doc,
 } from "firebase/firestore";
@@ -28,6 +29,10 @@ const setData = async (collectionName: string, data: object) => {
   return await addDoc(collection(database, collectionName), data);
 };
 
+const updateData = async (collectionName: string, id: string, data: object) => {
+  await updateDoc(doc(database, collectionName, id), data);
+};
+
 const loginAuth = async (email: string, password: string) => {
   return await signInWithEmailAndPassword(firebaseClientAuth, email, password);
 };
@@ -36,4 +41,4 @@ const delData = async (collectionName: string, keyCode: string) => {
   return await deleteDoc(doc(database, collectionName, keyCode));
 };
 
-export { authJoin, getData, setData, loginAuth, delData };
+export { authJoin, getData, setData, updateData, loginAuth, delData };

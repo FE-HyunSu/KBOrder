@@ -19,8 +19,8 @@ const Login = () => {
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const loginInfoRef = useRef<HTMLElement>(null);
-  const [isValidation, setValidation] = useState<boolean>(false);
-  const [isLoading, setLoading] = useState<boolean>(false);
+  const [isValidation, setValidation] = useState<Boolean>(false);
+  const [isLoading, setLoading] = useState<Boolean>(false);
   const [isUserInfo, setUserInfo] = useRecoilState(userAtom);
 
   const validation = () => {
@@ -69,7 +69,6 @@ const Login = () => {
     } finally {
       setLoading(false);
     }
-    console.log(key);
   };
 
   const loginAction = async () => {
@@ -150,11 +149,6 @@ const Login = () => {
       </LoginUI>
     </>
   );
-};
-
-export const getServerSideProps = async () => {
-  console.log("SSR");
-  console.log(window.localStorage.getItem("userUid"));
 };
 
 export default Login;

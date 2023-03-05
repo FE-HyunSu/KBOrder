@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "../../layout/modal/index";
-import { BtnClose, ModalOrderUI } from "./style";
+import * as commonFn from "../../common/CommonFn";
+import { BtnClose, ModalOrderUI, BtnComplete } from "./style";
 import { getData } from "../../../api/firestore";
 import Loading from "../../common/loading/Loading";
 
@@ -42,7 +43,7 @@ const ModalKbSelect = (props: ModalProps) => {
     <Modal onClose={props.onClose}>
       <BtnClose onClick={props.onClose}>닫기</BtnClose>
       <ModalOrderUI className={isModalView ? `active` : ``}>
-        <h1>📝 주문하기</h1>
+        <h1>📝 주문하기 (메뉴를 선택해 주세요)</h1>
         <ul>
           {isLoading && isLoading ? (
             <Loading />
@@ -54,14 +55,14 @@ const ModalKbSelect = (props: ModalProps) => {
                     <label>
                       <input type="checkbox" />
                       <span>{item.name}</span>
-                      <em>{item.price}</em>
+                      <em>{commonFn.unitWon(item.price)}</em>
                     </label>
                   </li>
                 ))}
             </>
           )}
         </ul>
-        <button type="button">선택완료</button>
+        <BtnComplete type="button">선택완료</BtnComplete>
       </ModalOrderUI>
     </Modal>
   );

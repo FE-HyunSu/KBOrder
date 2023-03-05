@@ -5,6 +5,9 @@ import apiOrder from "../../../was/order";
 import Loading from "../../common/loading/Loading";
 import * as commonFn from "../../common/CommonFn";
 import ModalKbSelect from "../../modal/kbSelect";
+import { updateData } from "../../../api/firestore";
+
+interface menuListType {}
 
 const OrderDetail = () => {
   const router = useRouter();
@@ -12,12 +15,22 @@ const OrderDetail = () => {
   const [isLoading, setLoading] = useState<Boolean>(true);
   const [isOrderData, setOrderData] = useState<any>(null);
   const [isModalOpen, setModalOpen] = useState<Boolean>(false);
-  const getData = () => {
+  const orderListData = () => {
     const orderData = apiOrder("orderList", "get", id);
     orderData.then((data) => {
       setOrderData(data);
       setLoading(false);
     });
+  };
+  const updateList = async (params: menuListType) => {
+    setLoading(true);
+    // try {
+    //   await updateData("menuList", params);
+    // } catch (e) {
+    //   console.log(e);
+    // } finally {
+    //   setLoading(false);
+    // }
   };
   const handleModalOpen = () => {
     setModalOpen(true);
@@ -27,7 +40,7 @@ const OrderDetail = () => {
   };
   useEffect(() => {
     if (!router.isReady) return;
-    getData();
+    orderListData();
   }, [router.isReady]);
   return (
     <>

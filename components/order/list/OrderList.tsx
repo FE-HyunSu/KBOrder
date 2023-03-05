@@ -49,10 +49,8 @@ const OrderList = () => {
                   );
                 })}
             </ul>
-            <br />
-            <br />
-            <br />
-            <Link href={"/render/csr"}>DEV(RenderType)</Link>
+            {/* <br />
+            <Link href={"/render/csr"}>DEV(RenderType)</Link> */}
             <BtnCreateOrder onClick={() => console.log("버튼클릭")}>
               주문하기
             </BtnCreateOrder>

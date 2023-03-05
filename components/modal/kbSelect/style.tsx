@@ -146,4 +146,8 @@ export const BtnComplete = styled.button`
   background-color: #299438;
   cursor: pointer;
   transition: 0.3s;
+  &:disabled {
+    color: #fff;
+    background-color: #ccc;
+  }
 `;

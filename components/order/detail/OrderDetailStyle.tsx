@@ -110,14 +110,14 @@ export const OrderDetailUI = styled.section`
             flex: 1 auto;
             padding: 2rem 0;
             font-size: 1.6rem;
+          }
+          dd {
             em {
               display: inline-block;
               padding: 0.6rem;
               font-size: 1.4rem;
-              color: #299438;
+              color: #111;
             }
-          }
-          dd {
             strong {
               display: inline-block;
               margin: 0.2rem;

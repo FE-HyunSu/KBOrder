@@ -5,7 +5,7 @@ import apiOrder from "../../../was/order";
 import Loading from "../../common/loading/Loading";
 import * as commonFn from "../../common/CommonFn";
 import ModalKbSelect from "../../modal/kbSelect";
-import { updateData } from "../../../api/firestore";
+import { setData } from "../../../api/firestore";
 import dayjs from "dayjs";
 
 interface menuListType {}
@@ -62,16 +62,21 @@ const OrderDetail = () => {
       setLoading(false);
     });
   };
-  const updateList = () => {
-    console.log("test");
-    // setLoading(true);
-    // try {
-    //   await updateData("menuList", params);
-    // } catch (e) {
-    //   console.log(e);
-    // } finally {
-    //   setLoading(false);
-    // }
+  const updateList = async (
+    name: string,
+    email: string,
+    menuName: string,
+    seq: string
+  ) => {
+    await setData("orderList", {
+      menuName: menuName,
+      seq: seq,
+      price: 5000,
+      userEmail: email,
+      userName: name,
+    });
+    orderListData();
+    handleModalClose();
   };
   const handleModalOpen = () => {
     setModalOpen(true);
@@ -123,12 +128,10 @@ const OrderDetail = () => {
                   return (
                     <li key={idx}>
                       <dl>
-                        <dt>
-                          {item.menuName}
-                          <em>{commonFn.unitWon(item.price)}</em>
-                        </dt>
+                        <dt>{item.menuName}</dt>
                         <dd>
                           <strong>{item.userName}</strong>
+                          <em>{commonFn.unitWon(item.price)}</em>
                         </dd>
                       </dl>
                     </li>

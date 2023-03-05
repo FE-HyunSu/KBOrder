@@ -29,6 +29,10 @@ export const HeaderUI = styled.header`
       height: 2rem;
       margin-right: 0.5rem;
     }
+    span {
+      font-weight: 300;
+      color: #aaa;
+    }
   }
   p {
     display: flex;

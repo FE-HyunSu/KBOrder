@@ -123,8 +123,11 @@ const OrderDetail = () => {
         <OrderDetailUI>
           <div className="inner">
             <h1>
-              <em>🍙</em>
-              <strong>{dateTitle}</strong> 주문 현황
+              <span>🍙</span>
+              <strong>
+                <em>{dateTitle}</em> 주문
+              </strong>
+              <a href="tel:025675976">전화걸기</a>
             </h1>
             <div className="order-info">
               <p>

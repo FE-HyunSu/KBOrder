@@ -40,19 +40,36 @@ export const OrderDetailUI = styled.section`
     background-color: eee;
     box-sizing: border-box;
     h1 {
-      display: block;
+      display: flex;
+      align-items: center;
+      position: relative;
       padding: 2rem 0 0.5rem;
       font-weight: 700;
       font-size: 1.6rem;
       color: #1a1a1a;
       text-align: left;
-      em {
-        font-size: 3rem;
+      span {
+        display: inline-block;
+        padding-bottom: 0.5rem;
+        font-size: 2.4rem;
       }
       strong {
         display: inline-block;
+        flex: 1 auto;
         padding-left: 0.5rem;
-        color: #299438;
+        em {
+          color: #299438;
+        }
+      }
+      a {
+        display: inline-block;
+        padding: 1rem;
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 400;
+        text-decoration: none;
+        background-color: #299438;
+        border-radius: 4rem;
       }
     }
     .order-info {

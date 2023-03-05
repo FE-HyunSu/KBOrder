@@ -74,6 +74,7 @@ export const LoginUI = styled.div`
   input {
     width: 30rem;
     padding: 1.2rem;
+    font-size: 1.6rem;
     border-radius: 0.4rem;
     box-sizing: border-box;
     border: 1px solid #999;

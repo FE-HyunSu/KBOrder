@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { OrderListUI, BtnCreateOrder } from "./OrderListStyle";
-import apiOrder from "../../../was/order";
 import Loading from "../../common/loading/Loading";
 import { getData } from "../../../api/firestore";
 import dayjs from "dayjs";

@@ -14,6 +14,7 @@ import { getData, setData, delData } from "../../../api/firestore";
 import dayjs from "dayjs";
 import { userAtom } from "../../../store/store";
 import { useRecoilValue } from "recoil";
+import { dateText } from "../../common/CommonFn";
 
 interface menuListType {}
 
@@ -30,8 +31,7 @@ const OrderDetail = () => {
 
   // 페이지 정보 기본 셋팅.
   const pageInfoSet = (date: String | String[] | undefined) => {
-    setLoading(true);
-    const dateText = String(date).replace(/(\d{4})(\d{2})(\d{2})/g, "$1-$2-$3");
+    const dateText = commonFn.dateText(date);
     setDateTitle(dayjs(new Date(dateText)).format("YYYY년 MM월 DD일 (ddd)"));
     if (
       dayjs(new Date(dateText)).format("YYYY/MM/DD") <

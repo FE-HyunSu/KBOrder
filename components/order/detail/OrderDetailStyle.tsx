@@ -1,6 +1,13 @@
 import styled, { keyframes } from "styled-components";
 import { media } from "../../../styles/theme";
 
+const BounceMotion = keyframes`
+  0%{transform:scale(1,1) rotate(0deg);}
+  30%{transform:scale(.9,1.1);}
+  70%{transform:scale(1.1,.9);}
+  100%{transform:scale(1,1) rotate(360deg);}
+`;
+
 const IntroMotion = keyframes`
   0%{
     width:0;
@@ -108,8 +115,29 @@ export const OrderDetailUI = styled.section`
           align-items: center;
           dt {
             flex: 1 auto;
-            padding: 2rem 0;
+            position: relative;
+            padding: 2rem 0 2rem 1.5rem;
             font-size: 1.6rem;
+            span {
+              display: inline-block;
+              flex: 1 auto;
+              padding-left: 2rem;
+              font-size: 1.4rem;
+              transition: 0.3s;
+              &:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 1rem;
+                bottom: 0;
+                width: 2rem;
+                height: 2rem;
+                margin: auto;
+                background: url(../../images/img_logo.png) no-repeat 0 0 / 100%
+                  auto;
+                animation: ${BounceMotion} 1s infinite;
+              }
+            }
           }
           dd {
             em {
@@ -165,6 +193,49 @@ export const NoneOrderUI = styled.div`
     font-weight: 400;
     em {
       color: #299438;
+    }
+  }
+`;
+
+export const BtnDeleteUI = styled.button`
+  position: relative;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: #ee2929;
+  text-indent: -9999rem;
+  border-radius: 100%;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 1rem;
+    height: 0.1rem;
+    margin: auto;
+    background-color: #fff;
+    transition: 0.2s;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 1rem;
+    height: 0.1rem;
+    margin: auto;
+    background-color: #fff;
+    transition: 0.2s;
+  }
+  &:hover {
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
     }
   }
 `;

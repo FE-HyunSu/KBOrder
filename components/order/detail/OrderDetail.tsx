@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { OrderDetailUI, BtnOrderUI, NoneOrderUI } from "./OrderDetailStyle";
+import {
+  OrderDetailUI,
+  BtnOrderUI,
+  NoneOrderUI,
+  BtnDeleteUI,
+} from "./OrderDetailStyle";
 import apiOrder from "../../../was/order";
 import Loading from "../../common/loading/Loading";
 import * as commonFn from "../../common/CommonFn";
@@ -150,18 +155,22 @@ const OrderDetail = () => {
                   return (
                     <li key={idx}>
                       <dl>
-                        <dt>{item.menuName}</dt>
+                        <dt>
+                          <span></span>
+                          {item.menuName}
+                        </dt>
                         <dd>
                           <strong>{item.userName}</strong>
                           <em>{commonFn.unitWon(item.price)}</em>
                           {atomUserInfo.email !== "" &&
+                          isOpen &&
                           atomUserInfo.email === item.userEmail ? (
-                            <button
+                            <BtnDeleteUI
                               type="button"
                               onClick={() => orderDelete(item.id)}
                             >
                               주문취소
-                            </button>
+                            </BtnDeleteUI>
                           ) : null}
                         </dd>
                       </dl>

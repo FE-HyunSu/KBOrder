@@ -24,7 +24,7 @@ const apiOrder = async (code: string, method: string, param: any) => {
     let orderDetailData: any = [];
     await getData("orderList").then((data) => {
       orderDetailData = data.docs.map((item: any) => {
-        return { ...item.data() };
+        return { ...item.data(), id: item.id };
       });
     });
     return orderDetailData.filter((item: any) => item.seq === String(param));

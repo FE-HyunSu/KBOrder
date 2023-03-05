@@ -1,4 +1,11 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const BounceMotion = keyframes`
+  0%{transform:scale(1,1) rotate(0deg);}
+  30%{transform:scale(.9,1.1);}
+  70%{transform:scale(1.1,.9);}
+  100%{transform:scale(1,1) rotate(360deg);}
+`;
 
 export const OrderListUI = styled.section`
   display: block;
@@ -44,7 +51,8 @@ export const OrderListUI = styled.section`
         }
         a {
           display: block;
-          padding: 2rem 1rem;
+          position: relative;
+          padding: 2rem 1rem 2rem 1.6rem;
           font-size: 1.4rem;
           color: #111;
           text-decoration: none;
@@ -55,6 +63,26 @@ export const OrderListUI = styled.section`
             align-items: center;
             dt {
               flex: 1 auto;
+              span {
+                display: inline-block;
+                flex: 1 auto;
+                padding-left: 2rem;
+                font-size: 1.4rem;
+                transition: 0.3s;
+                &:before {
+                  content: "";
+                  position: absolute;
+                  top: 0;
+                  left: 1rem;
+                  bottom: 0;
+                  width: 2rem;
+                  height: 2rem;
+                  margin: auto;
+                  background: url(../../images/img_logo.png) no-repeat 0 0 /
+                    100% auto;
+                  animation: ${BounceMotion} 1s infinite;
+                }
+              }
             }
             dd {
             }

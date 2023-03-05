@@ -31,7 +31,7 @@ const Join = () => {
     const passwordChkVal = passwordChkRef.current?.value;
     let infoText = "";
 
-    if (nameVal && nameVal.length <= 2 && nameVal.length !== 0) {
+    if (nameVal && nameVal.length < 2 && nameVal.length !== 0) {
       infoText = "이름을 2자 이상 입력해 주세요.";
     } else if (
       emailVal &&

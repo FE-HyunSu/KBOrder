@@ -3,7 +3,9 @@ import Link from "next/link";
 import { OrderListUI, BtnCreateOrder } from "./OrderListStyle";
 import apiOrder from "../../../was/order";
 import Loading from "../../common/loading/Loading";
-import { useRouter } from "next/router";
+import { getData } from "../../../api/firestore";
+import dayjs from "dayjs";
+import { dateText } from "../../common/CommonFn";
 
 interface orderListType {
   date: string;
@@ -13,12 +15,16 @@ interface orderListType {
 }
 
 const OrderList = () => {
-  const router = useRouter();
   const [isOrderList, setOrderList] = useState([]);
   const [isLoading, setLoading] = useState<Boolean>(true);
   const getList = async () => {
-    const dataList = await apiOrder("dateList", "get", null);
-    setOrderList(dataList);
+    let dataList: any = [];
+    await getData("dateList").then((data) => {
+      dataList = data.docs.map((item: any) => {
+        return { ...item.data() };
+      });
+    });
+    setOrderList(dataList.sort((a: any, b: any) => b.seq - a.seq));
     setLoading(false);
   };
   useEffect(() => {
@@ -38,11 +44,32 @@ const OrderList = () => {
               {isOrderList &&
                 isOrderList.map((item: orderListType, idx: number) => {
                   return (
-                    <li key={idx} className={item.open ? `open` : `closed`}>
-                      <Link href={item.open ? `/list/` + item.seq : ``}>
+                    <li
+                      key={idx}
+                      className={
+                        dayjs(new Date(dateText(item.seq))).format(
+                          "YYYY/MM/DD"
+                        ) === dayjs(new Date()).format("YYYY/MM/DD")
+                          ? `open`
+                          : `closed`
+                      }
+                    >
+                      <Link href={!!item.seq ? `/list/` + item.seq : ``}>
                         <dl>
-                          <dt>{item.title}</dt>
-                          <dd>{item.open ? `모집중` : `마감`}</dd>
+                          <dt>
+                            <span></span>
+                            {dayjs(new Date(dateText(item.seq))).format(
+                              "M월D일(ddd)"
+                            )}{" "}
+                            김밥주문
+                          </dt>
+                          <dd>
+                            {dayjs(new Date(dateText(item.seq))).format(
+                              "YYYY/MM/DD"
+                            ) === dayjs(new Date()).format("YYYY/MM/DD")
+                              ? `모집중`
+                              : `마감`}
+                          </dd>
                         </dl>
                       </Link>
                     </li>
@@ -51,9 +78,9 @@ const OrderList = () => {
             </ul>
             {/* <br />
             <Link href={"/render/csr"}>DEV(RenderType)</Link> */}
-            <BtnCreateOrder onClick={() => console.log("버튼클릭")}>
+            {/* <BtnCreateOrder onClick={() => console.log("버튼클릭")}>
               주문하기
-            </BtnCreateOrder>
+            </BtnCreateOrder> */}
           </div>
         </OrderListUI>
       )}

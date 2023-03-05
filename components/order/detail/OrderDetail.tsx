@@ -5,8 +5,10 @@ import apiOrder from "../../../was/order";
 import Loading from "../../common/loading/Loading";
 import * as commonFn from "../../common/CommonFn";
 import ModalKbSelect from "../../modal/kbSelect";
-import { setData } from "../../../api/firestore";
+import { getData, setData, delData } from "../../../api/firestore";
 import dayjs from "dayjs";
+import { userAtom } from "../../../store/store";
+import { useRecoilValue } from "recoil";
 
 interface menuListType {}
 
@@ -18,6 +20,8 @@ const OrderDetail = () => {
   const [orderTotal, setOrderTotal] = useState<any>([]);
   const [isModalOpen, setModalOpen] = useState<Boolean>(false);
   const [dateTitle, setDateTitle] = useState<String>("");
+  const [isOpen, setOpen] = useState<Boolean>(false);
+  const atomUserInfo = useRecoilValue(userAtom);
 
   // 페이지 정보 기본 셋팅.
   const pageInfoSet = (date: String | String[] | undefined) => {
@@ -28,14 +32,16 @@ const OrderDetail = () => {
       dayjs(new Date(dateText)).format("YYYY/MM/DD") <
       dayjs(new Date()).format("YYYY/MM/DD")
     ) {
-      console.log("과거");
+      // console.log("과거");
+      setOpen(false);
     } else if (
       dayjs(new Date(dateText)).format("YYYY/MM/DD") ===
       dayjs(new Date()).format("YYYY/MM/DD")
     ) {
-      console.log("오늘");
+      // console.log("오늘");
+      setOpen(true);
     } else {
-      alert("잘못된 경로로 들어오셨습니다. 돌아가세요.");
+      alert("오픈전입니다. 돌아가세요.");
       router.push("/list");
     }
     orderListData();
@@ -62,16 +68,32 @@ const OrderDetail = () => {
       setLoading(false);
     });
   };
+  const orderDelete = async (id: string) => {
+    if (await confirm("주문을 취소 할까요?")) {
+      await delData("orderList", id);
+      await alert("주문이 취소 되었습니다.");
+      await orderListData();
+    } else {
+      alert("주문 취소를 취소 하셨습니다.");
+    }
+  };
   const updateList = async (
     name: string,
     email: string,
     menuName: string,
     seq: string
   ) => {
+    let menuPrice = 0;
+    await getData("menuList").then((data) => {
+      const menuData = data.docs.map((item: any) => {
+        return { ...item.data(), id: item.id };
+      });
+      menuPrice = menuData.filter((item) => item.name === menuName)[0].price;
+    });
     await setData("orderList", {
       menuName: menuName,
       seq: seq,
-      price: 5000,
+      price: menuPrice,
       userEmail: email,
       userName: name,
     });
@@ -132,6 +154,15 @@ const OrderDetail = () => {
                         <dd>
                           <strong>{item.userName}</strong>
                           <em>{commonFn.unitWon(item.price)}</em>
+                          {atomUserInfo.email !== "" &&
+                          atomUserInfo.email === item.userEmail ? (
+                            <button
+                              type="button"
+                              onClick={() => orderDelete(item.id)}
+                            >
+                              주문취소
+                            </button>
+                          ) : null}
                         </dd>
                       </dl>
                     </li>
@@ -139,9 +170,11 @@ const OrderDetail = () => {
                 })
               )}
             </ul>
-            <BtnOrderUI type="button" onClick={() => handleModalOpen()}>
-              주문하기
-            </BtnOrderUI>
+            {isOpen && isOpen ? (
+              <BtnOrderUI type="button" onClick={() => handleModalOpen()}>
+                주문하기
+              </BtnOrderUI>
+            ) : null}
           </div>
         </OrderDetailUI>
       )}

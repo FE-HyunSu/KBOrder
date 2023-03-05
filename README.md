@@ -2,15 +2,14 @@
 
 ### 🧑‍💻 프로젝트 개요.
 
+<img src=".docs/img_readme.png" width="600" alt="" />
+
 - 점심시간 김밥주문 Order 취합 서비스 페이지.
 
 ### 👩‍🚀 구현 내용.
 
-- (진행중)
 - Firebase 회원가입, 로그인.
 - Firebase firestore 를 통한 Database 연동.
-- 페이지별 SSR, CSR, SSG, ISG 기능 구현.
-- vercel 배포.
 
 ### 🏂 URL.
 

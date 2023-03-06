@@ -43,7 +43,7 @@ export const BtnClose = styled.button`
 `;
 
 export const ModalOrderUI = styled.div`
-  padding: 3rem;
+  padding: 3rem 3rem 2rem;
   h1 {
     padding-bottom: 1.5rem;
     font-weight: 700;
@@ -53,7 +53,9 @@ export const ModalOrderUI = styled.div`
   }
   ul {
     position: relative;
-    min-height: 20rem;
+    height: calc(100vh - 27rem);
+    max-height: 41rem;
+    overflow: auto;
     li {
       border-bottom: 0.1rem solid #eee;
       label {
@@ -144,6 +146,7 @@ export const BtnComplete = styled.button`
   font-size: 1.6rem;
   color: #fff;
   background-color: #299438;
+  border-radius: 0.4rem;
   cursor: pointer;
   transition: 0.3s;
   &:disabled {

@@ -255,4 +255,20 @@ export const BtnDeleteUI = styled.button`
       transform: rotate(-45deg);
     }
   }
+  ${media.mobile} {
+    &:before {
+      transform: rotate(45deg);
+    }
+    &:after {
+      transform: rotate(-45deg);
+    }
+    &:hover {
+      &:before {
+        transform: rotate(45deg);
+      }
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
 `;

@@ -43,7 +43,7 @@ export const BtnClose = styled.button`
 `;
 
 export const ModalOrderUI = styled.div`
-  padding: 3rem 3rem 7rem;
+  padding: 3rem 3rem 8rem;
   h1 {
     padding-bottom: 1.5rem;
     font-weight: 700;
@@ -143,7 +143,7 @@ export const ModalOrderUI = styled.div`
 export const BtnComplete = styled.button`
   display: block;
   position: absolute;
-  bottom: 0;
+  bottom: -0.2rem;
   left: 0;
   width: 100%;
   margin-top: 2rem;

@@ -54,6 +54,9 @@ export const ModalOrderUI = styled.div`
   ul {
     position: relative;
     height: calc(100vh - 27rem);
+    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+      height: calc(100vh - 27rem);
+    }
     max-height: 41rem;
     overflow: auto;
     li {

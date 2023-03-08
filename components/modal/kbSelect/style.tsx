@@ -54,11 +54,12 @@ export const ModalOrderUI = styled.div`
   ul {
     position: relative;
     height: calc(100vh - 30rem);
-    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
-      height: calc(100vh - 30rem);
-    }
     max-height: 40rem;
     overflow: auto;
+    @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+      height: calc(100vh - 30rem);
+      max-height: 40rem;
+    }
     li {
       border-bottom: 0.1rem solid #eee;
       label {

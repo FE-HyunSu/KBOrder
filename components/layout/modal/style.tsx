@@ -38,6 +38,6 @@ export const ModalInner = styled.div`
   background-color: #fff;
   border-radius: 1rem;
   transform: scale(0.1, 0.1);
-  overflow: auto;
+  overflow: hidden;
   animation: ${MotionIntro} 0.5s forwards;
 `;

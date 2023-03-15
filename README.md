@@ -4,7 +4,7 @@
 
 - KB-order 디벨롭을 위한 개인 토이 프로젝트를 Organizations으로 이전.
 - 2차 업데이트는 동료와 함께 진행 예정.
-- Organizations : [https://github.com/yanadoo-kakaokids/reboot-yanadoo3](https://github.com/yanadoo-kakaokids/reboot-yanadoo3)
+- Organizations : [https://github.com/yanadoo-kakaokids/kb-order](https://github.com/yanadoo-kakaokids/kb-order)
 
 ---
 

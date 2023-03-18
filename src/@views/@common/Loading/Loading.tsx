@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import Image from "next/image";
-import ImgLogo from "public/images/img_logo.png";
+import ImgLogo from "@images/img_logo.png";
 
 const Loading = () => {
   return (

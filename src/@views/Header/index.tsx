@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import ImgLogo from "public/images/img_logo.png";
+import ImgLogo from "@images/img_logo.png";
 import { userAtom } from "../../store/store";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useRouter } from "next/router";

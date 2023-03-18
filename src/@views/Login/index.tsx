@@ -6,7 +6,7 @@ import styled, { keyframes } from "styled-components";
 import { getData, loginAuth } from "../../api/firestore";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../store/store";
-import ImgLogo from "public/images/img_logo.png";
+import ImgLogo from "@images/img_logo.png";
 
 interface ErrorType {
   name: string;

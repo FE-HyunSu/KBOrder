@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { authJoin, setData } from "../../api/firestore";
 import styled, { keyframes } from "styled-components";
 import Loading from "../@common/Loading/Loading";
-import ImgLogo from "public/images/img_logo.png";
+import ImgLogo from "@images/img_logo.png";
 
 interface ErrorType {
   name: string;

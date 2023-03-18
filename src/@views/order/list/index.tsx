@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Loading from "../../@common/Loading/Loading";
 import { getData } from "../../../api/firestore";
 import dayjs from "dayjs";
 import { returnDate } from "../../../utils/returnData";
+import { BounceTurnMotion } from "../../../styles/keyframe";
 
 interface dateListType {
   seq: string;
@@ -92,13 +93,6 @@ const OrderList = () => {
 
 export default OrderList;
 
-const BounceMotion = keyframes`
-  0%{transform:scale(1,1) rotate(0deg);}
-  30%{transform:scale(.9,1.1);}
-  70%{transform:scale(1.1,.9);}
-  100%{transform:scale(1,1) rotate(360deg);}
-`;
-
 export const OrderListUI = styled.section`
   display: block;
   width: 100%;
@@ -172,7 +166,7 @@ export const OrderListUI = styled.section`
                   margin: auto;
                   background: url(/images/img_logo.png) no-repeat 0 0 / 100%
                     auto;
-                  animation: ${BounceMotion} 1s infinite;
+                  animation: ${BounceTurnMotion} 1s infinite;
                 }
               }
             }

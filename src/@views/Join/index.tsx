@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { authJoin, setData } from "../../api/firestore";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Loading from "../@common/Loading/Loading";
 import ImgLogo from "@images/img_logo.png";
 
@@ -175,26 +175,6 @@ const Join = () => {
   );
 };
 export default Join;
-
-const LogoMotion = keyframes`
-  0%{transform:scale(.5,.5);}
-  30%{transform:scale(.8,1.2);}
-  60%{transform:scale(1.2,.8);}
-  100%{transform:scale(1,1);}
-`;
-
-const BounceMotion = keyframes`
-  0%{transform:scale(1,1);}
-  85%{transform:scale(1,1);}
-  90%{transform:scale(.9,1.1);}
-  95%{transform:scale(1.1,.9);}
-  100%{transform:scale(1,1);}
-`;
-
-const TextMotion = keyframes`
-  0%{transform:scale(1,.1); opacity:0;}
-  100%{transform:scale(1,1); opacity:1;}
-`;
 
 export const JoinUI = styled.div`
   display: block;

@@ -1,5 +1,11 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import {
+  LogoMotion,
+  BounceMotion,
+  TextMotion,
+  TextAfter,
+} from "../../../styles/keyframe";
 import Image from "next/image";
 import ImgLogo from "@images/img_logo.png";
 
@@ -21,32 +27,6 @@ const Loading = () => {
   );
 };
 export default Loading;
-
-const LogoMotion = keyframes`
-  0%{transform:scale(.5,.5);}
-  30%{transform:scale(.8,1.2);}
-  60%{transform:scale(1.2,.8);}
-  100%{transform:scale(1,1);}
-`;
-
-const BounceMotion = keyframes`
-  0%{transform:scale(1,1);}
-  85%{transform:scale(1,1);}
-  90%{transform:scale(.9,1.1);}
-  95%{transform:scale(1.1,.9);}
-  100%{transform:scale(1,1);}
-`;
-
-const TextMotion = keyframes`
-  0%{transform:scale(1,.1); opacity:0;}
-  100%{transform:scale(1,1); opacity:1;}
-`;
-
-const TextAfter = keyframes`
-  0%{content:'.'}
-  50%{content:'..'}
-  100%{content:'...'}
-`;
 
 export const LoadingUI = styled.div`
   display: flex;

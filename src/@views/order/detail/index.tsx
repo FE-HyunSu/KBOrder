@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { IntroMotion, BounceTurnMotion } from "../../../styles/keyframe";
 import { media } from "../../../styles/theme";
 import apiOrder from "../../../was/order";
 import Loading from "../../@common/Loading/Loading";
@@ -195,31 +196,6 @@ const OrderDetail = () => {
 
 export default OrderDetail;
 
-const BounceMotion = keyframes`
-  0%{transform:scale(1,1) rotate(0deg);}
-  30%{transform:scale(.9,1.1);}
-  70%{transform:scale(1.1,.9);}
-  100%{transform:scale(1,1) rotate(360deg);}
-`;
-
-const IntroMotion = keyframes`
-  0%{
-    width:0;
-    height: .5rem;
-    text-indent:-30rem;
-  }
-  20%{
-    width:1rem;
-    height: 4.5rem;
-    text-indent:-30rem;
-  }
-  100%{
-    width:80%;
-    height: 4.5rem;
-    text-indent:0;
-  }
-`;
-
 export const OrderDetailUI = styled.section`
   display: block;
   width: 100%;
@@ -345,7 +321,7 @@ export const OrderDetailUI = styled.section`
                 height: 2rem;
                 margin: auto;
                 background: url(/images/img_logo.png) no-repeat 0 0 / 100% auto;
-                animation: ${BounceMotion} 1s infinite;
+                animation: ${BounceTurnMotion} 1s infinite;
               }
             }
           }

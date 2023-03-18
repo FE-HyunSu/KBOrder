@@ -2,7 +2,8 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Loading from "../@common/Loading/Loading";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { LogoMotion, BounceMotion, TextMotion } from "../../styles/keyframe";
 import { getData, loginAuth } from "../../api/firestore";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../store/store";
@@ -152,26 +153,6 @@ const Login = () => {
 };
 
 export default Login;
-
-const LogoMotion = keyframes`
-  0%{transform:scale(.5,.5);}
-  30%{transform:scale(.8,1.2);}
-  60%{transform:scale(1.2,.8);}
-  100%{transform:scale(1,1);}
-`;
-
-const BounceMotion = keyframes`
-  0%{transform:scale(1,1);}
-  85%{transform:scale(1,1);}
-  90%{transform:scale(.9,1.1);}
-  95%{transform:scale(1.1,.9);}
-  100%{transform:scale(1,1);}
-`;
-
-const TextMotion = keyframes`
-  0%{transform:scale(1,.1); opacity:0;}
-  100%{transform:scale(1,1); opacity:1;}
-`;
 
 export const LoginUI = styled.div`
   display: block;

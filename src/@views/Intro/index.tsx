@@ -3,7 +3,7 @@ import Login from "../Login";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { userAtom } from "../../store/store";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 const Intro = () => {
   const router = useRouter();
@@ -17,26 +17,6 @@ const Intro = () => {
 };
 
 export default Intro;
-
-const LogoMotion = keyframes`
-  0%{transform:scale(.5,.5);}
-  30%{transform:scale(.8,1.2);}
-  60%{transform:scale(1.2,.8);}
-  100%{transform:scale(1,1);}
-`;
-
-const BounceMotion = keyframes`
-  0%{transform:scale(1,1);}
-  85%{transform:scale(1,1);}
-  90%{transform:scale(.9,1.1);}
-  95%{transform:scale(1.1,.9);}
-  100%{transform:scale(1,1);}
-`;
-
-const TextMotion = keyframes`
-  0%{transform:scale(1,.1); opacity:0;}
-  100%{transform:scale(1,1); opacity:1;}
-`;
 
 export const IntroUI = styled.div`
   display: block;

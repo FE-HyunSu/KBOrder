@@ -1,10 +1,5 @@
 import styled, { keyframes } from "styled-components";
-
-const MotionIntro = keyframes`
-  0%{transform:scale(.1,.1)}
-  50%{transform:scale(1.05,1.05)}
-  100%{transform:scale(1,1)}
-`;
+import { MotionIntro } from "../styles/keyframe";
 
 export const ModalTemplate = styled.div`
   display: flex;

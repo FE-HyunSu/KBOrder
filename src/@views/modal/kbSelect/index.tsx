@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import Modal from "../../../modal/index";
 import { useRouter } from "next/router";
 import * as commonFn from "../../../utils/returnData";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
+import { BounceTurnMotion } from "../../../styles/keyframe";
 import { getData } from "../../../api/firestore";
 import Loading from "../../@common/Loading/Loading";
 import { userAtom } from "../../../store/store";
@@ -102,13 +103,6 @@ const ModalKbSelect = (props: ModalProps) => {
 };
 
 export default ModalKbSelect;
-
-const BounceMotion = keyframes`
-  0%{transform:scale(1,1) rotate(0deg);}
-  30%{transform:scale(.9,1.1);}
-  70%{transform:scale(1.1,.9);}
-  100%{transform:scale(1,1) rotate(360deg);}
-`;
 
 export const BtnClose = styled.button`
   position: absolute;
@@ -222,7 +216,7 @@ export const ModalOrderUI = styled.div`
             height: 2rem;
             margin: auto;
             background: url(/images/img_logo.png) no-repeat 0 0 / 100% auto;
-            animation: ${BounceMotion} 1s infinite;
+            animation: ${BounceTurnMotion} 1s infinite;
           }
         }
         em {

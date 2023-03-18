@@ -19,14 +19,18 @@ const OrderList = () => {
     isOrderList.forEach((item) => {
       if (item.seq === today) dataCheck = true;
     });
-    if (dataCheck) {
-      alert("오늘의 주문이 이미 생성 되어있습니다.");
-      setLoading(false);
+    if (confirm("오늘의 주문을 만드시겠습니까?")) {
+      alert("취소 되었습니다.");
     } else {
-      await setData("dateList", { seq: today }).then((data) => {
-        alert("오늘의 주문을 만들었습니다.");
-        getList();
-      });
+      if (dataCheck) {
+        alert("오늘의 주문이 이미 생성 되어있습니다.");
+        setLoading(false);
+      } else {
+        await setData("dateList", { seq: today }).then((data) => {
+          alert("오늘의 주문을 만들었습니다.");
+          getList();
+        });
+      }
     }
   };
   const getList = async () => {

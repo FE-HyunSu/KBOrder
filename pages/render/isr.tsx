@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import RenderNav from "../../components/renderNav/RenderNav";
-import { getData } from "../../api/firestore";
+import RenderNav from "../../src/@views/renderNav";
+import { getData } from "../../src/api/firestore";
 
 const ISR = ({ userList }: any) => {
   const [isCount, setCount] = useState<number>(0);

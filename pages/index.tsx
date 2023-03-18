@@ -1,5 +1,5 @@
 import React from "react";
-import Intro from "../components/intro/Intro";
+import Intro from "../src/@views/Intro";
 
 const Index = () => {
   return (

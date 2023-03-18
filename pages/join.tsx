@@ -1,5 +1,5 @@
 import React from "react";
-import JoinItem from "../components/join/Join";
+import JoinItem from "../src/@views/Join";
 
 const Join = () => {
   return (

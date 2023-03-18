@@ -20,8 +20,6 @@ const OrderList = () => {
       if (item.seq === today) dataCheck = true;
     });
     if (confirm("오늘의 주문을 만드시겠습니까?")) {
-      alert("취소 되었습니다.");
-    } else {
       if (dataCheck) {
         alert("오늘의 주문이 이미 생성 되어있습니다.");
         setLoading(false);
@@ -31,6 +29,9 @@ const OrderList = () => {
           getList();
         });
       }
+    } else {
+      alert("취소 되었습니다.");
+      setLoading(false);
     }
   };
   const getList = async () => {

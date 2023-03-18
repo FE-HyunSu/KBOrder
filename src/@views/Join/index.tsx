@@ -5,6 +5,13 @@ import { authJoin, setData } from "../../api/firestore";
 import styled from "styled-components";
 import Loading from "../@common/Loading/Loading";
 import ImgLogo from "@images/img_logo.png";
+import { LogoMotion, BounceMotion, TextMotion } from "../../styles/keyframe";
+import {
+  validationName,
+  validationEmail,
+  validationPassword,
+  validationMatch,
+} from "../../utils/validation";
 
 interface ErrorType {
   name: string;
@@ -31,25 +38,13 @@ const Join = () => {
     const passwordChkVal = passwordChkRef.current?.value;
     let infoText = "";
 
-    if (nameVal && nameVal.length < 2 && nameVal.length !== 0) {
+    if (validationName(nameVal)) {
       infoText = "이름을 2자 이상 입력해 주세요.";
-    } else if (
-      emailVal &&
-      !emailVal.match(emailRegExp) &&
-      emailVal.length !== 0
-    ) {
+    } else if (validationEmail(emailVal)) {
       infoText = "이메일 형식을 맞춰 주세요.";
-    } else if (
-      passwordVal &&
-      passwordVal.length < 6 &&
-      passwordVal.length !== 0
-    ) {
+    } else if (validationPassword(passwordVal)) {
       infoText = "패스워드를 6자 이상 입력해 주세요.";
-    } else if (
-      passwordChkVal &&
-      passwordVal !== passwordChkVal &&
-      passwordChkVal.length !== 0
-    ) {
+    } else if (validationMatch(passwordVal, passwordChkVal)) {
       infoText = "패스워드가 서로 다릅니다.";
     }
 

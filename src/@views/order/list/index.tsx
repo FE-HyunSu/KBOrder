@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import styled from "styled-components";
 import Loading from "../../@common/Loading/Loading";
-import { getData } from "../../../api/firestore";
+import { setData, getData } from "../../../api/firestore";
+import OrderItem from "./OrderItem";
 import dayjs from "dayjs";
-import { returnDate } from "../../../utils/returnData";
-import { BounceTurnMotion } from "../../../styles/keyframe";
 
 interface dateListType {
   seq: string;
@@ -14,12 +12,27 @@ interface dateListType {
 const OrderList = () => {
   const [isOrderList, setOrderList] = useState<dateListType[]>([]);
   const [isLoading, setLoading] = useState<Boolean>(true);
+  const setItem = async () => {
+    setLoading(true);
+    const today: string = dayjs(new Date()).format("YYYYMMDD");
+    let dataCheck: boolean = false;
+    isOrderList.forEach((item) => {
+      if (item.seq === today) dataCheck = true;
+    });
+    if (dataCheck) {
+      alert("오늘의 주문이 이미 생성 되어있습니다.");
+      setLoading(false);
+    } else {
+      await setData("dateList", { seq: today }).then((data) => {
+        alert("오늘의 주문을 만들었습니다.");
+        getList();
+      });
+    }
+  };
   const getList = async () => {
     let dataList: dateListType[] = [];
     await getData("dateList").then((data) => {
-      console.log("data.docs", data.docs);
       dataList = data.docs.map((item: any) => {
-        console.log("data.docs", item);
         return { ...item.data() };
       });
     });
@@ -41,49 +54,17 @@ const OrderList = () => {
         <OrderListUI>
           <div className="inner">
             <h1>
-              <em>🦉</em> 주문 목록
+              <em>📝</em> 주문 목록
             </h1>
             <ul>
               {isOrderList &&
-                isOrderList.map((item: dateListType, idx: number) => {
-                  return (
-                    <li
-                      key={idx}
-                      className={
-                        dayjs(new Date(returnDate(item.seq))).format(
-                          "YYYY/MM/DD"
-                        ) === dayjs(new Date()).format("YYYY/MM/DD")
-                          ? `open`
-                          : `closed`
-                      }
-                    >
-                      <Link href={!!item.seq ? `/list/` + item.seq : ``}>
-                        <dl>
-                          <dt>
-                            <span></span>
-                            {dayjs(new Date(returnDate(item.seq))).format(
-                              "M월D일(ddd)"
-                            )}{" "}
-                            김밥주문
-                          </dt>
-                          <dd>
-                            {dayjs(new Date(returnDate(item.seq))).format(
-                              "YYYY/MM/DD"
-                            ) === dayjs(new Date()).format("YYYY/MM/DD")
-                              ? `모집중`
-                              : `마감`}
-                          </dd>
-                        </dl>
-                      </Link>
-                    </li>
-                  );
-                })}
+                isOrderList.map((item: dateListType, idx: number) => (
+                  <OrderItem key={idx} seq={item.seq} />
+                ))}
             </ul>
-            {/* <br />
-            <Link href={"/render/csr"}>DEV(RenderType)</Link> */}
-            {/* <BtnCreateOrder onClick={() => console.log("버튼클릭")}>
-              주문하기
-            </BtnCreateOrder> */}
+            <BtnCreateOrder onClick={() => setItem()}>
+              주문만들기
+            </BtnCreateOrder>
           </div>
         </OrderListUI>
       )}
@@ -112,68 +93,9 @@ export const OrderListUI = styled.section`
       color: #1a1a1a;
       text-align: left;
       em {
-        font-size: 4rem;
-      }
-    }
-    ul {
-      li {
-        border-bottom: 0.1rem solid #eee;
-        &:first-child {
-          border-top: 0.1rem solid #eee;
-        }
-        &.open {
-          dd {
-            color: #ff7111;
-          }
-        }
-        &.closed {
-          a {
-            cursor: default;
-          }
-          dt,
-          dd {
-            color: #ccc;
-          }
-        }
-        a {
-          display: block;
-          position: relative;
-          padding: 2rem 1rem 2rem 1.6rem;
-          font-size: 1.4rem;
-          color: #111;
-          text-decoration: none;
-          box-sizing: border-box;
-          dl {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            dt {
-              flex: 1 auto;
-              span {
-                display: inline-block;
-                flex: 1 auto;
-                padding-left: 2rem;
-                font-size: 1.4rem;
-                transition: 0.3s;
-                &:before {
-                  content: "";
-                  position: absolute;
-                  top: 0;
-                  left: 1rem;
-                  bottom: 0;
-                  width: 2rem;
-                  height: 2rem;
-                  margin: auto;
-                  background: url(/images/img_logo.png) no-repeat 0 0 / 100%
-                    auto;
-                  animation: ${BounceTurnMotion} 1s infinite;
-                }
-              }
-            }
-            dd {
-            }
-          }
-        }
+        display: inline-block;
+        padding-right: 0.5rem;
+        font-size: 3rem;
       }
     }
   }

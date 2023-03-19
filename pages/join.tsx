@@ -1,10 +1,10 @@
 import React from "react";
-import JoinItem from "../src/@views/Join";
+import JoinBox from "../src/@views/JoinBox";
 
 const Join = () => {
   return (
     <>
-      <JoinItem />
+      <JoinBox />
     </>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Loading from "../../@common/Loading/Loading";
-import { setData, getData } from "../../../api/firestore";
-import OrderItem from "./OrderItem";
+import Loading from "@views/@common/Loading/Loading";
+import { setData, getData } from "@api/firestore";
+import OrderItem from "@views/Order/List/OrderItem";
 import dayjs from "dayjs";
 
 interface dateListType {

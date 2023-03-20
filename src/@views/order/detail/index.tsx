@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import { IntroMotion, BounceTurnMotion } from "../../../styles/keyframe";
-import { media } from "../../../styles/theme";
+import { IntroMotion, BounceTurnMotion } from "@styles/keyframe";
+import { media } from "@styles/theme";
 import apiOrder from "../../../was/order";
-import Loading from "../../@common/Loading/Loading";
-import * as commonFn from "../../../utils/returnData";
+import Loading from "@views/@common/Loading/Loading";
 import ModalKbSelect from "../../modal/kbSelect";
 import { getData, setData, delData } from "../../../api/firestore";
 import dayjs from "dayjs";
 import { userAtom } from "../../../store/store";
 import { useRecoilValue } from "recoil";
-import { returnDate } from "../../../utils/returnData";
+import { returnDate } from "@utils/returnData";
 
 interface menuListType {}
 
@@ -28,7 +27,7 @@ const OrderDetail = () => {
 
   // 페이지 정보 기본 셋팅.
   const pageInfoSet = (date: string) => {
-    const dateText = commonFn.returnDate(date);
+    const dateText = returnDate(date);
     setDateTitle(dayjs(new Date(dateText)).format("YYYY년 MM월 DD일 (ddd)"));
     if (
       dayjs(new Date(dateText)).format("YYYY/MM/DD") <

@@ -1,5 +1,5 @@
 import React from "react";
-import OrderDetail from "../../src/@views/order/detail";
+import OrderDetail from "../../src/@views/Order/Detail";
 
 const ListDetail = () => {
   return (

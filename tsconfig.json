@@ -17,7 +17,11 @@
     "incremental": true,
     "baseUrl": "./",
     "paths": {
-      "@images/*": ["public/images/*"]
+      "@images/*": ["public/images/*"],
+      "@views/*": ["src/@views/*"],
+      "@utils/*": ["src/utils/*"],
+      "@api/*": ["src/api/*"],
+      "@styles/*": ["src/styles/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

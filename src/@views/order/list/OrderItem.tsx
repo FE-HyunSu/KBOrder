@@ -2,8 +2,8 @@ import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
 import dayjs from "dayjs";
-import { returnDate } from "../../../utils/returnData";
-import { BounceTurnMotion } from "../../../styles/keyframe";
+import { returnDate } from "@utils/returnData";
+import { BounceTurnMotion } from "@styles/keyframe";
 
 interface dateListType {
   seq: string;

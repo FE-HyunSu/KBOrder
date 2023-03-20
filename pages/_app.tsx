@@ -14,19 +14,6 @@ import "dayjs/locale/ko"; // 한국어 가져오기.
 dayjs.extend(isLeapYear); // 플러그인 등록.
 dayjs.locale("ko"); // 언어 등록.
 
-// const [client] = useState(
-//   () =>
-//     new QueryClient({
-//       defaultOptions: {
-//         queries: {
-//           // 데이터가 stale 상태일 경우 윈도우 포커싱 될 때 마다 refetch를 실행하는 옵션. (boolean | "always")
-//           refetchOnWindowFocus: false,
-//           staleTime: 60 * 1000, // 1분.
-//         },
-//       },
-//     })
-// );
-
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>

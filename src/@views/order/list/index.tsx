@@ -25,7 +25,6 @@ const OrderList = () => {
         setLoading(false);
       } else {
         await setData("dateList", { seq: today }).then((data) => {
-          alert("오늘의 주문을 만들었습니다.");
           getList();
         });
       }

@@ -1,10 +1,10 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Loading from "../@common/Loading/Loading";
+import Loading from "@views/@common/Loading/Loading";
 import styled from "styled-components";
-import { LogoMotion, BounceMotion, TextMotion } from "../../styles/keyframe";
-import { getData, loginAuth } from "../../api/firestore";
+import { LogoMotion, BounceMotion, TextMotion } from "@styles/keyframe";
+import { getData, loginAuth } from "@api/firestore";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../store/store";
 import ImgLogo from "@images/img_logo.png";

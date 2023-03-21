@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import RenderNav from "../../src/@views/renderNav";
-import { getData } from "../../src/api/firestore";
+import RenderNav from "@views/renderNav";
+import { getData } from "@api/firestore";
 
 const SSG = ({ userList }: any) => {
   return (

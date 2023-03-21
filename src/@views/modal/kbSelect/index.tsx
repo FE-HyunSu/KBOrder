@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Modal from "../../../modal/index";
+import Modal from "@views/@common/Modal";
 import { useRouter } from "next/router";
-import * as commonFn from "../../../utils/returnData";
+import * as commonFn from "@utils/returnData";
 import styled from "styled-components";
-import { BounceTurnMotion } from "../../../styles/keyframe";
-import { getData } from "../../../api/firestore";
-import Loading from "../../@common/Loading/Loading";
+import { BounceTurnMotion } from "@styles/keyframe";
+import { getData } from "@api/firestore";
+import Loading from "@views/@common/Loading/Loading";
 import { userAtom } from "../../../store/store";
 import { useRecoilValue } from "recoil";
 

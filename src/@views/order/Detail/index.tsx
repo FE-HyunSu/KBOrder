@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { IntroMotion, BounceTurnMotion } from "@styles/keyframe";
 import { media } from "@styles/theme";
 import apiOrder from "../../../was/order";
-import Loading from "@views/@common/Loading/Loading";
+import Loading from "@components/@common/Loading/Loading";
 import ModalKbSelect from "../../modal/kbSelect";
 import { getData, setData, delData } from "../../../api/firestore";
 import dayjs from "dayjs";

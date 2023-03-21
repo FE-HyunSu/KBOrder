@@ -4,7 +4,7 @@ import { LogoMotion, BounceMotion, TextMotion } from "src/styles/keyframe";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { userAtom } from "src/store/store";
-import Login from "src/@views/Login";
+import Login from "@components/Login";
 
 const Index = () => {
   const router = useRouter();

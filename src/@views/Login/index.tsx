@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import Loading from "@views/@common/Loading/Loading";
+import Loading from "@components/@common/Loading/Loading";
 import styled from "styled-components";
 import { LogoMotion, BounceMotion, TextMotion } from "@styles/keyframe";
 import { getData, loginAuth } from "@api/firestore";

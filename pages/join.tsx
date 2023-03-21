@@ -1,5 +1,5 @@
 import React from "react";
-import JoinBox from "../src/@views/JoinBox";
+import JoinBox from "@components/JoinBox";
 
 const Join = () => {
   return (

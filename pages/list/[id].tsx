@@ -1,11 +1,10 @@
 import React from "react";
-// import OrderDetail from "@views/Order/Detail";
+import OrderDetail from "@components/Order/Detail";
 
 const ListDetail = () => {
   return (
     <>
-      build test.
-      {/* <OrderDetail /> */}
+      <OrderDetail />
     </>
   );
 };

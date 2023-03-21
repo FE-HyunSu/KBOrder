@@ -1,5 +1,5 @@
 import React from "react";
-import OrderList from "../../src/@views/Order/List";
+import OrderList from "@components/Order/List";
 
 const List = () => {
   return (

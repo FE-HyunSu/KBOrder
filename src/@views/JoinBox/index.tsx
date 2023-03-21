@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { authJoin, setData } from "@api/firestore";
 import styled from "styled-components";
-import Loading from "@views/@common/Loading/Loading";
+import Loading from "@components/@common/Loading/Loading";
 import ImgLogo from "@images/img_logo.png";
 import { LogoMotion, BounceMotion, TextMotion } from "@styles/keyframe";
 import {

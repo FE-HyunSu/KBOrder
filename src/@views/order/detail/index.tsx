@@ -10,16 +10,28 @@ import { getData, setData, delData } from "../../../api/firestore";
 import dayjs from "dayjs";
 import { userAtom } from "../../../store/store";
 import { useRecoilValue } from "recoil";
-import { returnDate } from "@utils/returnData";
+import { unitWon, returnDate } from "@utils/returnData";
 
-interface menuListType {}
+interface menuListType {
+  menuName: string;
+  count: number;
+}
+
+interface orderDataType {
+  id: string;
+  menuName: string;
+  price: number;
+  seq: string;
+  userEmail: string;
+  userName: string;
+}
 
 const OrderDetail = () => {
   const router = useRouter();
   const { id } = router.query;
   const [isLoading, setLoading] = useState<Boolean>(true);
   const [isOrderData, setOrderData] = useState<any>(null);
-  const [orderTotal, setOrderTotal] = useState<any>([]);
+  const [orderTotal, setOrderTotal] = useState<menuListType[]>([]);
   const [isModalOpen, setModalOpen] = useState<Boolean>(false);
   const [dateTitle, setDateTitle] = useState<String>("");
   const [isOpen, setOpen] = useState<Boolean>(false);
@@ -113,7 +125,7 @@ const OrderDetail = () => {
   }, [router.isReady]);
   return (
     <>
-      {isLoading && isLoading ? (
+      {isLoading ? (
         <Loading />
       ) : (
         <OrderDetailUI>
@@ -150,7 +162,7 @@ const OrderDetail = () => {
                 </>
               ) : (
                 isOrderData &&
-                isOrderData.map((item: any, idx: number) => {
+                isOrderData.map((item: orderDataType, idx: number) => {
                   return (
                     <li key={idx}>
                       <dl>
@@ -160,7 +172,7 @@ const OrderDetail = () => {
                         </dt>
                         <dd>
                           <strong>{item.userName}</strong>
-                          <em>{commonFn.unitWon(item.price)}</em>
+                          <em>{unitWon(item.price)}</em>
                           {atomUserInfo.email !== "" &&
                           isOpen &&
                           atomUserInfo.email === item.userEmail ? (

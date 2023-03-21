@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import Loading from "@views/@common/Loading/Loading";
 import { setData, getData } from "@api/firestore";
+import Loading from "@views/@common/Loading/Loading";
 import OrderItem from "@views/Order/List/OrderItem";
 import dayjs from "dayjs";
 
@@ -15,7 +15,7 @@ const OrderList = () => {
   const setItem = async () => {
     setLoading(true);
     const today: string = dayjs(new Date()).format("YYYYMMDD");
-    let dataCheck: boolean = false;
+    let dataCheck: Boolean = false;
     isOrderList.forEach((item) => {
       if (item.seq === today) dataCheck = true;
     });
@@ -52,7 +52,7 @@ const OrderList = () => {
   }, []);
   return (
     <>
-      {isLoading && isLoading ? (
+      {isLoading ? (
         <Loading />
       ) : (
         <OrderListUI>

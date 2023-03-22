@@ -1,8 +1,12 @@
 import React from "react";
-// import OrderList from "@components/Order/List";
+import OrderList from "@components/OrderCheck/List";
 
 const List = () => {
-  return <>{/* <OrderList /> */} build test</>;
+  return (
+    <>
+      <OrderList />
+    </>
+  );
 };
 
 export default List;

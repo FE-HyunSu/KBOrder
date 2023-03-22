@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { setData, getData } from "@api/firestore";
 import Loading from "@components/@common/Loading/Loading";
-// import OrderItem from "@components/Order/List/OrderItem";
+import OrderItem from "@components/OrderCheck/List/OrderItem";
 import dayjs from "dayjs";
 
 interface dateListType {
@@ -60,13 +60,12 @@ const OrderList = () => {
             <h1>
               <em>📝</em> 주문 목록
             </h1>
-            {/* <ul>
+            <ul>
               {isOrderList &&
                 isOrderList.map((item: dateListType, idx: number) => (
                   <OrderItem key={idx} seq={item.seq} />
                 ))}
-            </ul> */}
-            build test
+            </ul>
             <BtnCreateOrder onClick={() => setItem()}>
               주문만들기
             </BtnCreateOrder>

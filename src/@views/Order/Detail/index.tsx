@@ -6,7 +6,7 @@ import { media } from "@styles/theme";
 import apiOrder from "../../../was/order";
 import Loading from "@components/@common/Loading/Loading";
 import ModalKbSelect from "../../modal/kbSelect";
-import { getData, setData, delData } from "../../../api/firestore";
+import { getData, setData, delData } from "@api/firestore";
 import dayjs from "dayjs";
 import { userAtom } from "../../../store/store";
 import { useRecoilValue } from "recoil";
@@ -55,7 +55,7 @@ const OrderDetail = () => {
       setOpen(true);
     } else {
       alert("오픈전입니다. 돌아가세요.");
-      router.push("/list");
+      router.push("/main");
     }
     orderListData();
   };
@@ -374,7 +374,7 @@ export const BtnOrderUI = styled.button`
   background-color: #299438;
   border-radius: 6rem;
   overflow: hidden;
-  animation: ${IntroMotion} 2s forwards;
+  animation: ${IntroMotion} 1s forwards;
   z-index: 2;
 `;
 

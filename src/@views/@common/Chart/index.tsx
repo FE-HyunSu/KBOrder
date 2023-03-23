@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { BounceTurnMotion, IntroMotion } from "@styles/keyframe";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
 import { ArcElement } from "chart.js";
@@ -20,6 +21,7 @@ interface ChartDataType {
 interface ChartItemDataType {
   name: string;
   value: number;
+  totalCount: number;
   delay: number;
 }
 
@@ -38,7 +40,7 @@ const ChartBox = (chartItemData: ChartItemDataType) => {
   });
   const showChart = (data: ChartItemDataType) => {
     const name = data.name;
-    const percent = data.value;
+    const percent = Math.round((data.value / data.totalCount) * 100);
     setChartData({
       datasets: [
         {
@@ -46,7 +48,7 @@ const ChartBox = (chartItemData: ChartItemDataType) => {
           backgroundColor: ["#299438", "#ccc"],
           circumference: 360,
           borderColor: "transparent",
-          cutout: "75%",
+          cutout: "85%",
         },
       ],
     });
@@ -65,7 +67,11 @@ const ChartBox = (chartItemData: ChartItemDataType) => {
       <ChartBoxUI>
         <Doughnut data={chartData} />
         <strong>
-          <span>{chartItemData.name}</span>
+          <span>
+            {chartItemData.name}
+            <br />
+            <em>({chartItemData.value}건)</em>
+          </span>
         </strong>
       </ChartBoxUI>
     </>
@@ -86,8 +92,31 @@ const ChartBoxUI = styled.div`
     justify-content: center;
     align-items: center;
     span {
+      display: block;
+      position: relative;
+      flex: 1 auto;
       font-size: 1.4rem;
-      color: #333;
+      transition: 0.3s;
+      margin-top: 4rem;
+      padding-top: 0.6rem;
+      text-align: center;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 4rem;
+        height: 4rem;
+        margin: -4rem auto 0;
+        background: url(/images/img_logo.png) no-repeat 0 0 / 100% auto;
+        animation: ${BounceTurnMotion} 1s infinite;
+      }
+      em {
+        font-size: 1.2rem;
+        color: #999;
+      }
     }
   }
 `;

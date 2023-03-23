@@ -118,6 +118,7 @@ export const HeaderUI = styled.header`
   & + main {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     width: 100%;
     min-height: calc(100vh - 10rem);

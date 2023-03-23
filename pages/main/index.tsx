@@ -21,11 +21,6 @@ const Main = () => {
     router.push("/list");
   };
 
-  interface testType {
-    name?: string;
-    count?: number;
-  }
-
   const getDataList = async () => {
     let resultData: any = [];
     let menuCountList: any = [];
@@ -46,7 +41,7 @@ const Main = () => {
         value: menuCountList.filter((subItem: any) => subItem === item).length,
       });
     });
-    result.sort((a: any, b: any) => b.value - a.value);
+    result.sort((a: ChartItemType, b: ChartItemType) => b.value - a.value);
     setDataList(result.slice(0, 3));
     setLoading(false);
   };

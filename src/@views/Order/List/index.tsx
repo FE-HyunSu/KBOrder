@@ -115,7 +115,7 @@ export const BtnCreateOrder = styled.button`
   font-size: 1.4rem;
   color: #fff;
   text-indent: -9999rem;
-  background-color: #ccc;
+  background-color: #299438;
   border-radius: 100%;
   transition: 0.2s;
   transform-origin: 50% 50%;

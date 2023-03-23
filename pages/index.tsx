@@ -12,7 +12,7 @@ const Index = () => {
   const [isLogin, setLogin] = useState(storeUserInfo.uid !== "");
   useEffect(() => {
     setLogin(storeUserInfo.uid !== "");
-    isLogin ? router.push("/main") : null;
+    isLogin ? router.push("/list") : null;
   }, []);
   return <Login />;
 };

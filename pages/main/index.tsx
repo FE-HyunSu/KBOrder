@@ -2,6 +2,10 @@ import ChartBox from "@components/@common/Chart";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+interface ChartItemType {
+  name: string;
+  value: number;
+}
 const Main = () => {
   const testData = [
     { name: "테스트1", value: 20 },
@@ -17,9 +21,13 @@ const Main = () => {
         <div className="inner">
           <h1>🏅 인기김밥</h1>
           <BestList>
-            {testData.map((item, idx) => (
+            {testData.map((item: ChartItemType, idx: number) => (
               <li key={idx}>
-                <ChartBox chartvalue={Number(item.value)} />
+                <ChartBox
+                  name={item.name}
+                  value={item.value}
+                  delay={idx * 100}
+                />
               </li>
             ))}
           </BestList>

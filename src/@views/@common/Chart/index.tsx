@@ -15,7 +15,14 @@ interface ChartDataType {
     }
   ];
 }
-const ChartBox = ({ chartvalue }: any) => {
+
+interface ChartItemDataType {
+  name: string;
+  value: number;
+  delay: number;
+}
+
+const ChartBox = (chartItemData: ChartItemDataType) => {
   const [isChartReady, setChartReady] = useState<Boolean>(false);
   const [chartData, setChartData] = useState<ChartDataType>({
     datasets: [
@@ -28,15 +35,17 @@ const ChartBox = ({ chartvalue }: any) => {
       },
     ],
   });
-  const showChart = (percent: number) => {
+  const showChart = (data: ChartItemDataType) => {
+    const name = data.name;
+    const percent = data.value;
     setChartData({
       datasets: [
         {
-          data: [100 - percent, percent],
-          backgroundColor: ["#ee5a52", "#1f8ecd"],
+          data: [percent, 100 - percent],
+          backgroundColor: ["#299438", "#ccc"],
           circumference: 360,
           borderColor: "transparent",
-          cutout: "70%",
+          cutout: "75%",
         },
       ],
     });
@@ -44,7 +53,10 @@ const ChartBox = ({ chartvalue }: any) => {
   };
 
   useEffect(() => {
-    showChart(chartvalue);
+    const chartViewDelay = setTimeout(() => {
+      showChart(chartItemData);
+    }, chartItemData.delay);
+    return () => clearTimeout(chartViewDelay);
   }, []);
 
   return (

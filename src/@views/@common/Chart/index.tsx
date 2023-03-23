@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styled from "styled-components";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
 import { ArcElement } from "chart.js";
@@ -61,9 +62,32 @@ const ChartBox = (chartItemData: ChartItemDataType) => {
 
   return (
     <>
-      <Doughnut data={chartData} />
+      <ChartBoxUI>
+        <Doughnut data={chartData} />
+        <strong>
+          <span>{chartItemData.name}</span>
+        </strong>
+      </ChartBoxUI>
     </>
   );
 };
 
 export default ChartBox;
+
+const ChartBoxUI = styled.div`
+  position: relative;
+  strong {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    span {
+      font-size: 1.4rem;
+      color: #333;
+    }
+  }
+`;

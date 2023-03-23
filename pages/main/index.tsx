@@ -1,12 +1,16 @@
 import ChartBox from "@components/@common/Chart";
+import Loading from "@components/@common/Loading/Loading";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { getData } from "@api/firestore";
+import Link from "next/link";
 
 interface ChartItemType {
   name: string;
   value: number;
 }
 const Main = () => {
+  const [isLoading, setLoading] = useState<Boolean>(true);
   const testData = [
     { name: "테스트1", value: 20 },
     { name: "테스트2", value: 40 },
@@ -15,22 +19,42 @@ const Main = () => {
     { name: "테스트5", value: 30 },
   ];
 
+  const getDataList = async () => {
+    let resultData;
+    await getData("orderList").then((data) => {
+      resultData = data.docs.map((item: any) => {
+        return { ...item.data(), id: item.id };
+      });
+    });
+    console.log(resultData);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getDataList();
+  }, []);
+
   return (
     <>
       <MainBox>
         <div className="inner">
-          <h1>🏅 인기김밥</h1>
-          <BestList>
-            {testData.map((item: ChartItemType, idx: number) => (
-              <li key={idx}>
-                <ChartBox
-                  name={item.name}
-                  value={item.value}
-                  delay={idx * 100}
-                />
-              </li>
-            ))}
-          </BestList>
+          <h1>🏅 인기김밥(작업중)</h1>
+          {isLoading && isLoading ? (
+            <Loading />
+          ) : (
+            <BestList>
+              {testData.map((item: ChartItemType, idx: number) => (
+                <li key={idx}>
+                  <ChartBox
+                    name={item.name}
+                    value={item.value}
+                    delay={idx * 100}
+                  />
+                </li>
+              ))}
+            </BestList>
+          )}
+          <Link href={"/list"}>주문목록</Link>
         </div>
       </MainBox>
     </>
@@ -83,9 +107,10 @@ const MainBox = styled.section`
 `;
 
 const BestList = styled.ul`
+  text-align: center;
   li {
     display: inline-block;
-    width: 20rem;
+    width: 14rem;
     padding: 1rem;
   }
 `;

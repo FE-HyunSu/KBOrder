@@ -49,9 +49,11 @@ const Header = () => {
                 로그아웃
               </button>
             </>
-          ) : (
-            ""
-          )}
+          ) : router.pathname !== "/" ? (
+            <button type="button" onClick={() => router.push("/")}>
+              로그인
+            </button>
+          ) : null}
         </p>
       </HeaderUI>
     </>

@@ -12,6 +12,15 @@ interface ChartItemType {
   name: string;
   value: number;
 }
+
+interface OrderInfoType {
+  menuName: string;
+  price: number;
+  seq: string;
+  userEmail: string;
+  userName: string;
+}
+
 const Main = () => {
   const router = useRouter();
   const [isLoading, setLoading] = useState<Boolean>(true);
@@ -22,23 +31,26 @@ const Main = () => {
   };
 
   const getDataList = async () => {
-    let resultData: any = [];
-    let menuCountList: any = [];
+    let resultData: OrderInfoType[] = [];
+    let menuCountList: string[] = [];
     await getData("orderList").then((data) => {
       resultData = data.docs.map((item: any) => {
         return { ...item.data() };
       });
     });
-    resultData.forEach((item: any) => menuCountList.push(item.menuName));
+    resultData.forEach((item: OrderInfoType) =>
+      menuCountList.push(item.menuName)
+    );
     setTotalCount(resultData.length);
     const dataList = new Set(menuCountList);
     let countCheck = 0;
-    let result: any = [];
+    let result: ChartItemType[] = [];
     dataList.forEach((item) => {
       countCheck = 0;
       result.push({
         name: item,
-        value: menuCountList.filter((subItem: any) => subItem === item).length,
+        value: menuCountList.filter((subItem: string) => subItem === item)
+          .length,
       });
     });
     result.sort((a: ChartItemType, b: ChartItemType) => b.value - a.value);
@@ -71,7 +83,7 @@ const Main = () => {
                 들어갑니다.
               </p>
               <p></p>
-              <p>- Mason -</p>
+              <p>- Mason(김현수) -</p>
             </Intro>
             <h1>
               🏅 인기김밥 Best3 <span>(2023.03.06 ~ )</span>

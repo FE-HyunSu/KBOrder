@@ -63,7 +63,7 @@ const OrderList = () => {
             <ul>
               {isOrderList &&
                 isOrderList.map((item: dateListType, idx: number) => (
-                  <OrderItem key={idx} seq={item.seq} />
+                  <OrderItem key={idx} seq={item.seq} liIndex={idx} />
                 ))}
             </ul>
             <BtnCreateOrder onClick={() => setItem()}>
@@ -78,7 +78,7 @@ const OrderList = () => {
 
 export default OrderList;
 
-export const OrderListUI = styled.section`
+const OrderListUI = styled.section`
   display: block;
   width: 100%;
   min-height: calc(100vh - 10rem);
@@ -105,7 +105,7 @@ export const OrderListUI = styled.section`
   }
 `;
 
-export const BtnCreateOrder = styled.button`
+const BtnCreateOrder = styled.button`
   display: block;
   position: fixed;
   right: 3rem;

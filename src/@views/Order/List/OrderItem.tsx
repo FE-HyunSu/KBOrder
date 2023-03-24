@@ -1,15 +1,26 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Link from "next/link";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import dayjs from "dayjs";
 import { returnDate } from "@utils/returnData";
 import { BounceTurnMotion } from "@styles/keyframe";
+import useIntersectionObserver from "@hooks/useIntersectionObserver";
 
 interface dateListType {
   seq: string;
+  liIndex: number;
 }
 
-const OrderItem = ({ seq }: dateListType) => {
+const OrderItem = ({ seq, liIndex }: dateListType) => {
+  const itemRef = useRef<HTMLLIElement>(null);
+  const viewCheck = useIntersectionObserver(itemRef, {});
+  const isVisible = !!viewCheck?.isIntersecting;
+  const [isDelay, setDelay] = useState<Number>(liIndex);
+  useEffect(() => {
+    setTimeout(() => {
+      setDelay(0);
+    }, 2000);
+  }, []);
   return (
     <>
       <OrderItemLi
@@ -19,8 +30,13 @@ const OrderItem = ({ seq }: dateListType) => {
             ? `open`
             : `closed`
         }
+        ref={itemRef}
       >
-        <Link href={!!seq ? `/list/` + seq : ``}>
+        <Link
+          href={!!seq ? `/list/` + seq : ``}
+          className={isVisible ? `active` : ``}
+          style={{ animationDelay: Number(isDelay) * 0.05 + `s` }}
+        >
           <dl>
             <dt>
               <span></span>
@@ -41,7 +57,14 @@ const OrderItem = ({ seq }: dateListType) => {
 
 export default OrderItem;
 
-export const OrderItemLi = styled.li`
+const viewEffect = keyframes`
+  0%{transform: translateX(-10rem); opacity:0;}
+  40%{transform: translateX(.5rem); opacity:1;}
+  100%{transform: translateX(0rem); opacity:1;}
+`;
+
+const OrderItemLi = styled.li`
+  animation: ${viewEffect} 1s forwards;
   border-bottom: 0.1rem solid #eee;
   &:first-child {
     border-top: 0.1rem solid #eee;
@@ -68,6 +91,11 @@ export const OrderItemLi = styled.li`
     color: #111;
     text-decoration: none;
     box-sizing: border-box;
+    transform: translateX(-10rem);
+    opacity: 0;
+    &.active {
+      animation: ${viewEffect} 1s forwards;
+    }
     dl {
       display: flex;
       justify-content: center;

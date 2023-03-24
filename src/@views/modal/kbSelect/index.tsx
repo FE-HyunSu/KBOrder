@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "@components/@common/Modal";
 import { useRouter } from "next/router";
-import * as commonFn from "@utils/returnData";
+import { unitWon } from "@utils/returnData";
 import styled from "styled-components";
 import { BounceTurnMotion } from "@styles/keyframe";
 import { getData } from "@api/firestore";
@@ -83,7 +83,7 @@ const ModalKbSelect = (props: ModalProps) => {
                         }}
                       />
                       <span>{item.name}</span>
-                      <em>{commonFn.unitWon(item.price)}</em>
+                      <em>{unitWon(item.price)}</em>
                     </label>
                   </li>
                 ))}

@@ -19,7 +19,7 @@ const OrderItem = ({ seq, liIndex }: dateListType) => {
   useEffect(() => {
     setTimeout(() => {
       setDelay(0);
-    }, 2000);
+    }, 1000);
   }, []);
   return (
     <>

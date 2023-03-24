@@ -125,7 +125,17 @@ const Main = () => {
                     <li key={idx}>
                       <ChartHam count={item.value} />
                       <span>
-                        <em>{idx + 1}위</em> {item.name}(
+                        <em>{idx + 1}위</em>
+                        {idx === 0 ? (
+                          <span>🥇</span>
+                        ) : idx === 1 ? (
+                          <span>🥈</span>
+                        ) : idx === 2 ? (
+                          <span>🥉</span>
+                        ) : (
+                          ``
+                        )}
+                        {item.name}(
                         <MotionCount count={item.value} />
                         줄)
                       </span>
@@ -268,6 +278,9 @@ const BestMemberBox = styled.div`
       span {
         font-size: 1.8rem;
         color: #1a1a1a;
+        span {
+          font-size: 2rem;
+        }
         em {
           font-size: 3rem;
         }
@@ -276,6 +289,9 @@ const BestMemberBox = styled.div`
     span {
       font-size: 1.4rem;
       color: #3a3a3a;
+      span {
+        font-size: 2rem;
+      }
       em {
         font-weight: bold;
         font-size: 2rem;

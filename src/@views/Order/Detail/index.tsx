@@ -45,13 +45,11 @@ const OrderDetail = () => {
       dayjs(new Date(dateText)).format("YYYY/MM/DD") <
       dayjs(new Date()).format("YYYY/MM/DD")
     ) {
-      // console.log("과거");
       setOpen(false);
     } else if (
       dayjs(new Date(dateText)).format("YYYY/MM/DD") ===
       dayjs(new Date()).format("YYYY/MM/DD")
     ) {
-      // console.log("오늘");
       setOpen(true);
     } else {
       alert("오픈전입니다. 돌아가세요.");

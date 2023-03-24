@@ -85,22 +85,27 @@ const Main = () => {
               <p></p>
               <p>- Mason(김현수) -</p>
             </Intro>
-            <h1>
-              🏅 인기김밥 Best3 <span>(2023.03.06 ~ )</span>
-            </h1>
-            <BestList>
-              {dataList &&
-                dataList.map((item: ChartItemType, idx: number) => (
-                  <li key={idx}>
-                    <ChartBox
-                      name={item.name}
-                      value={item.value}
-                      totalCount={Number(isTotalCount)}
-                      delay={idx * 100}
-                    />
-                  </li>
-                ))}
-            </BestList>
+            <BestKBBox>
+              <h1>
+                🏅 인기김밥 Best3 <span>(2023.03.06 ~ )</span>
+              </h1>
+              <BestList>
+                {dataList &&
+                  dataList.map((item: ChartItemType, idx: number) => (
+                    <li key={idx}>
+                      <ChartBox
+                        name={item.name}
+                        value={item.value}
+                        totalCount={Number(isTotalCount)}
+                        delay={idx * 100}
+                      />
+                    </li>
+                  ))}
+              </BestList>
+            </BestKBBox>
+            <BestMemberBox>
+              <h1>🍜 프로 김밥러 3인</h1>
+            </BestMemberBox>
             <BtnOrderList type="button" onClick={() => orderListMove()}>
               주문목록보기
             </BtnOrderList>
@@ -141,6 +146,30 @@ const Intro = styled.div`
   }
 `;
 
+const BestKBBox = styled.div`
+  display: block;
+  width: 100%;
+  padding-bottom: 4rem;
+  h1 {
+    display: block;
+    padding: 2rem 0;
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: #1a1a1a;
+    text-align: left;
+    em {
+      display: inline-block;
+      padding-right: 0.5rem;
+      font-size: 3rem;
+    }
+    span {
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: #999;
+    }
+  }
+`;
+
 const MainBox = styled.section`
   display: block;
   width: 100%;
@@ -151,24 +180,6 @@ const MainBox = styled.section`
     margin: auto;
     padding: 1.6rem;
     box-sizing: border-box;
-    h1 {
-      display: block;
-      padding: 2rem 0;
-      font-weight: 700;
-      font-size: 2.4rem;
-      color: #1a1a1a;
-      text-align: left;
-      em {
-        display: inline-block;
-        padding-right: 0.5rem;
-        font-size: 3rem;
-      }
-      span {
-        font-size: 1.4rem;
-        font-weight: 300;
-        color: #999;
-      }
-    }
   }
 `;
 
@@ -198,4 +209,28 @@ const BtnOrderList = styled.button`
   overflow: hidden;
   animation: ${IntroMotion} 1s forwards;
   z-index: 2;
+`;
+
+const BestMemberBox = styled.div`
+  display: block;
+  width: 100%;
+  padding-bottom: 4rem;
+  h1 {
+    display: block;
+    padding: 2rem 0;
+    font-weight: 700;
+    font-size: 2.4rem;
+    color: #1a1a1a;
+    text-align: left;
+    em {
+      display: inline-block;
+      padding-right: 0.5rem;
+      font-size: 3rem;
+    }
+    span {
+      font-size: 1.4rem;
+      font-weight: 300;
+      color: #999;
+    }
+  }
 `;

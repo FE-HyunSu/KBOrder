@@ -17,4 +17,4 @@
 
 ### 🪬 Keyword.
 
-- `React` `Nextjs` `Typescript` `Recoil` `styled-components` `firebase` `firestore` `vercel`
+- `React` `Nextjs` `Typescript` `Recoil` `chartjs` `styled-components` `firebase` `firestore` `vercel`

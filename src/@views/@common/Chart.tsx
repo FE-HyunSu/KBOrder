@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { BounceTurnMotion, IntroMotion } from "@styles/keyframe";
+import { BounceTurnMotion } from "@styles/keyframe";
 import { Chart as ChartJS } from "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
 import { ArcElement } from "chart.js";
+import MotionCount from "./MotionCount";
 ChartJS.register(ArcElement);
 
 interface ChartDataType {
@@ -70,7 +71,16 @@ const ChartBox = (chartItemData: ChartItemDataType) => {
           <span>
             {chartItemData.name}
             <br />
-            <em>({chartItemData.value}건)</em>
+            <em>
+              <MotionCount
+                count={Math.round(
+                  (chartItemData.value / chartItemData.totalCount) * 100
+                )}
+              />
+              %(
+              <MotionCount count={chartItemData.value} />
+              건)
+            </em>
           </span>
         </strong>
       </ChartBoxUI>

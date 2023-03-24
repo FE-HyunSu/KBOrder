@@ -5,7 +5,7 @@ import * as commonFn from "@utils/returnData";
 import styled from "styled-components";
 import { BounceTurnMotion } from "@styles/keyframe";
 import { getData } from "@api/firestore";
-import Loading from "@components/@common/Loading/Loading";
+import Loading from "@components/@common/Loading";
 import { userAtom } from "../../../store/store";
 import { useRecoilValue } from "recoil";
 

@@ -5,7 +5,7 @@ import {
   BounceMotion,
   TextMotion,
   TextAfter,
-} from "../../../styles/keyframe";
+} from "@styles/keyframe";
 import Image from "next/image";
 import ImgLogo from "@images/img_logo.png";
 

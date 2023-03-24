@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import dayjs from "dayjs";
 import styled from "styled-components";
 import { IntroMotion, BounceTurnMotion } from "@styles/keyframe";
 import { media } from "@styles/theme";
 import apiOrder from "../../../was/order";
-import Loading from "@components/@common/Loading/Loading";
+import Loading from "@components/@common/Loading";
 import ModalKbSelect from "../../modal/kbSelect";
 import { getData, setData, delData } from "@api/firestore";
-import dayjs from "dayjs";
 import { userAtom } from "../../../store/store";
 import { useRecoilValue } from "recoil";
 import { unitWon, returnDate } from "@utils/returnData";
@@ -68,7 +68,7 @@ const OrderDetail = () => {
     const orderData = apiOrder("orderList", "get", id);
     orderData.then((data: any) => {
       setOrderData(data);
-      data.forEach((item: any) => orderSum.push(item.menuName));
+      data.forEach((item: menuListType) => orderSum.push(item.menuName));
       const selectList = Array.from(new Set(orderSum));
       selectList.forEach((item) => {
         orderResult.push({
@@ -140,7 +140,7 @@ const OrderDetail = () => {
             <div className="order-info">
               <p>
                 {orderTotal &&
-                  orderTotal.map((item: any, idx: number) => {
+                  orderTotal.map((item: menuListType, idx: number) => {
                     return (
                       <strong key={idx}>
                         <span>{item.menuName}</span> <em>{item.count}줄</em>

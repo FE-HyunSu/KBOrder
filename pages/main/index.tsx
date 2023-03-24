@@ -1,4 +1,4 @@
-import ChartBox from "@components/@common/Chart";
+import ChartDoughnut from "@components/@common/ChartDoughnut";
 import Loading from "@components/@common/Loading";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import ImgStore from "@images/store.jpg";
 import MotionCount from "@components/@common/MotionCount";
+import ChartHam from "@components/@common/ChartHam";
 
 interface ChartItemType {
   name: string;
@@ -106,7 +107,7 @@ const Main = () => {
                 {menuDataList &&
                   menuDataList.map((item: ChartItemType, idx: number) => (
                     <li key={idx}>
-                      <ChartBox
+                      <ChartDoughnut
                         name={item.name}
                         value={item.value}
                         totalCount={Number(isTotalCount)}
@@ -122,11 +123,7 @@ const Main = () => {
                 {userDataList &&
                   userDataList.map((item: ChartItemType, idx: number) => (
                     <li key={idx}>
-                      <strong
-                        style={{
-                          width: item.value + `rem`,
-                        }}
-                      ></strong>
+                      <ChartHam count={item.value} />
                       <span>
                         <em>{idx + 1}위</em> {item.name}(
                         <MotionCount count={item.value} />
@@ -274,43 +271,6 @@ const BestMemberBox = styled.div`
         em {
           font-size: 3rem;
         }
-      }
-    }
-    strong {
-      display: inline-block;
-      position: relative;
-      width: 0;
-      max-width: calc(100% - 15rem);
-      height: 2rem;
-      margin-right: 1.5rem;
-      background-color: #f46b21;
-      border-top-left-radius: 1rem;
-      border-bottom-left-radius: 1rem;
-      &:before {
-        content: "";
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        height: 1rem;
-        background-color: #d75b18;
-        border-bottom-left-radius: 1rem;
-      }
-      &:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: -0.7rem;
-        bottom: 0;
-        width: 0;
-        height: 0;
-        width: 1.414rem;
-        height: 1.414rem;
-        margin: auto;
-        background-color: #fb947a;
-        transform: rotate(45deg);
-        border-top-right-radius: 0.6rem;
-        border-bottom-left-radius: 0.4rem;
       }
     }
     span {

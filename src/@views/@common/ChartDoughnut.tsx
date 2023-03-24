@@ -26,7 +26,7 @@ interface ChartItemDataType {
   delay: number;
 }
 
-const ChartBox = (chartItemData: ChartItemDataType) => {
+const ChartDoughnut = (chartItemData: ChartItemDataType) => {
   const [isChartReady, setChartReady] = useState<Boolean>(false);
   const [chartData, setChartData] = useState<ChartDataType>({
     datasets: [
@@ -88,7 +88,7 @@ const ChartBox = (chartItemData: ChartItemDataType) => {
   );
 };
 
-export default ChartBox;
+export default ChartDoughnut;
 
 const ChartBoxUI = styled.div`
   position: relative;

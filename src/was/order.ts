@@ -1,22 +1,26 @@
 import { getData } from "../api/firestore";
 
-interface orderListType {
-  date: string;
-  title: string;
-  seq: number;
-  open: boolean;
+interface orderDetailType {
+  id: string;
+  menuName: string;
+  price: number;
+  seq: string;
+  userEmail: string;
+  userName: string;
 }
 
 // 'code === list' -> 목록 조회 및 seq 기준으로 정렬하여 return.
-const apiOrder = async (code: string, method: string, param: any) => {
+const apiOrder = async (code: string, method: string, param: string) => {
   if (code === "orderList" && method === "get") {
-    let orderDetailData: any = [];
+    let orderDetailData: orderDetailType[] = [];
     await getData("orderList").then((data) => {
       orderDetailData = data.docs.map((item: any) => {
         return { ...item.data(), id: item.id };
       });
     });
-    return orderDetailData.filter((item: any) => item.seq === String(param));
+    return orderDetailData.filter(
+      (item: orderDetailType) => item.seq === String(param)
+    );
   }
 };
 

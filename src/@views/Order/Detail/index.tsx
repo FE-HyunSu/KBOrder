@@ -30,7 +30,7 @@ const OrderDetail = () => {
   const router = useRouter();
   const { id } = router.query;
   const [isLoading, setLoading] = useState<Boolean>(true);
-  const [isOrderData, setOrderData] = useState<any>(null);
+  const [isOrderData, setOrderData] = useState<orderDataType[] | undefined>([]);
   const [orderTotal, setOrderTotal] = useState<menuListType[]>([]);
   const [isModalOpen, setModalOpen] = useState<Boolean>(false);
   const [dateTitle, setDateTitle] = useState<String>("");
@@ -60,18 +60,19 @@ const OrderDetail = () => {
 
   // 목록 갱신. 추후 주문 업데이트 시 해당 함수만 재실행.
   const orderListData = () => {
-    let orderSum: any = [];
-    let orderResult: any = [];
+    let orderSum: string[] = [];
+    let orderResult: menuListType[] = [];
     setLoading(true);
-    const orderData = apiOrder("orderList", "get", id);
-    orderData.then((data: any) => {
+    const orderData = apiOrder("orderList", "get", String(id));
+    orderData.then((data: orderDataType[] | undefined) => {
       setOrderData(data);
-      data.forEach((item: menuListType) => orderSum.push(item.menuName));
+      if (!!data)
+        data.forEach((item: orderDataType) => orderSum.push(item.menuName));
       const selectList = Array.from(new Set(orderSum));
       selectList.forEach((item) => {
         orderResult.push({
-          menuName: item,
-          count: orderSum.filter((subItem: any) => subItem === item).length,
+          menuName: String(item),
+          count: orderSum.filter((subItem: string) => subItem === item).length,
         });
       });
 

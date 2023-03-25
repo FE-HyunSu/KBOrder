@@ -5,8 +5,6 @@ import styled from "styled-components";
 import { getData } from "@api/firestore";
 import { IntroMotion } from "@styles/keyframe";
 import { useRouter } from "next/router";
-import Image from "next/image";
-import ImgStore from "@images/store.jpg";
 import MotionCount from "@components/@common/MotionCount";
 import ChartHam from "@components/@common/ChartHam";
 

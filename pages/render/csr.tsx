@@ -3,8 +3,15 @@ import styled from "styled-components";
 import RenderNav from "@components/renderNav";
 import { getData } from "@api/firestore";
 
+interface userListType {
+  email: string;
+  id: string;
+  name: string;
+  uid: string;
+}
+
 const CSR = () => {
-  const [userList, setUserList] = useState<any>([]);
+  const [userList, setUserList] = useState<userListType[]>([]);
   const getUserList = async () => {
     try {
       await getData("user").then((data) => {
@@ -29,7 +36,7 @@ const CSR = () => {
         <p>회원 이름 목록</p>
         <ul>
           {userList &&
-            userList.map((item: any, idx: number) => {
+            userList.map((item: userListType, idx: number) => {
               return (
                 <li key={idx}>
                   {idx + 1}. {item.name}

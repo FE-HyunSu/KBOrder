@@ -3,7 +3,20 @@ import styled from "styled-components";
 import RenderNav from "@components/renderNav";
 import { getData } from "@api/firestore";
 
-const SSG = ({ userList }: any) => {
+interface userListType {
+  map(arg0: (item: userListType, idx: number) => JSX.Element): React.ReactNode;
+  email: string;
+  id: string;
+  name: string;
+  uid: string;
+}
+
+interface ssrUserListType {
+  userList: userListType;
+  revalidate: number;
+}
+
+const SSG = ({ userList }: ssrUserListType) => {
   return (
     <>
       <RenderNav />
@@ -12,7 +25,7 @@ const SSG = ({ userList }: any) => {
         <p>회원 이름 목록</p>
         <ul>
           {userList &&
-            userList.map((item: any, idx: number) => {
+            userList.map((item: userListType, idx: number) => {
               return (
                 <li key={idx}>
                   {idx + 1}. {item.name}

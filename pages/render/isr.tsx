@@ -3,7 +3,20 @@ import styled from "styled-components";
 import RenderNav from "@components/renderNav";
 import { getData } from "@api/firestore";
 
-const ISR = ({ userList }: any) => {
+interface userListType {
+  map(arg0: (item: userListType, idx: number) => JSX.Element): React.ReactNode;
+  email: string;
+  id: string;
+  name: string;
+  uid: string;
+}
+
+interface ssrUserListType {
+  userList: userListType;
+  revalidate: number;
+}
+
+const ISR = ({ userList }: ssrUserListType) => {
   const [isCount, setCount] = useState<number>(0);
   useEffect(() => {
     console.log(userList);
@@ -23,7 +36,7 @@ const ISR = ({ userList }: any) => {
         <p>회원 이름 목록 (revalidate 10초) {isCount}초 경과</p>
         <ul>
           {userList &&
-            userList.map((item: any, idx: number) => {
+            userList.map((item: userListType, idx: number) => {
               return (
                 <li key={idx}>
                   {idx + 1}. {item.name}

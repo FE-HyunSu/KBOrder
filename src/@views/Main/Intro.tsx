@@ -1,23 +1,29 @@
 import React from "react";
 import styled from "styled-components";
+import { MotionTextView } from "@styles/keyframe";
 
 const Intro = () => {
+  const introContents = [
+    "안녕하세요.",
+    <>
+      삼성동 이레 김밥주문 페이지 <em>KB-Order</em> 입니다.
+    </>,
+    <>
+      오늘 점심 김밥을 드실 분들은 <em>주문을 신청</em>해 주세요.
+    </>,
+    <>
+      <em>12:00</em> 까지 신청된 주문건에 한해서 일괄 전화 주문 들어갑니다.
+    </>,
+    "",
+    "- Mason(김현수) -",
+  ];
   return (
     <>
       <IntroUI>
         <h1>🍱 소개</h1>
-        <p>안녕하세요.</p>
-        <p>
-          삼성동 이레 김밥주문 페이지 <em>KB-Order</em> 입니다.
-        </p>
-        <p>
-          오늘 점심 김밥을 드실 분들은 <em>주문을 신청</em>해 주세요.
-        </p>
-        <p>
-          <em>12:00</em> 까지 신청된 주문건에 한해서 일괄 전화 주문 들어갑니다.
-        </p>
-        <p></p>
-        <p>- Mason(김현수) -</p>
+        {introContents.map((item, idx) => (
+          <p style={{ animationDelay: idx * 0.2 + `s` }}>{item}</p>
+        ))}
       </IntroUI>
     </>
   );
@@ -47,6 +53,7 @@ const IntroUI = styled.div`
     font-weight: 400;
     font-size: 1.6rem;
     line-height: 1.4;
+    animation: ${MotionTextView} 0.8s both;
     em {
       color: #299438;
     }

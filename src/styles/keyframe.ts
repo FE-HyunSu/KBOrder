@@ -1,5 +1,10 @@
 import { keyframes } from "styled-components";
 
+export const MotionTextView = keyframes`
+  0%{transform:translateX(-2rem) scale(1, .1); opacity:0;}
+  100%{transform:translateX(0) scale(1, 1); opacity:1;}
+`;
+
 export const MotionIntro = keyframes`
   0%{transform:scale(.1,.1)}
   50%{transform:scale(1.05,1.05)}

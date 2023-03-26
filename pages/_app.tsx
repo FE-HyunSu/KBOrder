@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "../src/styles/global-style";
@@ -24,8 +23,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width"
           />
           <meta property="og:title" content="KBOrder" />
-          <meta property="og:description" content="KBOrder" />
-          <meta property="og:image" content="" />
+          <meta
+            property="og:description"
+            content="삼성동 이레 김밥주문 페이지"
+          />
+          <meta property="og:image" content="/images/img_meta.png" />
           <link rel="icon" href="/favicon.ico" />
           <title>🍙 KBOrder</title>
         </Head>

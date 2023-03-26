@@ -7,6 +7,8 @@ import { IntroMotion } from "@styles/keyframe";
 import { useRouter } from "next/router";
 import MotionCount from "@components/@common/MotionCount";
 import ChartHam from "@components/@common/ChartHam";
+import Intro from "@components/Main/Intro";
+import ButtonFixed from "@components/@common/ButtonFixed";
 
 interface ChartItemType {
   name: string;
@@ -81,22 +83,7 @@ const Main = () => {
       ) : (
         <MainBox>
           <div className="inner">
-            <Intro>
-              <h1>🍱 소개</h1>
-              <p>안녕하세요.</p>
-              <p>
-                삼성동 이레 김밥주문 페이지 <em>KB-Order</em> 입니다.
-              </p>
-              <p>
-                오늘 점심 김밥을 드실 분들은 <em>주문을 신청</em>해 주세요.
-              </p>
-              <p>
-                <em>12:00</em> 까지 신청된 주문건에 한해서 일괄 전화 주문
-                들어갑니다.
-              </p>
-              <p></p>
-              <p>- Mason(김현수) -</p>
-            </Intro>
+            <Intro />
             <BestKBBox>
               <h1>
                 🏅 인기김밥 Best3 <span>(2023.03.06 ~ )</span>
@@ -141,9 +128,7 @@ const Main = () => {
                   ))}
               </ul>
             </BestMemberBox>
-            <BtnOrderList type="button" onClick={() => orderListMove()}>
-              주문목록보기
-            </BtnOrderList>
+            <ButtonFixed name={`주문목록보기`} onClickFn={orderListMove} />
           </div>
         </MainBox>
       )}
@@ -152,34 +137,6 @@ const Main = () => {
 };
 
 export default Main;
-
-const Intro = styled.div`
-  display: block;
-  width: 100%;
-  padding-bottom: 6rem;
-  h1 {
-    display: block;
-    padding: 2rem 0;
-    font-weight: 700;
-    font-size: 2.4rem;
-    color: #1a1a1a;
-    text-align: left;
-    em {
-      display: inline-block;
-      padding-right: 0.5rem;
-      font-size: 3rem;
-    }
-  }
-  p {
-    padding: 0.3rem 0;
-    font-weight: 400;
-    font-size: 1.6rem;
-    line-height: 1.4;
-    em {
-      color: #299438;
-    }
-  }
-`;
 
 const BestKBBox = styled.div`
   display: block;

@@ -28,7 +28,7 @@ const Loading = () => {
 };
 export default Loading;
 
-export const LoadingUI = styled.div`
+const LoadingUI = styled.div`
   display: flex;
   position: relative;
   justify-content: center;
@@ -77,7 +77,7 @@ export const LoadingUI = styled.div`
   }
 `;
 
-export const LoadingBox = styled.div`
+const LoadingBox = styled.div`
   width: 15rem;
   height: 15rem;
   z-index: 2;

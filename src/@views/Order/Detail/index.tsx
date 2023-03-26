@@ -11,6 +11,7 @@ import { getData, setData, delData } from "@api/firestore";
 import { userAtom } from "../../../store/store";
 import { useRecoilValue } from "recoil";
 import { unitWon, returnDate } from "@utils/returnData";
+import ButtonFixed from "@components/@common/ButtonFixed";
 
 interface menuListType {
   menuName: string;
@@ -190,9 +191,7 @@ const OrderDetail = () => {
               )}
             </ul>
             {isOpen && isOpen ? (
-              <BtnOrderUI type="button" onClick={() => handleModalOpen()}>
-                주문하기
-              </BtnOrderUI>
+              <ButtonFixed name={`주문하기`} onClickFn={handleModalOpen} />
             ) : null}
           </div>
         </OrderDetailUI>
@@ -206,7 +205,7 @@ const OrderDetail = () => {
 
 export default OrderDetail;
 
-export const OrderDetailUI = styled.section`
+const OrderDetailUI = styled.section`
   display: block;
   width: 100%;
   min-height: calc(100vh - 10rem);
@@ -358,26 +357,7 @@ export const OrderDetailUI = styled.section`
   }
 `;
 
-export const BtnOrderUI = styled.button`
-  position: fixed;
-  right: 0;
-  bottom: 7rem;
-  left: 0;
-  width: 0;
-  max-width: 16rem;
-  height: 0.5rem;
-  margin: auto;
-  font-weight: 500;
-  font-size: 1.4rem;
-  color: #fff;
-  background-color: #299438;
-  border-radius: 6rem;
-  overflow: hidden;
-  animation: ${IntroMotion} 1s forwards;
-  z-index: 2;
-`;
-
-export const NoneOrderUI = styled.div`
+const NoneOrderUI = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -393,7 +373,7 @@ export const NoneOrderUI = styled.div`
   }
 `;
 
-export const BtnDeleteUI = styled.button`
+const BtnDeleteUI = styled.button`
   position: relative;
   width: 1.8rem;
   height: 1.8rem;

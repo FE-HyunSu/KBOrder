@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { LogoMotion, BounceMotion, TextMotion } from "src/styles/keyframe";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { userAtom } from "src/store/store";
@@ -13,7 +11,7 @@ const Index = () => {
   useEffect(() => {
     setLogin(storeUserInfo.uid !== "");
     isLogin ? router.push("/main") : null;
-  }, []);
+  }, [storeUserInfo]);
   return <Login />;
 };
 

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Loading from "@components/@common/Loading";
 import styled from "styled-components";
 import { getData } from "@api/firestore";
 import MotionCount from "@components/@common/MotionCount";
@@ -8,6 +7,7 @@ import ChartHam from "@components/@common/ChartHam";
 interface ChartItemType {
   name: string;
   value: number;
+  rank?: number;
 }
 
 interface OrderInfoType {
@@ -35,6 +35,7 @@ const BestMember = () => {
     });
     const userList = new Set(userCountList);
     let userResult: ChartItemType[] = [];
+    let userRank: number = 1;
     userList.forEach((item) => {
       userResult.push({
         name: item,
@@ -43,6 +44,16 @@ const BestMember = () => {
       });
     });
     userResult.sort((a: ChartItemType, b: ChartItemType) => b.value - a.value);
+    userResult.forEach((item, idx) => {
+      if (idx === 0) {
+        item.rank = idx + 1;
+      } else if (item.value === userResult[idx - 1].value) {
+        item.rank = Number(userRank) + 1;
+      } else {
+        item.rank = idx + 1;
+        userRank = idx;
+      }
+    });
     setUserDataList(userResult.slice(0, 5));
     setLoading(false);
   };
@@ -73,12 +84,12 @@ const BestMember = () => {
                   <li key={idx}>
                     <ChartHam count={item.value} />
                     <span>
-                      <em>{idx + 1}위</em>
-                      {idx === 0 ? (
+                      <em>{item.rank}위</em>
+                      {item.rank === 1 ? (
                         <span>🥇</span>
-                      ) : idx === 1 ? (
+                      ) : item.rank === 2 ? (
                         <span>🥈</span>
-                      ) : idx === 2 ? (
+                      ) : item.rank === 3 ? (
                         <span>🥉</span>
                       ) : (
                         ``

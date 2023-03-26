@@ -1,5 +1,4 @@
 import ChartDoughnut from "@components/@common/ChartDoughnut";
-import Loading from "@components/@common/Loading";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { getData } from "@api/firestore";

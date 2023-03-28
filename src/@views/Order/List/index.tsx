@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 
 interface dateListType {
   seq: string;
+  orderClose?: boolean;
 }
 
 const OrderList = () => {
@@ -63,7 +64,12 @@ const OrderList = () => {
             <ul>
               {isOrderList &&
                 isOrderList.map((item: dateListType, idx: number) => (
-                  <OrderItem key={idx} seq={item.seq} liIndex={idx} />
+                  <OrderItem
+                    key={idx}
+                    seq={item.seq}
+                    liIndex={idx}
+                    orderClose={item.orderClose ? item.orderClose : false}
+                  />
                 ))}
             </ul>
             <BtnCreateOrder onClick={() => setItem()}>

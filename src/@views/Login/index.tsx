@@ -8,6 +8,7 @@ import { getData, loginAuth } from "@api/firestore";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../store/store";
 import ImgLogo from "@images/img_logo.png";
+import Link from "next/link";
 
 interface ErrorType {
   name: string;
@@ -143,9 +144,15 @@ const Login = () => {
         <button type="button" onClick={() => loginAction()}>
           로그인
         </button>
+        <button
+          type="button"
+          onClick={() => router.push("main")}
+          className="btn-green"
+        >
+          로그인 없이 구경하기
+        </button>
         <p className="text-links">
-          <a href="/main">구경하기</a>
-          <a href="/join">회원가입</a>
+          <Link href="/join">회원가입</Link>
         </p>
       </LoginUI>
     </>
@@ -231,6 +238,13 @@ export const LoginUI = styled.div`
     color: #fff;
     animation: ${TextMotion} 0.6s 1.2s both;
     transition: 0.2s;
+    &.btn-green {
+      background-color: #299438;
+      &:hover {
+        font-size: 1.6rem;
+        background-color: #299438;
+      }
+    }
     &:disabled {
       background-color: #bbb;
     }

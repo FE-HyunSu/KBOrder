@@ -9,9 +9,10 @@ import useIntersectionObserver from "@hooks/useIntersectionObserver";
 interface dateListType {
   seq: string;
   liIndex: number;
+  orderClose: boolean;
 }
 
-const OrderItem = ({ seq, liIndex }: dateListType) => {
+const OrderItem = ({ seq, liIndex, orderClose }: dateListType) => {
   const itemRef = useRef<HTMLLIElement>(null);
   const viewCheck = useIntersectionObserver(itemRef, {});
   const isVisible = !!viewCheck?.isIntersecting;
@@ -43,8 +44,10 @@ const OrderItem = ({ seq, liIndex }: dateListType) => {
               {dayjs(new Date(returnDate(seq))).format("M월D일(ddd)")} 김밥주문
             </dt>
             <dd>
-              {dayjs(new Date(returnDate(seq))).format("YYYY/MM/DD") ===
-              dayjs(new Date()).format("YYYY/MM/DD")
+              {orderClose
+                ? `주문 마감`
+                : dayjs(new Date(returnDate(seq))).format("YYYY/MM/DD") ===
+                  dayjs(new Date()).format("YYYY/MM/DD")
                 ? `모집중`
                 : `마감`}
             </dd>

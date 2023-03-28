@@ -2,16 +2,17 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import dayjs from "dayjs";
 import styled from "styled-components";
-import { IntroMotion, BounceTurnMotion } from "@styles/keyframe";
+import { BounceTurnMotion } from "@styles/keyframe";
 import { media } from "@styles/theme";
 import apiOrder from "../../../was/order";
 import Loading from "@components/@common/Loading";
 import ModalKbSelect from "../../modal/kbSelect";
-import { getData, setData, delData } from "@api/firestore";
+import { getData, setData, delData, updateData } from "@api/firestore";
 import { userAtom } from "../../../store/store";
 import { useRecoilValue } from "recoil";
 import { unitWon, returnDate } from "@utils/returnData";
 import ButtonFixed from "@components/@common/ButtonFixed";
+import Link from "next/link";
 
 interface menuListType {
   menuName: string;
@@ -36,7 +37,37 @@ const OrderDetail = () => {
   const [isModalOpen, setModalOpen] = useState<Boolean>(false);
   const [dateTitle, setDateTitle] = useState<String>("");
   const [isOpen, setOpen] = useState<Boolean>(false);
+  const [isOrderClose, setOrderClose] = useState<Boolean>(false);
   const atomUserInfo = useRecoilValue(userAtom);
+
+  const todayCloseCheck = async () => {
+    await getData("dateList").then((data) => {
+      const dataList = data.docs.map((item: any) => {
+        return { ...item.data() };
+      });
+      const todayInfo = dataList.filter((item) => item.seq === id)[0];
+      if (!!todayInfo.orderClose) setOrderClose(todayInfo.orderClose);
+    });
+  };
+
+  const orderClose = async () => {
+    if (confirm("주문을 마감처리 하시겠습니까?")) {
+      await getData("dateList").then((data) => {
+        const dataList = data.docs.map((item: any) => {
+          return { ...item.data(), id: item.id };
+        });
+        const todayInfo = dataList.filter((item) => item.seq === id)[0];
+        updateData("dateList", todayInfo.id, {
+          seq: todayInfo.seq,
+          orderClose: true,
+        }).then((res) => {
+          alert("주문이 마감 되었습니다.");
+          setOrderClose(true);
+          orderListData();
+        });
+      });
+    }
+  };
 
   // 페이지 정보 기본 셋팅.
   const pageInfoSet = (date: string) => {
@@ -47,11 +78,13 @@ const OrderDetail = () => {
       dayjs(new Date()).format("YYYY/MM/DD")
     ) {
       setOpen(false);
+      setOrderClose(true);
     } else if (
       dayjs(new Date(dateText)).format("YYYY/MM/DD") ===
       dayjs(new Date()).format("YYYY/MM/DD")
     ) {
       setOpen(true);
+      todayCloseCheck();
     } else {
       alert("오픈전입니다. 돌아가세요.");
       router.push("/main");
@@ -114,7 +147,7 @@ const OrderDetail = () => {
     handleModalClose();
   };
   const handleModalOpen = () => {
-    setModalOpen(true);
+    isOrderClose ? alert("오늘의 주문이 마감되었습니다.") : setModalOpen(true);
   };
   const handleModalClose = () => {
     setModalOpen(false);
@@ -133,9 +166,15 @@ const OrderDetail = () => {
             <h1>
               <span>🍙</span>
               <strong>
-                <em>{dateTitle}</em> 주문
+                <em>{dateTitle}</em>
+                {isOrderClose ? <strong>주문 마감</strong> : `주문`}
               </strong>
-              <a href="tel:025675976">전화걸기</a>
+              {!isOrderClose ? (
+                <BtnOrderClose type="button" onClick={() => orderClose()}>
+                  주문마감
+                </BtnOrderClose>
+              ) : null}
+              <Link href="tel:025675976">전화걸기</Link>
             </h1>
             <div className="order-info">
               <p>
@@ -175,6 +214,7 @@ const OrderDetail = () => {
                           <em>{unitWon(item.price)}</em>
                           {atomUserInfo.email !== "" &&
                           isOpen &&
+                          !isOrderClose &&
                           atomUserInfo.email === item.userEmail ? (
                             <BtnDeleteUI
                               type="button"
@@ -238,6 +278,9 @@ const OrderDetailUI = styled.section`
         padding-left: 0.5rem;
         em {
           color: #299438;
+        }
+        strong {
+          color: #f0581a;
         }
       }
       a {
@@ -430,4 +473,18 @@ const BtnDeleteUI = styled.button`
       }
     }
   }
+`;
+
+const BtnOrderClose = styled.button`
+  display: inline-block;
+  margin-right: 0.6rem;
+  padding: 0.9rem 1rem;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-decoration: none;
+  background-color: #f0581a;
+  border-radius: 4rem;
+  outline: 0;
+  box-sizing: border-box;
 `;

@@ -22,7 +22,9 @@ const Intro = () => {
       <IntroUI>
         <h1>🍱 소개</h1>
         {introContents.map((item, idx) => (
-          <p style={{ animationDelay: idx * 0.2 + `s` }}>{item}</p>
+          <p key={idx} style={{ animationDelay: idx * 0.2 + `s` }}>
+            {item}
+          </p>
         ))}
       </IntroUI>
     </>

@@ -44,12 +44,12 @@ const OrderItem = ({ seq, liIndex, orderClose }: dateListType) => {
               {dayjs(new Date(returnDate(seq))).format("M월D일(ddd)")} 김밥주문
             </dt>
             <dd>
-              {orderClose
+              {dayjs(new Date(returnDate(seq))).format("YYYY/MM/DD") !==
+              dayjs(new Date()).format("YYYY/MM/DD")
+                ? `마감`
+                : orderClose
                 ? `주문 마감`
-                : dayjs(new Date(returnDate(seq))).format("YYYY/MM/DD") ===
-                  dayjs(new Date()).format("YYYY/MM/DD")
-                ? `모집중`
-                : `마감`}
+                : `모집중`}
             </dd>
           </dl>
         </Link>

@@ -38,7 +38,7 @@ const Header = () => {
         <h1>
           <Link href={"/"}>
             <Image src={ImgLogo} alt="LOGO" placeholder="blur" />
-            KBOrder<span>(Beta)</span>
+            KBOrder
           </Link>
         </h1>
         <p>

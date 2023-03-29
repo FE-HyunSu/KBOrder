@@ -167,7 +167,7 @@ const OrderDetail = () => {
               <span>🍙</span>
               <strong>
                 <em>{dateTitle}</em>
-                {isOrderClose ? <strong>주문 마감</strong> : `주문`}
+                {isOrderClose ? <strong>주문마감</strong> : `주문`}
               </strong>
               {!isOrderClose ? (
                 <BtnOrderClose type="button" onClick={() => orderClose()}>

@@ -48,7 +48,7 @@ const OrderItem = ({ seq, liIndex, orderClose }: dateListType) => {
               dayjs(new Date()).format("YYYY/MM/DD")
                 ? `마감`
                 : orderClose
-                ? `주문 마감`
+                ? `주문마감`
                 : `모집중`}
             </dd>
           </dl>

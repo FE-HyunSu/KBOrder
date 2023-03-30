@@ -1,6 +1,6 @@
 import ChartDoughnut from "@components/@common/ChartDoughnut";
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { getData } from "@api/firestore";
 
 interface ChartItemType {

@@ -1,4 +1,4 @@
-import { keyframes } from "styled-components";
+import { keyframes } from "@emotion/react";
 
 export const MotionTextView = keyframes`
   0%{transform:translateX(-2rem) scale(1, .1); opacity:0;}
@@ -48,4 +48,10 @@ export const LogoMotion = keyframes`
   30%{transform:scale(.8,1.2);}
   60%{transform:scale(1.2,.8);}
   100%{transform:scale(1,1);}
+`;
+
+export const viewEffect = keyframes`
+  0%{transform: translateX(-10rem); opacity:0;}
+  40%{transform: translateX(.5rem); opacity:1;}
+  100%{transform: translateX(0rem); opacity:1;}
 `;

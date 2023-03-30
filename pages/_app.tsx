@@ -2,9 +2,9 @@ import React from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import { RecoilRoot } from "recoil";
-import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "../src/styles/global-style";
-import { theme } from "../src/styles/theme";
+import { ThemeProvider } from "@emotion/react";
+import { media } from "@styles/theme";
+import GlobalStyle from "../src/styles/global-style";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import dayjs from "dayjs";
@@ -32,7 +32,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <title>🍙 KBOrder</title>
         </Head>
         <GlobalStyle />
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={media}>
           <Header />
           <main>
             <Component {...pageProps} />

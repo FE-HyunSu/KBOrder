@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 const RenderNav = () => {
   return (
@@ -40,7 +40,7 @@ export const NavBox = styled.nav`
     background-color: #fff;
     li {
       border-right: 0.1rem solid #eee;
-      &:first-child {
+      &:first-of-type {
         border-left: 0.1rem solid #eee;
       }
       a {

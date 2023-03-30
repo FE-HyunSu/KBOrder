@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import dayjs from "dayjs";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { BounceTurnMotion } from "@styles/keyframe";
 import { media } from "@styles/theme";
 import apiOrder from "../../../was/order";
@@ -331,7 +331,7 @@ const OrderDetailUI = styled.section`
     ul {
       li {
         border-bottom: 0.1rem solid #eee;
-        &:first-child {
+        &:first-of-type {
           border-top: 0.1rem solid #eee;
         }
         &.open {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import RenderNav from "@components/renderNav";
 import { getData } from "@api/firestore";
 
@@ -91,7 +91,7 @@ const RenderTestBox = styled.section`
       font-weight: 400;
       font-size: 1.4rem;
       border-bottom: 0.1rem solid rgba(0, 0, 0, 0.1);
-      &:first-child {
+      &:first-of-type {
         border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
       }
     }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Modal from "@components/@common/Modal";
 import { useRouter } from "next/router";
 import { unitWon } from "@utils/returnData";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { BounceTurnMotion } from "@styles/keyframe";
 import { getData } from "@api/firestore";
 import Loading from "@components/@common/Loading";

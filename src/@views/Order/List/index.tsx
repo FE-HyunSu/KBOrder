@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { setData, getData } from "@api/firestore";
 import Loading from "@components/@common/Loading";
 import OrderItem from "@components/Order/List/OrderItem";

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import useIntersectionObserver from "@hooks/useIntersectionObserver";
 
 interface ChartHamType {

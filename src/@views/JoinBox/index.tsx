@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { authJoin, setData } from "@api/firestore";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Loading from "@components/@common/Loading";
 import ImgLogo from "@images/img_logo.png";
 import { LogoMotion, BounceMotion, TextMotion } from "@styles/keyframe";

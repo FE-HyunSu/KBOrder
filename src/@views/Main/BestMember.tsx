@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { getData } from "@api/firestore";
 import MotionCount from "@components/@common/MotionCount";
 import ChartHam from "@components/@common/ChartHam";
@@ -158,7 +158,7 @@ const BestMemberBox = styled.div`
     display: flex;
     align-items: center;
     height: 5rem;
-    &:first-child {
+    &:first-of-type {
       span {
         font-size: 1.8rem;
         color: #1a1a1a;

@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import Loading from "@components/@common/Loading";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { LogoMotion, BounceMotion, TextMotion } from "@styles/keyframe";
 import { getData, loginAuth } from "@api/firestore";
 import { useRecoilState } from "recoil";

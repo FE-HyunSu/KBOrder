@@ -62,7 +62,7 @@ const Header = () => {
 
 export default Header;
 
-export const HeaderUI = styled.header`
+const HeaderUI = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -12,7 +12,7 @@ const Footer = () => {
 };
 export default Footer;
 
-export const FooterUI = styled.footer`
+const FooterUI = styled.footer`
   display: block;
   height: 5rem;
   background-color: #fff;

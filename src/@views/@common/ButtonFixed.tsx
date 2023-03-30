@@ -10,16 +10,16 @@ interface ButtonFixedType {
 const ButtonFixed = ({ name, onClickFn }: ButtonFixedType) => {
   return (
     <>
-      <BtnOrderList type="button" onClick={() => onClickFn()}>
+      <BtnBottomFixed type="button" onClick={() => onClickFn()}>
         {name}
-      </BtnOrderList>
+      </BtnBottomFixed>
     </>
   );
 };
 
 export default ButtonFixed;
 
-const BtnOrderList = styled.button`
+const BtnBottomFixed = styled.button`
   position: fixed;
   right: 0;
   bottom: 7rem;

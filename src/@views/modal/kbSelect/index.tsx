@@ -18,6 +18,10 @@ interface menuListType {
   name: string;
   price: number;
 }
+interface menuListDataType {
+  data(): any;
+  id: string;
+}
 
 const ModalKbSelect = (props: ModalProps) => {
   const router = useRouter();
@@ -32,7 +36,7 @@ const ModalKbSelect = (props: ModalProps) => {
     setLoading(true);
     try {
       await getData("menuList").then((data) => {
-        const menuList = data.docs.map((item: any) => {
+        const menuList = data.docs.map((item: menuListDataType) => {
           return { ...item.data(), id: item.id };
         });
         setDataList(menuList);

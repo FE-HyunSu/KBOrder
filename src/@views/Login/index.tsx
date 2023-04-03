@@ -16,6 +16,15 @@ interface ErrorType {
   message: string;
 }
 
+interface UserListType {
+  data(): any;
+  id: string;
+}
+
+interface userInfoType {
+  uid: string;
+}
+
 const Login = () => {
   const router = useRouter();
   const emailRef = useRef<HTMLInputElement>(null);
@@ -56,10 +65,12 @@ const Login = () => {
     setLoading(true);
     try {
       await getData("user").then((data) => {
-        const userList = data.docs.map((item: any) => {
+        const userList = data.docs.map((item: UserListType) => {
           return { ...item.data(), id: item.id };
         });
-        const userInfo = userList.filter((item: any) => item.uid === key);
+        const userInfo = userList.filter(
+          (item: userInfoType) => item.uid === key
+        );
         setUserInfo({
           uid: userInfo[0].uid,
           name: userInfo[0].name,

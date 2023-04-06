@@ -5,6 +5,7 @@ import Intro from "@components/Main/Intro";
 import ButtonFixed from "@components/@common/ButtonFixed";
 import BestMember from "@components/Main/BestMember";
 import BestMenu from "@components/Main/BestMenu";
+import TotalSales from "@components/Main/TotalSales";
 
 const Main = () => {
   const router = useRouter();
@@ -20,6 +21,7 @@ const Main = () => {
           <BestMenu />
           <BestMember />
           <ButtonFixed name={`주문목록보기`} onClickFn={orderListMove} />
+          <TotalSales />
         </div>
       </MainBox>
     </>

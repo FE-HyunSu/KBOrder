@@ -23,7 +23,7 @@ const ChartHam = ({ count }: ChartHamType) => {
   return (
     <>
       <ChartHamUI
-        style={{ width: hamWidth + `rem` }}
+        style={{ width: (isVisible ? hamWidth : 0) + `rem` }}
         ref={itemRef}
       ></ChartHamUI>
     </>

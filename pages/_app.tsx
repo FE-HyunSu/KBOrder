@@ -4,7 +4,7 @@ import Head from "next/head";
 import { RecoilRoot } from "recoil";
 import { ThemeProvider } from "@emotion/react";
 import { media } from "@styles/theme";
-import GlobalStyle from "../src/styles/global-style";
+import GlobalStyle from "@styles/global-style";
 import Header from "@components/Header";
 import Footer from "@components/Footer";
 import dayjs from "dayjs";

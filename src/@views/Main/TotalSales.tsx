@@ -6,12 +6,14 @@ import { getData } from "@api/firestore";
 import Image from "next/image";
 import ImgLogo from "@images/img_logo.png";
 import { BounceTurnMotion } from "@styles/keyframe";
+import { media } from "@styles/theme";
 
 const TotalSales = () => {
   const itemRef = useRef<HTMLDivElement>(null);
   const viewCheck = useIntersectionObserver(itemRef, {});
   const isVisible = !!viewCheck?.isIntersecting;
   const [isTotalCount, setTotalCount] = useState<number>(0);
+  const [isLoading, setLoading] = useState<boolean>(true);
 
   const getResultData = async () => {
     let resultData = [];
@@ -25,6 +27,7 @@ const TotalSales = () => {
         totalPrice += item.price;
       });
       setTotalCount(totalPrice);
+      setLoading(false);
     });
   };
 
@@ -34,14 +37,15 @@ const TotalSales = () => {
 
   return (
     <>
-      <SalesUI ref={itemRef}>
+      <SalesUI>
         <h1>
           📈 누적 매출 <span>(2023.03.06 ~ )</span>
         </h1>
-        <p>
-          <span className={isVisible ? `active` : ``}>
+        <p ref={itemRef}>
+          <span className={isVisible && !isLoading ? `active` : ``}>
             <Image src={ImgLogo} alt="LOGO" placeholder="blur" />{" "}
-            {isVisible ? <MotionCount count={isTotalCount} /> : 0}원
+            {isVisible && !isLoading ? <MotionCount count={isTotalCount} /> : 0}
+            원
           </span>
         </p>
       </SalesUI>
@@ -55,7 +59,6 @@ const SalesUI = styled.div`
   display: block;
   position: relative;
   width: 100%;
-  min-height: 24rem;
   padding-bottom: 6rem;
   h1 {
     display: block;
@@ -74,14 +77,14 @@ const SalesUI = styled.div`
     img {
       width: 8rem;
       height: 8rem;
-      margin: auto;
+      margin: 0 auto -1rem;
       animation: ${BounceTurnMotion} 1s infinite;
     }
     span {
       display: inline-block;
       position: relative;
       font-weight: 200;
-      font-size: 10rem;
+      font-size: 8rem;
       color: #000;
       &:before {
         content: "";
@@ -114,6 +117,16 @@ const SalesUI = styled.div`
           width: 100%;
           height: 1rem;
         }
+      }
+    }
+    ${media.mobile} {
+      img {
+        width: 5rem;
+        height: 5rem;
+        margin-bottom: -0.5rem;
+      }
+      span {
+        font-size: 5rem;
       }
     }
   }

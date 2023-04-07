@@ -19,9 +19,9 @@ const Main = () => {
         <div className="inner">
           <Intro />
           <BestMenu />
+          <TotalSales />
           <BestMember />
           <ButtonFixed name={`주문목록보기`} onClickFn={orderListMove} />
-          <TotalSales />
         </div>
       </MainBox>
     </>

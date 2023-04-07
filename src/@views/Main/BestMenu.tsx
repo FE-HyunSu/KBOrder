@@ -1,6 +1,7 @@
 import ChartDoughnut from "@components/@common/ChartDoughnut";
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
+import { media } from "@styles/theme";
 import { getData } from "@api/firestore";
 
 interface ChartItemType {
@@ -109,6 +110,10 @@ const SkeletonUl = styled.ul`
       box-sizing: border-box;
     }
   }
+  ${media.mobile} {
+    display: flex;
+    overflow: auto;
+  }
 `;
 
 const BestMenuBox = styled.div`
@@ -141,6 +146,10 @@ const BestMenuBox = styled.div`
       display: inline-block;
       width: 14rem;
       padding: 1rem;
+    }
+    ${media.mobile} {
+      display: flex;
+      overflow: auto;
     }
   }
 `;

@@ -22,7 +22,6 @@ const TotalSales = () => {
       resultData = data.docs.map((item: any) => {
         return { ...item.data() };
       });
-      console.log(resultData);
       resultData.forEach((item) => {
         totalPrice += item.price;
       });

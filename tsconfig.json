@@ -18,6 +18,7 @@
     "baseUrl": "./",
     "paths": {
       "@images/*": ["public/images/*"],
+      "@constants/*": ["src/constants/*"],
       "@components/*": ["src/@views/*"],
       "@utils/*": ["src/utils/*"],
       "@api/*": ["src/api/*"],

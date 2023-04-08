@@ -6,20 +6,14 @@ import {
   TextMotion,
   TextAfter,
 } from "@styles/keyframe";
-import Image from "next/image";
-import ImgLogo from "@images/img_logo.png";
+import { IMAGES } from "@constants/images";
 
 const Loading = () => {
   return (
     <>
       <LoadingUI>
         <LoadingBox>
-          <Image
-            src={ImgLogo}
-            alt="LOGO"
-            placeholder="blur"
-            className="img-logo"
-          />
+          <img src={IMAGES.LOGO} className="img-logo" alt="" />
           <p>LOADING</p>
         </LoadingBox>
       </LoadingUI>

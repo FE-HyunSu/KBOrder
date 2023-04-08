@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import Link from "next/link";
-import Image from "next/image";
-import ImgLogo from "@images/img_logo.png";
+import { IMAGES } from "@constants/images";
 import { userAtom } from "../../store/store";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useRouter } from "next/router";
@@ -37,7 +36,7 @@ const Header = () => {
       <HeaderUI>
         <h1>
           <Link href={"/"}>
-            <Image src={ImgLogo} alt="LOGO" placeholder="blur" />
+            <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
             KBOrder
           </Link>
         </h1>

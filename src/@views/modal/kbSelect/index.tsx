@@ -8,6 +8,7 @@ import { getData } from "@api/firestore";
 import Loading from "@components/@common/Loading";
 import { userAtom } from "../../../store/store";
 import { useRecoilValue } from "recoil";
+import { IMAGES } from "@constants/images";
 
 interface ModalProps {
   onClose: () => void;
@@ -219,7 +220,7 @@ export const ModalOrderUI = styled.div`
             width: 2rem;
             height: 2rem;
             margin: auto;
-            background: url(/images/img_logo.png) no-repeat 0 0 / 100% auto;
+            background: url(${IMAGES.LOGO}) no-repeat 0 0 / 100% auto;
             animation: ${BounceTurnMotion} 1s infinite;
           }
         }

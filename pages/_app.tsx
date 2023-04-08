@@ -10,6 +10,7 @@ import Footer from "@components/Footer";
 import dayjs from "dayjs";
 import isLeapYear from "dayjs/plugin/isLeapYear"; // 윤년 판단 플러그인.
 import "dayjs/locale/ko"; // 한국어 가져오기.
+import { IMAGES, ICONS } from "@constants/images";
 dayjs.extend(isLeapYear); // 플러그인 등록.
 dayjs.locale("ko"); // 언어 등록.
 
@@ -27,8 +28,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             property="og:description"
             content="삼성동 이레 김밥주문 페이지"
           />
-          <meta property="og:image" content="/images/img_meta.png" />
-          <link rel="icon" href="/favicon.ico" />
+          <meta property="og:image" content={IMAGES.META} />
+          <link rel="icon" href={ICONS.FAVICON} />
           <title>🍙 KBOrder</title>
         </Head>
         <GlobalStyle />

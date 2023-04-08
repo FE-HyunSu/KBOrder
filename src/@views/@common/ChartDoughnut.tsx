@@ -5,6 +5,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 import { Doughnut } from "react-chartjs-2";
 import { ArcElement } from "chart.js";
 import MotionCount from "./MotionCount";
+import { IMAGES } from "@constants/images";
 ChartJS.register(ArcElement);
 
 interface ChartDataType {
@@ -120,7 +121,7 @@ const ChartBoxUI = styled.div`
         width: 4rem;
         height: 4rem;
         margin: -4rem auto 0;
-        background: url(/images/img_logo.png) no-repeat 0 0 / 100% auto;
+        background: url(${IMAGES.LOGO}) no-repeat 0 0 / 100% auto;
         animation: ${BounceTurnMotion} 1s infinite;
       }
       em {

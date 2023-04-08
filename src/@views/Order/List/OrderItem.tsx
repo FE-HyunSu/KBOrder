@@ -6,6 +6,7 @@ import { returnDate } from "@utils/returnData";
 import { BounceTurnMotion } from "@styles/keyframe";
 import useIntersectionObserver from "@hooks/useIntersectionObserver";
 import { viewEffect } from "@styles/keyframe";
+import { IMAGES } from "@constants/images";
 
 interface dateListType {
   seq: string;
@@ -115,7 +116,7 @@ const OrderItemLi = styled.li`
             width: 2rem;
             height: 2rem;
             margin: auto;
-            background: url(/images/img_logo.png) no-repeat 0 0 / 100% auto;
+            background: url(${IMAGES.LOGO}) no-repeat 0 0 / 100% auto;
             animation: ${BounceTurnMotion} 1s infinite;
           }
         }

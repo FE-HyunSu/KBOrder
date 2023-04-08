@@ -1,10 +1,9 @@
 import React, { useState, useRef } from "react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import { authJoin, setData } from "@api/firestore";
 import styled from "@emotion/styled";
 import Loading from "@components/@common/Loading";
-import ImgLogo from "@images/img_logo.png";
+import { IMAGES } from "@constants/images";
 import { LogoMotion, BounceMotion, TextMotion } from "@styles/keyframe";
 import {
   validationName,
@@ -100,12 +99,7 @@ const JoinBox = () => {
     <>
       {isLoading && isLoading ? <Loading /> : null}
       <JoinUI>
-        <Image
-          src={ImgLogo}
-          alt="LOGO"
-          placeholder="blur"
-          className="img-logo"
-        />
+        <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
         <p>JOIN</p>
         <p>
           <span>회원가입</span>

@@ -13,6 +13,7 @@ import { useRecoilValue } from "recoil";
 import { unitWon, returnDate } from "@utils/returnData";
 import ButtonFixed from "@components/@common/ButtonFixed";
 import Link from "next/link";
+import { IMAGES } from "@constants/images";
 
 interface menuListType {
   menuName: string;
@@ -372,7 +373,7 @@ const OrderDetailUI = styled.section`
                 width: 2rem;
                 height: 2rem;
                 margin: auto;
-                background: url(/images/img_logo.png) no-repeat 0 0 / 100% auto;
+                background: url(${IMAGES.LOGO}) no-repeat 0 0 / 100% auto;
                 animation: ${BounceTurnMotion} 1s infinite;
               }
             }

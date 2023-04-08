@@ -3,8 +3,7 @@ import styled from "@emotion/styled";
 import MotionCount from "@components/@common/MotionCount";
 import useIntersectionObserver from "@hooks/useIntersectionObserver";
 import { getData } from "@api/firestore";
-import Image from "next/image";
-import ImgLogo from "@images/img_logo.png";
+import { IMAGES } from "@constants/images";
 import { BounceTurnMotion } from "@styles/keyframe";
 import { media } from "@styles/theme";
 
@@ -42,7 +41,7 @@ const TotalSales = () => {
         </h1>
         <p ref={itemRef}>
           <span className={isVisible && !isLoading ? `active` : ``}>
-            <Image src={ImgLogo} alt="LOGO" placeholder="blur" />{" "}
+            <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
             {isVisible && !isLoading ? <MotionCount count={isTotalCount} /> : 0}
             원
           </span>

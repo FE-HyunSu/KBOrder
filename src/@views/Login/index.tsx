@@ -1,5 +1,4 @@
 import React, { useState, useRef } from "react";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import Loading from "@components/@common/Loading";
 import styled from "@emotion/styled";
@@ -7,7 +6,7 @@ import { LogoMotion, BounceMotion, TextMotion } from "@styles/keyframe";
 import { getData, loginAuth } from "@api/firestore";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../store/store";
-import ImgLogo from "@images/img_logo.png";
+import { IMAGES } from "@constants/images";
 import Link from "next/link";
 
 interface ErrorType {
@@ -120,12 +119,12 @@ const Login = () => {
     <>
       {isLoading && isLoading ? <Loading /> : null}
       <LoginUI>
-        <Image
-          src={ImgLogo}
+        {/* <Image
+          src={IMAGES.LOGO}
           alt="LOGO"
           placeholder="blur"
           className="img-logo"
-        />
+        /> */}
         <p>LOGIN</p>
         <p>
           <span>로그인</span>

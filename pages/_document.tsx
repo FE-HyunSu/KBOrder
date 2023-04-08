@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
+import { IMAGES, ICONS } from "@constants/images";
 
 class MyDocument extends Document {
   render() {
@@ -6,9 +7,9 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta charSet="utf-8" />
-          <link rel="shortcut icon" href="/favicon.ico" type="image/svg" />
+          <link rel="shortcut icon" href={ICONS.FAVICON} type="image/svg" />
           <meta property="og:title" content="KB-Order" />
-          <meta property="og:image" content="/images/img_meta.png" />
+          <meta property="og:image" content={IMAGES.META} />
           <meta
             property="og:description"
             content="삼성동 이레 김밥주문 페이지"

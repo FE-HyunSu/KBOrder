@@ -7,6 +7,7 @@ import { BounceTurnMotion } from "@styles/keyframe";
 import useIntersectionObserver from "@hooks/useIntersectionObserver";
 import { viewEffect } from "@styles/keyframe";
 import { IMAGES } from "@constants/images";
+import { ROUTES } from "@constants/routers";
 
 interface dateListType {
   seq: string;
@@ -36,7 +37,7 @@ const OrderItem = ({ seq, liIndex, orderClose }: dateListType) => {
         ref={itemRef}
       >
         <Link
-          href={!!seq ? `/list/` + seq : ``}
+          href={!!seq ? ROUTES.LIST + `/` + seq : ``}
           className={isVisible ? `active` : ``}
           style={{ animationDelay: Number(isDelay) * 0.05 + `s` }}
         >

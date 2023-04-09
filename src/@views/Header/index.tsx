@@ -5,6 +5,7 @@ import { IMAGES } from "@constants/images";
 import { userAtom } from "../../store/store";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useRouter } from "next/router";
+import { ROUTES } from "@constants/routers";
 
 interface userDataType {
   uid: string;
@@ -24,7 +25,7 @@ const Header = () => {
       name: "",
       email: "",
     });
-    router.push("/");
+    router.push(ROUTES.INDEX);
   };
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const Header = () => {
     <>
       <HeaderUI>
         <h1>
-          <Link href={"/"}>
+          <Link href={ROUTES.INDEX}>
             <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
             KBOrder
           </Link>

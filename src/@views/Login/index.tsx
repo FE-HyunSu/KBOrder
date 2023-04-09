@@ -7,6 +7,7 @@ import { getData, loginAuth } from "@api/firestore";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../store/store";
 import { IMAGES } from "@constants/images";
+import { ROUTES } from "@constants/routers";
 import Link from "next/link";
 
 interface ErrorType {
@@ -119,12 +120,7 @@ const Login = () => {
     <>
       {isLoading && isLoading ? <Loading /> : null}
       <LoginUI>
-        {/* <Image
-          src={IMAGES.LOGO}
-          alt="LOGO"
-          placeholder="blur"
-          className="img-logo"
-        /> */}
+        <img src={IMAGES.LOGO} alt="LOGO" className="img-logo" />
         <p>LOGIN</p>
         <p>
           <span>로그인</span>
@@ -162,7 +158,7 @@ const Login = () => {
           로그인 없이 구경하기
         </button>
         <p className="text-links">
-          <Link href="/join">회원가입</Link>
+          <Link href={ROUTES.JOIN}>회원가입</Link>
         </p>
       </LoginUI>
     </>

@@ -6,11 +6,12 @@ import ButtonFixed from "@components/@common/ButtonFixed";
 import BestMember from "@components/Main/BestMember";
 import BestMenu from "@components/Main/BestMenu";
 import TotalSales from "@components/Main/TotalSales";
+import { ROUTES } from "@constants/routers";
 
 const Main = () => {
   const router = useRouter();
   const orderListMove = () => {
-    router.push("/list");
+    router.push(ROUTES.LIST);
   };
 
   return (

@@ -13,7 +13,7 @@ const Loading = () => {
     <>
       <LoadingUI>
         <LoadingBox>
-          <img src={IMAGES.LOGO} className="img-logo" alt="" />
+          <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
           <p>LOADING</p>
         </LoadingBox>
       </LoadingUI>

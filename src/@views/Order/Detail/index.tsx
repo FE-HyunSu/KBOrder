@@ -14,6 +14,7 @@ import { unitWon, returnDate } from "@utils/returnData";
 import ButtonFixed from "@components/@common/ButtonFixed";
 import Link from "next/link";
 import { IMAGES } from "@constants/images";
+import { ROUTES } from "@constants/routers";
 
 interface menuListType {
   menuName: string;
@@ -175,7 +176,7 @@ const OrderDetail = () => {
                   주문마감
                 </BtnOrderClose>
               ) : null}
-              <Link href="tel:025675976">전화걸기</Link>
+              <Link href={ROUTES.STORE_TEL}>전화걸기</Link>
             </h1>
             <div className="order-info">
               <p>

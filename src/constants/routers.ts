@@ -4,4 +4,5 @@ export const ROUTES = {
   LIST: "/list",
   MAIN: "/main",
   JOIN: "/join",
+  STORE_TEL: "tel:025675976",
 };

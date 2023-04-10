@@ -1,13 +1,13 @@
-import React, { useRef, useState, useEffect } from "react";
-import Link from "next/link";
-import styled from "@emotion/styled";
-import dayjs from "dayjs";
-import { returnDate } from "@utils/returnData";
-import { BounceTurnMotion } from "@styles/keyframe";
-import useIntersectionObserver from "@hooks/useIntersectionObserver";
-import { viewEffect } from "@styles/keyframe";
-import { IMAGES } from "@constants/images";
-import { ROUTES } from "@constants/routers";
+import React, { useRef, useState, useEffect } from 'react';
+import Link from 'next/link';
+import styled from '@emotion/styled';
+import dayjs from 'dayjs';
+import { returnDate } from '@utils/returnData';
+import { BounceTurnMotion } from '@styles/keyframe';
+import useIntersectionObserver from '@hooks/useIntersectionObserver';
+import { viewEffect } from '@styles/keyframe';
+import { IMAGES } from '@constants/images';
+import { ROUTES } from '@constants/routers';
 
 interface dateListType {
   seq: string;
@@ -29,26 +29,22 @@ const OrderItem = ({ seq, liIndex, orderClose }: dateListType) => {
     <>
       <OrderItemLi
         className={
-          dayjs(new Date(returnDate(seq))).format("YYYY/MM/DD") ===
-          dayjs(new Date()).format("YYYY/MM/DD")
+          dayjs(new Date(returnDate(seq))).format('YYYY/MM/DD') === dayjs(new Date()).format('YYYY/MM/DD')
             ? `open`
             : `closed`
         }
-        ref={itemRef}
-      >
+        ref={itemRef}>
         <Link
           href={!!seq ? ROUTES.LIST + `/` + seq : ``}
           className={isVisible ? `active` : ``}
-          style={{ animationDelay: Number(isDelay) * 0.05 + `s` }}
-        >
+          style={{ animationDelay: Number(isDelay) * 0.05 + `s` }}>
           <dl>
             <dt>
               <span></span>
-              {dayjs(new Date(returnDate(seq))).format("M월D일(ddd)")} 김밥주문
+              {dayjs(new Date(returnDate(seq))).format('M월D일(ddd)')} 김밥주문
             </dt>
             <dd>
-              {dayjs(new Date(returnDate(seq))).format("YYYY/MM/DD") !==
-              dayjs(new Date()).format("YYYY/MM/DD")
+              {dayjs(new Date(returnDate(seq))).format('YYYY/MM/DD') !== dayjs(new Date()).format('YYYY/MM/DD')
                 ? `마감`
                 : orderClose
                 ? `주문마감`
@@ -109,7 +105,7 @@ const OrderItemLi = styled.li`
           font-size: 1.4rem;
           transition: 0.3s;
           &:before {
-            content: "";
+            content: '';
             position: absolute;
             top: 0;
             left: 1rem;

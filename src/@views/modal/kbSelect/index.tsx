@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import Modal from "@components/@common/Modal";
-import { useRouter } from "next/router";
-import { unitWon } from "@utils/returnData";
-import styled from "@emotion/styled";
-import { BounceTurnMotion } from "@styles/keyframe";
-import { getData } from "@api/firestore";
-import Loading from "@components/@common/Loading";
-import { userAtom } from "../../../store/store";
-import { useRecoilValue } from "recoil";
-import { IMAGES } from "@constants/images";
+import React, { useState, useEffect } from 'react';
+import Modal from '@components/@common/Modal';
+import { useRouter } from 'next/router';
+import { unitWon } from '@utils/returnData';
+import styled from '@emotion/styled';
+import { BounceTurnMotion } from '@styles/keyframe';
+import { getData } from '@api/firestore';
+import Loading from '@components/@common/Loading';
+import { userAtom } from '../../../store/store';
+import { useRecoilValue } from 'recoil';
+import { IMAGES } from '@constants/images';
 
 interface ModalProps {
   onClose: () => void;
@@ -30,13 +30,13 @@ const ModalKbSelect = (props: ModalProps) => {
   const [isModalView, setModalView] = useState<Boolean>(false);
   const [isLoading, setLoading] = useState<Boolean>(true);
   const [dataList, setDataList] = useState<menuListType[]>([]);
-  const [selectItem, setSelectItem] = useState<String>("");
+  const [selectItem, setSelectItem] = useState<String>('');
   const [isSelect, setSelect] = useState<Boolean>(false);
   const atomUserInfo = useRecoilValue(userAtom);
   const getMenuList = async () => {
     setLoading(true);
     try {
-      await getData("menuList").then((data) => {
+      await getData('menuList').then((data) => {
         const menuList = data.docs.map((item: menuListDataType) => {
           return { ...item.data(), id: item.id };
         });
@@ -50,11 +50,11 @@ const ModalKbSelect = (props: ModalProps) => {
   };
 
   const validation = () => {
-    if (atomUserInfo.email === "") {
-      alert("주문 하시려면 로그인 후 이용해 주세요.");
-      router.push("/");
+    if (atomUserInfo.email === '') {
+      alert('주문 하시려면 로그인 후 이용해 주세요.');
+      router.push('/');
     } else if (!selectItem) {
-      alert("메뉴를 선택해 주세요.");
+      alert('메뉴를 선택해 주세요.');
     } else {
       props.returnFn(atomUserInfo.name, atomUserInfo.email, selectItem, id);
     }
@@ -95,11 +95,7 @@ const ModalKbSelect = (props: ModalProps) => {
             </>
           )}
         </ul>
-        <BtnComplete
-          type="button"
-          onClick={() => validation()}
-          disabled={!isSelect}
-        >
+        <BtnComplete type="button" onClick={() => validation()} disabled={!isSelect}>
           선택완료
         </BtnComplete>
       </ModalOrderUI>
@@ -117,7 +113,7 @@ export const BtnClose = styled.button`
   height: 4rem;
   text-indent: -999rem;
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
@@ -130,7 +126,7 @@ export const BtnClose = styled.button`
     transform: rotate(45deg);
   }
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
@@ -182,7 +178,7 @@ export const ModalOrderUI = styled.div`
               opacity: 0;
             }
             &:after {
-              content: "";
+              content: '';
               position: absolute;
               top: 0;
               left: 1.4rem;
@@ -212,7 +208,7 @@ export const ModalOrderUI = styled.div`
           font-size: 1.4rem;
           transition: 0.3s;
           &:before {
-            content: "";
+            content: '';
             position: absolute;
             top: 0;
             left: 1rem;
@@ -227,7 +223,7 @@ export const ModalOrderUI = styled.div`
         em {
           font-size: 1.4rem;
           &:before {
-            content: "";
+            content: '';
             position: absolute;
             top: 0;
             left: 0;

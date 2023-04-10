@@ -1,8 +1,8 @@
-import ChartDoughnut from "@components/@common/ChartDoughnut";
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
-import { media } from "@styles/theme";
-import { getData } from "@api/firestore";
+import ChartDoughnut from '@components/@common/ChartDoughnut';
+import React, { useState, useEffect } from 'react';
+import styled from '@emotion/styled';
+import { media } from '@styles/theme';
+import { getData } from '@api/firestore';
 
 interface ChartItemType {
   name: string;
@@ -26,7 +26,7 @@ const BestMenu = () => {
     let resultData: OrderInfoType[] = [];
     let menuCountList: string[] = [];
     let userCountList: string[] = [];
-    await getData("orderList").then((data) => {
+    await getData('orderList').then((data) => {
       resultData = data.docs.map((item: any) => {
         return { ...item.data() };
       });
@@ -41,8 +41,7 @@ const BestMenu = () => {
     dataList.forEach((item) => {
       menuResult.push({
         name: item,
-        value: menuCountList.filter((subItem: string) => subItem === item)
-          .length,
+        value: menuCountList.filter((subItem: string) => subItem === item).length,
       });
     });
     menuResult.sort((a: ChartItemType, b: ChartItemType) => b.value - a.value);
@@ -63,7 +62,7 @@ const BestMenu = () => {
         {isLoading && isLoading ? (
           <SkeletonUl>
             {Array(3)
-              .fill("")
+              .fill('')
               .map((item, idx) => (
                 <li key={idx}>
                   <span></span>

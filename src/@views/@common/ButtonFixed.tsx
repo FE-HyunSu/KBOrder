@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { IntroMotion } from "@styles/keyframe";
+import React from 'react';
+import styled from '@emotion/styled';
+import { IntroMotion } from '@styles/keyframe';
 
 interface ButtonFixedType {
   name: string;

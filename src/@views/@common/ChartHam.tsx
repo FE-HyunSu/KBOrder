@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
-import styled from "@emotion/styled";
-import useIntersectionObserver from "@hooks/useIntersectionObserver";
+import React, { useEffect, useState, useRef } from 'react';
+import styled from '@emotion/styled';
+import useIntersectionObserver from '@hooks/useIntersectionObserver';
 
 interface ChartHamType {
   count: number;
@@ -22,10 +22,7 @@ const ChartHam = ({ count }: ChartHamType) => {
 
   return (
     <>
-      <ChartHamUI
-        style={{ width: (isVisible ? hamWidth : 0) + `rem` }}
-        ref={itemRef}
-      ></ChartHamUI>
+      <ChartHamUI style={{ width: (isVisible ? hamWidth : 0) + `rem` }} ref={itemRef}></ChartHamUI>
     </>
   );
 };
@@ -44,7 +41,7 @@ const ChartHamUI = styled.strong`
   border-bottom-left-radius: 1rem;
   transition: 2s;
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     right: 0;
     bottom: 0;
@@ -54,7 +51,7 @@ const ChartHamUI = styled.strong`
     border-bottom-left-radius: 1rem;
   }
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: -0.7rem;

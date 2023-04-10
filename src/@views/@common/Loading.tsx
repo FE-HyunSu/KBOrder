@@ -1,12 +1,7 @@
-import React from "react";
-import styled from "@emotion/styled";
-import {
-  LogoMotion,
-  BounceMotion,
-  TextMotion,
-  TextAfter,
-} from "@styles/keyframe";
-import { IMAGES } from "@constants/images";
+import React from 'react';
+import styled from '@emotion/styled';
+import { LogoMotion, BounceMotion, TextMotion, TextAfter } from '@styles/keyframe';
+import { IMAGES } from '@constants/images';
 
 const Loading = () => {
   return (
@@ -38,7 +33,7 @@ const LoadingUI = styled.div`
   }
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -62,7 +57,7 @@ const LoadingUI = styled.div`
     animation: ${TextMotion} 0.6s forwards;
     opacity: 0;
     &:after {
-      content: ".";
+      content: '.';
       display: inline-block;
       width: 2rem;
       text-align: left;

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from 'react';
 
 interface CountType {
   count: number;
@@ -9,7 +9,7 @@ const MotionCount = ({ count }: CountType) => {
   const unitWon = (num: number) => {
     return Math.round(num)
       .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   };
 
   useEffect(() => {
@@ -20,9 +20,7 @@ const MotionCount = ({ count }: CountType) => {
           clearInterval(countInterval);
           countRef.current.innerHTML = unitWon(count);
         } else if (countRef.current) {
-          countRef.current.innerHTML = unitWon(
-            Math.round((resultNumber += count / (2000 / 60)))
-          );
+          countRef.current.innerHTML = unitWon(Math.round((resultNumber += count / (2000 / 60))));
         }
       } catch {
         clearInterval(countInterval);

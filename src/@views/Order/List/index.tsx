@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
-import { setData, getData } from "@api/firestore";
-import Loading from "@components/@common/Loading";
-import OrderItem from "@components/Order/List/OrderItem";
-import dayjs from "dayjs";
+import React, { useState, useEffect } from 'react';
+import styled from '@emotion/styled';
+import { setData, getData } from '@api/firestore';
+import Loading from '@components/@common/Loading';
+import OrderItem from '@components/Order/List/OrderItem';
+import dayjs from 'dayjs';
 
 interface dateListType {
   seq: string;
@@ -15,37 +15,33 @@ const OrderList = () => {
   const [isLoading, setLoading] = useState<Boolean>(true);
   const setItem = async () => {
     setLoading(true);
-    const today: string = dayjs(new Date()).format("YYYYMMDD");
+    const today: string = dayjs(new Date()).format('YYYYMMDD');
     let dataCheck: Boolean = false;
     isOrderList.forEach((item) => {
       if (item.seq === today) dataCheck = true;
     });
-    if (confirm("오늘의 주문을 만드시겠습니까?")) {
+    if (confirm('오늘의 주문을 만드시겠습니까?')) {
       if (dataCheck) {
-        alert("오늘의 주문이 이미 생성 되어있습니다.");
+        alert('오늘의 주문이 이미 생성 되어있습니다.');
         setLoading(false);
       } else {
-        await setData("dateList", { seq: today }).then((data) => {
+        await setData('dateList', { seq: today }).then((data) => {
           getList();
         });
       }
     } else {
-      alert("취소 되었습니다.");
+      alert('취소 되었습니다.');
       setLoading(false);
     }
   };
   const getList = async () => {
     let dataList: dateListType[] = [];
-    await getData("dateList").then((data) => {
+    await getData('dateList').then((data) => {
       dataList = data.docs.map((item: any) => {
         return { ...item.data() };
       });
     });
-    setOrderList(
-      dataList.sort(
-        (a: dateListType, b: dateListType) => Number(b.seq) - Number(a.seq)
-      )
-    );
+    setOrderList(dataList.sort((a: dateListType, b: dateListType) => Number(b.seq) - Number(a.seq)));
     setLoading(false);
   };
   useEffect(() => {
@@ -72,9 +68,7 @@ const OrderList = () => {
                   />
                 ))}
             </ul>
-            <BtnCreateOrder onClick={() => setItem()}>
-              주문만들기
-            </BtnCreateOrder>
+            <BtnCreateOrder onClick={() => setItem()}>주문만들기</BtnCreateOrder>
           </div>
         </OrderListUI>
       )}
@@ -149,7 +143,7 @@ const BtnCreateOrder = styled.button`
     }
   }
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
@@ -163,7 +157,7 @@ const BtnCreateOrder = styled.button`
     transform: rotate(45deg);
   }
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 1.6rem;
     right: 1.6rem;

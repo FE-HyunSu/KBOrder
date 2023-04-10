@@ -1,12 +1,12 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { useRouter } from "next/router";
-import Intro from "@components/Main/Intro";
-import ButtonFixed from "@components/@common/ButtonFixed";
-import BestMember from "@components/Main/BestMember";
-import BestMenu from "@components/Main/BestMenu";
-import TotalSales from "@components/Main/TotalSales";
-import { ROUTES } from "@constants/routers";
+import React from 'react';
+import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
+import Intro from '@components/Main/Intro';
+import ButtonFixed from '@components/@common/ButtonFixed';
+import BestMember from '@components/Main/BestMember';
+import BestMenu from '@components/Main/BestMenu';
+import TotalSales from '@components/Main/TotalSales';
+import { ROUTES } from '@constants/routers';
 
 const Main = () => {
   const router = useRouter();

@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
-import RenderNav from "@components/renderNav";
-import { getData } from "@api/firestore";
+import React, { useState, useEffect } from 'react';
+import styled from '@emotion/styled';
+import RenderNav from '@components/renderNav';
+import { getData } from '@api/firestore';
 
 interface userListType {
   email: string;
@@ -14,7 +14,7 @@ const CSR = () => {
   const [userList, setUserList] = useState<userListType[]>([]);
   const getUserList = async () => {
     try {
-      await getData("user").then((data) => {
+      await getData('user').then((data) => {
         const userList = data.docs.map((item: any) => {
           return { ...item.data(), id: item.id };
         });

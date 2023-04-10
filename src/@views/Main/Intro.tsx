@@ -1,10 +1,10 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { MotionTextView } from "@styles/keyframe";
+import React from 'react';
+import styled from '@emotion/styled';
+import { MotionTextView } from '@styles/keyframe';
 
 const Intro = () => {
   const introContents = [
-    "안녕하세요.",
+    '안녕하세요.',
     <>
       삼성동 이레 김밥주문 페이지 <em>KB-Order</em> 입니다.
     </>,
@@ -14,8 +14,8 @@ const Intro = () => {
     <>
       <em>12:00</em> 까지 신청된 주문건에 한해서 일괄 전화 주문 들어갑니다.
     </>,
-    "",
-    "- Mason(김현수) -",
+    '',
+    '- Mason(김현수) -',
   ];
   return (
     <>

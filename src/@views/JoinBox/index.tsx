@@ -1,17 +1,12 @@
-import React, { useState, useRef } from "react";
-import { useRouter } from "next/router";
-import { authJoin, setData } from "@api/firestore";
-import styled from "@emotion/styled";
-import Loading from "@components/@common/Loading";
-import { IMAGES } from "@constants/images";
-import { LogoMotion, BounceMotion, TextMotion } from "@styles/keyframe";
-import {
-  validationName,
-  validationEmail,
-  validationPassword,
-  validationMatch,
-} from "@utils/validation";
-import { ROUTES } from "@constants/routers";
+import React, { useState, useRef } from 'react';
+import { useRouter } from 'next/router';
+import { authJoin, setData } from '@api/firestore';
+import styled from '@emotion/styled';
+import Loading from '@components/@common/Loading';
+import { IMAGES } from '@constants/images';
+import { LogoMotion, BounceMotion, TextMotion } from '@styles/keyframe';
+import { validationName, validationEmail, validationPassword, validationMatch } from '@utils/validation';
+import { ROUTES } from '@constants/routers';
 
 interface ErrorType {
   name: string;
@@ -34,20 +29,19 @@ const JoinBox = () => {
     const emailVal = emailRef.current?.value;
     const passwordVal = passwordRef.current?.value;
     const passwordChkVal = passwordChkRef.current?.value;
-    let infoText = "";
+    let infoText = '';
 
     if (!validationName(nameVal)) {
-      infoText = "이름을 2자 이상 입력해 주세요.";
+      infoText = '이름을 2자 이상 입력해 주세요.';
     } else if (!validationEmail(emailVal)) {
-      infoText = "이메일 형식을 맞춰 주세요.";
+      infoText = '이메일 형식을 맞춰 주세요.';
     } else if (!validationPassword(passwordVal)) {
-      infoText = "패스워드를 6자 이상 입력해 주세요.";
+      infoText = '패스워드를 6자 이상 입력해 주세요.';
     } else if (!validationMatch(passwordVal, passwordChkVal)) {
-      infoText = "패스워드가 서로 다릅니다.";
+      infoText = '패스워드가 서로 다릅니다.';
     }
 
-    if (joinInfoRef && joinInfoRef.current)
-      joinInfoRef.current.innerHTML = infoText;
+    if (joinInfoRef && joinInfoRef.current) joinInfoRef.current.innerHTML = infoText;
     if (
       validationName(nameVal) &&
       validationEmail(emailVal) &&
@@ -59,7 +53,7 @@ const JoinBox = () => {
 
   const addUser = async (uid: string, name: string, email: string) => {
     setLoading(true);
-    await setData("user", { uid: uid, name: name, email: email });
+    await setData('user', { uid: uid, name: name, email: email });
   };
 
   const joinAction = async () => {
@@ -67,14 +61,11 @@ const JoinBox = () => {
     validation();
     if (isValidation) {
       try {
-        const email: string =
-          emailRef && emailRef.current ? emailRef.current.value : "";
-        const password: string =
-          passwordRef && passwordRef.current ? passwordRef.current?.value : "";
-        const nameVal: string =
-          nameRef && nameRef.current ? nameRef.current?.value : "";
+        const email: string = emailRef && emailRef.current ? emailRef.current.value : '';
+        const password: string = passwordRef && passwordRef.current ? passwordRef.current?.value : '';
+        const nameVal: string = nameRef && nameRef.current ? nameRef.current?.value : '';
         await authJoin(email, password).then((data) => {
-          alert("회원가입이 완료 되었습니다.\n로그인 페이지로 이동합니다.");
+          alert('회원가입이 완료 되었습니다.\n로그인 페이지로 이동합니다.');
           if (nameVal) addUser(data.user.uid, nameVal, email);
           router.push(ROUTES.INDEX);
         });
@@ -82,18 +73,18 @@ const JoinBox = () => {
         console.log(e);
         const err = e as ErrorType;
         switch (err.code) {
-          case "auth/email-already-in-use":
-            alert("이미 가입된 이메일 주소 입니다.");
+          case 'auth/email-already-in-use':
+            alert('이미 가입된 이메일 주소 입니다.');
             break;
           default:
-            alert("오류가 발생 되었습니다. 다시 시도해 주세요.");
+            alert('오류가 발생 되었습니다. 다시 시도해 주세요.');
         }
       } finally {
         setLoading(false);
       }
     } else {
       setLoading(false);
-      alert("입력 정보를 확인해 주세요.");
+      alert('입력 정보를 확인해 주세요.');
     }
   };
   return (
@@ -110,21 +101,11 @@ const JoinBox = () => {
         <dl>
           <dt>이름</dt>
           <dd>
-            <input
-              type="text"
-              placeholder="이름을 입력해 주세요."
-              ref={nameRef}
-              onKeyUp={() => validation()}
-            />
+            <input type="text" placeholder="이름을 입력해 주세요." ref={nameRef} onKeyUp={() => validation()} />
           </dd>
           <dt>이메일</dt>
           <dd>
-            <input
-              type="text"
-              placeholder="이메일을 입력해 주세요."
-              ref={emailRef}
-              onKeyUp={() => validation()}
-            />
+            <input type="text" placeholder="이메일을 입력해 주세요." ref={emailRef} onKeyUp={() => validation()} />
           </dd>
           <dt>패스워드</dt>
           <dd>
@@ -145,11 +126,7 @@ const JoinBox = () => {
             />
           </dd>
         </dl>
-        <button
-          type="button"
-          onClick={() => joinAction()}
-          disabled={!isValidation}
-        >
+        <button type="button" onClick={() => joinAction()} disabled={!isValidation}>
           회원가입 완료
         </button>
         <p className="text-links">
@@ -264,7 +241,7 @@ export const JoinUI = styled.div`
       & + a {
         margin-left: 0.8rem;
         &:before {
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           bottom: 0;

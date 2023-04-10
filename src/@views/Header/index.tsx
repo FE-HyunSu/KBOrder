@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
-import Link from "next/link";
-import { IMAGES } from "@constants/images";
-import { userAtom } from "../../store/store";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { useRouter } from "next/router";
-import { ROUTES } from "@constants/routers";
+import React, { useState, useEffect } from 'react';
+import styled from '@emotion/styled';
+import Link from 'next/link';
+import { IMAGES } from '@constants/images';
+import { userAtom } from '../../store/store';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRouter } from 'next/router';
+import { ROUTES } from '@constants/routers';
 
 interface userDataType {
   uid: string;
@@ -19,11 +19,11 @@ const Header = () => {
   const [isUserData, setUserData] = useState<userDataType>();
   const router = useRouter();
   const logout = () => {
-    window.localStorage.removeItem("userUid");
+    window.localStorage.removeItem('userUid');
     setAtomUserInfo({
-      uid: "",
-      name: "",
-      email: "",
+      uid: '',
+      name: '',
+      email: '',
     });
     router.push(ROUTES.INDEX);
   };
@@ -42,15 +42,15 @@ const Header = () => {
           </Link>
         </h1>
         <p>
-          {isUserData && isUserData.uid !== "" ? (
+          {isUserData && isUserData.uid !== '' ? (
             <>
               <em>{isUserData.name}</em>님
               <button type="button" onClick={() => logout()}>
                 로그아웃
               </button>
             </>
-          ) : router.pathname !== "/" ? (
-            <button type="button" onClick={() => router.push("/")}>
+          ) : router.pathname !== '/' ? (
+            <button type="button" onClick={() => router.push('/')}>
               로그인
             </button>
           ) : null}

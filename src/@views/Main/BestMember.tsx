@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
-import { getData } from "@api/firestore";
-import MotionCount from "@components/@common/MotionCount";
-import ChartHam from "@components/@common/ChartHam";
+import React, { useState, useEffect } from 'react';
+import styled from '@emotion/styled';
+import { getData } from '@api/firestore';
+import MotionCount from '@components/@common/MotionCount';
+import ChartHam from '@components/@common/ChartHam';
 
 interface ChartItemType {
   name: string;
@@ -25,7 +25,7 @@ const BestMember = () => {
   const getDataList = async () => {
     let resultData: OrderInfoType[] = [];
     let userCountList: string[] = [];
-    await getData("orderList").then((data) => {
+    await getData('orderList').then((data) => {
       resultData = data.docs.map((item: any) => {
         return { ...item.data() };
       });
@@ -39,8 +39,7 @@ const BestMember = () => {
     userList.forEach((item) => {
       userResult.push({
         name: item,
-        value: userCountList.filter((subItem: string) => subItem === item)
-          .length,
+        value: userCountList.filter((subItem: string) => subItem === item).length,
       });
     });
     userResult.sort((a: ChartItemType, b: ChartItemType) => b.value - a.value);
@@ -68,7 +67,7 @@ const BestMember = () => {
         {isLoading && isLoading ? (
           <SkeletonUl>
             {Array(5)
-              .fill("")
+              .fill('')
               .map((item, idx) => (
                 <li key={idx}>
                   <span></span>

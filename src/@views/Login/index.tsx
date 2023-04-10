@@ -1,14 +1,14 @@
-import React, { useState, useRef } from "react";
-import { useRouter } from "next/router";
-import Loading from "@components/@common/Loading";
-import styled from "@emotion/styled";
-import { LogoMotion, BounceMotion, TextMotion } from "@styles/keyframe";
-import { getData, loginAuth } from "@api/firestore";
-import { useRecoilState } from "recoil";
-import { userAtom } from "../../store/store";
-import { IMAGES } from "@constants/images";
-import { ROUTES } from "@constants/routers";
-import Link from "next/link";
+import React, { useState, useRef } from 'react';
+import { useRouter } from 'next/router';
+import Loading from '@components/@common/Loading';
+import styled from '@emotion/styled';
+import { LogoMotion, BounceMotion, TextMotion } from '@styles/keyframe';
+import { getData, loginAuth } from '@api/firestore';
+import { useRecoilState } from 'recoil';
+import { userAtom } from '../../store/store';
+import { IMAGES } from '@constants/images';
+import { ROUTES } from '@constants/routers';
+import Link from 'next/link';
 
 interface ErrorType {
   name: string;
@@ -35,42 +35,28 @@ const Login = () => {
   const [isUserInfo, setUserInfo] = useRecoilState(userAtom);
 
   const validation = () => {
-    const emailRegExp =
-      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    const emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     const emailVal = emailRef.current?.value;
     const passwordVal = passwordRef.current?.value;
-    let infoText = "";
+    let infoText = '';
     if (emailVal && !emailVal.match(emailRegExp) && emailVal.length !== 0) {
-      infoText = "이메일 형식을 맞춰 주세요.";
-    } else if (
-      passwordVal &&
-      passwordVal.length < 6 &&
-      passwordVal.length !== 0
-    ) {
-      infoText = "패스워드는 6자 이상 입력해 주세요.";
+      infoText = '이메일 형식을 맞춰 주세요.';
+    } else if (passwordVal && passwordVal.length < 6 && passwordVal.length !== 0) {
+      infoText = '패스워드는 6자 이상 입력해 주세요.';
     }
 
-    if (loginInfoRef && loginInfoRef.current)
-      loginInfoRef.current.innerHTML = infoText;
-    if (
-      emailVal &&
-      passwordVal &&
-      emailVal.match(emailRegExp) &&
-      passwordVal.length >= 6
-    )
-      setValidation(true);
+    if (loginInfoRef && loginInfoRef.current) loginInfoRef.current.innerHTML = infoText;
+    if (emailVal && passwordVal && emailVal.match(emailRegExp) && passwordVal.length >= 6) setValidation(true);
   };
 
   const getUserInfo = async (key: string) => {
     setLoading(true);
     try {
-      await getData("user").then((data) => {
+      await getData('user').then((data) => {
         const userList = data.docs.map((item: UserListType) => {
           return { ...item.data(), id: item.id };
         });
-        const userInfo = userList.filter(
-          (item: userInfoType) => item.uid === key
-        );
+        const userInfo = userList.filter((item: userInfoType) => item.uid === key);
         setUserInfo({
           uid: userInfo[0].uid,
           name: userInfo[0].name,
@@ -89,30 +75,28 @@ const Login = () => {
     validation();
     if (isValidation) {
       try {
-        const email: string =
-          emailRef && emailRef.current ? emailRef.current.value : "";
-        const password: string =
-          passwordRef && passwordRef.current ? passwordRef.current?.value : "";
+        const email: string = emailRef && emailRef.current ? emailRef.current.value : '';
+        const password: string = passwordRef && passwordRef.current ? passwordRef.current?.value : '';
         await loginAuth(email, password).then((data) => {
           getUserInfo(data.user.uid);
-          router.push("/main");
+          router.push('/main');
         });
       } catch (e) {
         console.log(e);
         const err = e as ErrorType;
         switch (err.code) {
-          case "auth/user-not-found":
-            alert("등록되지 않은 회원입니다.");
+          case 'auth/user-not-found':
+            alert('등록되지 않은 회원입니다.');
             break;
           default:
-            alert("오류가 발생 되었습니다. 다시 시도해 주세요.");
+            alert('오류가 발생 되었습니다. 다시 시도해 주세요.');
         }
       } finally {
         setLoading(false);
       }
     } else {
       setLoading(false);
-      alert("입력 정보를 확인해 주세요.");
+      alert('입력 정보를 확인해 주세요.');
     }
   };
 
@@ -130,12 +114,7 @@ const Login = () => {
         <dl>
           <dt>이메일</dt>
           <dd>
-            <input
-              type="text"
-              placeholder="이메일을 입력해 주세요."
-              ref={emailRef}
-              onKeyUp={() => validation()}
-            />
+            <input type="text" placeholder="이메일을 입력해 주세요." ref={emailRef} onKeyUp={() => validation()} />
           </dd>
           <dt>패스워드</dt>
           <dd>
@@ -150,11 +129,7 @@ const Login = () => {
         <button type="button" onClick={() => loginAction()}>
           로그인
         </button>
-        <button
-          type="button"
-          onClick={() => router.push("main")}
-          className="btn-green"
-        >
+        <button type="button" onClick={() => router.push('main')} className="btn-green">
           로그인 없이 구경하기
         </button>
         <p className="text-links">
@@ -278,7 +253,7 @@ export const LoginUI = styled.div`
       & + a {
         margin-left: 0.8rem;
         &:before {
-          content: "";
+          content: '';
           position: absolute;
           top: 0;
           bottom: 0;

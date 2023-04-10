@@ -1,5 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
-import { IMAGES, ICONS } from "@constants/images";
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { IMAGES, ICONS } from '@constants/images';
 
 class MyDocument extends Document {
   render() {
@@ -10,10 +10,7 @@ class MyDocument extends Document {
           <link rel="shortcut icon" href={ICONS.FAVICON} type="image/svg" />
           <meta property="og:title" content="KB-Order" />
           <meta property="og:image" content={IMAGES.META} />
-          <meta
-            property="og:description"
-            content="삼성동 이레 김밥주문 페이지"
-          />
+          <meta property="og:description" content="삼성동 이레 김밥주문 페이지" />
           <meta property="og:url" content="https://kb-order.vercel.app" />
           <meta name="description" content="삼성동 이레 김밥주문 페이지" />
           <meta name="keywords" content="김밥주문" />

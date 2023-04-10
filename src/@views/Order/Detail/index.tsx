@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { useRouter } from "next/router";
-import dayjs from "dayjs";
-import styled from "@emotion/styled";
-import { BounceTurnMotion } from "@styles/keyframe";
-import { media } from "@styles/theme";
-import apiOrder from "../../../was/order";
-import Loading from "@components/@common/Loading";
-import ModalKbSelect from "../../modal/kbSelect";
-import { getData, setData, delData, updateData } from "@api/firestore";
-import { userAtom } from "../../../store/store";
-import { useRecoilValue } from "recoil";
-import { unitWon, returnDate } from "@utils/returnData";
-import ButtonFixed from "@components/@common/ButtonFixed";
-import Link from "next/link";
-import { IMAGES } from "@constants/images";
-import { ROUTES } from "@constants/routers";
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import dayjs from 'dayjs';
+import styled from '@emotion/styled';
+import { BounceTurnMotion } from '@styles/keyframe';
+import { media } from '@styles/theme';
+import apiOrder from '../../../was/order';
+import Loading from '@components/@common/Loading';
+import ModalKbSelect from '../../modal/kbSelect';
+import { getData, setData, delData, updateData } from '@api/firestore';
+import { userAtom } from '../../../store/store';
+import { useRecoilValue } from 'recoil';
+import { unitWon, returnDate } from '@utils/returnData';
+import ButtonFixed from '@components/@common/ButtonFixed';
+import Link from 'next/link';
+import { IMAGES } from '@constants/images';
+import { ROUTES } from '@constants/routers';
 
 interface menuListType {
   menuName: string;
@@ -37,13 +37,13 @@ const OrderDetail = () => {
   const [isOrderData, setOrderData] = useState<orderDataType[] | undefined>([]);
   const [orderTotal, setOrderTotal] = useState<menuListType[]>([]);
   const [isModalOpen, setModalOpen] = useState<Boolean>(false);
-  const [dateTitle, setDateTitle] = useState<String>("");
+  const [dateTitle, setDateTitle] = useState<String>('');
   const [isOpen, setOpen] = useState<Boolean>(false);
   const [isOrderClose, setOrderClose] = useState<Boolean>(false);
   const atomUserInfo = useRecoilValue(userAtom);
 
   const todayCloseCheck = async () => {
-    await getData("dateList").then((data) => {
+    await getData('dateList').then((data) => {
       const dataList = data.docs.map((item: any) => {
         return { ...item.data() };
       });
@@ -53,17 +53,17 @@ const OrderDetail = () => {
   };
 
   const orderClose = async () => {
-    if (confirm("주문을 마감처리 하시겠습니까?")) {
-      await getData("dateList").then((data) => {
+    if (confirm('주문을 마감처리 하시겠습니까?')) {
+      await getData('dateList').then((data) => {
         const dataList = data.docs.map((item: any) => {
           return { ...item.data(), id: item.id };
         });
         const todayInfo = dataList.filter((item) => item.seq === id)[0];
-        updateData("dateList", todayInfo.id, {
+        updateData('dateList', todayInfo.id, {
           seq: todayInfo.seq,
           orderClose: true,
         }).then((res) => {
-          alert("주문이 마감 되었습니다.");
+          alert('주문이 마감 되었습니다.');
           setOrderClose(true);
           orderListData();
         });
@@ -74,22 +74,16 @@ const OrderDetail = () => {
   // 페이지 정보 기본 셋팅.
   const pageInfoSet = (date: string) => {
     const dateText = returnDate(date);
-    setDateTitle(dayjs(new Date(dateText)).format("YYYY년 MM월 DD일 (ddd)"));
-    if (
-      dayjs(new Date(dateText)).format("YYYY/MM/DD") <
-      dayjs(new Date()).format("YYYY/MM/DD")
-    ) {
+    setDateTitle(dayjs(new Date(dateText)).format('YYYY년 MM월 DD일 (ddd)'));
+    if (dayjs(new Date(dateText)).format('YYYY/MM/DD') < dayjs(new Date()).format('YYYY/MM/DD')) {
       setOpen(false);
       setOrderClose(true);
-    } else if (
-      dayjs(new Date(dateText)).format("YYYY/MM/DD") ===
-      dayjs(new Date()).format("YYYY/MM/DD")
-    ) {
+    } else if (dayjs(new Date(dateText)).format('YYYY/MM/DD') === dayjs(new Date()).format('YYYY/MM/DD')) {
       setOpen(true);
       todayCloseCheck();
     } else {
-      alert("오픈전입니다. 돌아가세요.");
-      router.push("/main");
+      alert('오픈전입니다. 돌아가세요.');
+      router.push('/main');
     }
     orderListData();
   };
@@ -99,11 +93,10 @@ const OrderDetail = () => {
     let orderSum: string[] = [];
     let orderResult: menuListType[] = [];
     setLoading(true);
-    const orderData = apiOrder("orderList", "get", String(id));
+    const orderData = apiOrder('orderList', 'get', String(id));
     orderData.then((data: orderDataType[] | undefined) => {
       setOrderData(data);
-      if (!!data)
-        data.forEach((item: orderDataType) => orderSum.push(item.menuName));
+      if (!!data) data.forEach((item: orderDataType) => orderSum.push(item.menuName));
       const selectList = Array.from(new Set(orderSum));
       selectList.forEach((item) => {
         orderResult.push({
@@ -117,28 +110,23 @@ const OrderDetail = () => {
     });
   };
   const orderDelete = async (id: string) => {
-    if (await confirm("주문을 취소 할까요?")) {
-      await delData("orderList", id);
-      await alert("주문이 취소 되었습니다.");
+    if (await confirm('주문을 취소 할까요?')) {
+      await delData('orderList', id);
+      await alert('주문이 취소 되었습니다.');
       await orderListData();
     } else {
-      alert("주문 취소를 취소 하셨습니다.");
+      alert('주문 취소를 취소 하셨습니다.');
     }
   };
-  const updateList = async (
-    name: string,
-    email: string,
-    menuName: string,
-    seq: string
-  ) => {
+  const updateList = async (name: string, email: string, menuName: string, seq: string) => {
     let menuPrice = 0;
-    await getData("menuList").then((data) => {
+    await getData('menuList').then((data) => {
       const menuData = data.docs.map((item: any) => {
         return { ...item.data(), id: item.id };
       });
       menuPrice = menuData.filter((item) => item.name === menuName)[0].price;
     });
-    await setData("orderList", {
+    await setData('orderList', {
       menuName: menuName,
       seq: seq,
       price: menuPrice,
@@ -149,14 +137,14 @@ const OrderDetail = () => {
     handleModalClose();
   };
   const handleModalOpen = () => {
-    isOrderClose ? alert("오늘의 주문이 마감되었습니다.") : setModalOpen(true);
+    isOrderClose ? alert('오늘의 주문이 마감되었습니다.') : setModalOpen(true);
   };
   const handleModalClose = () => {
     setModalOpen(false);
   };
   useEffect(() => {
     if (!router.isReady) return;
-    if (typeof id === "string") pageInfoSet(id);
+    if (typeof id === 'string') pageInfoSet(id);
   }, [router.isReady]);
   return (
     <>
@@ -214,14 +202,11 @@ const OrderDetail = () => {
                         <dd>
                           <strong>{item.userName}</strong>
                           <em>{unitWon(item.price)}</em>
-                          {atomUserInfo.email !== "" &&
+                          {atomUserInfo.email !== '' &&
                           isOpen &&
                           !isOrderClose &&
                           atomUserInfo.email === item.userEmail ? (
-                            <BtnDeleteUI
-                              type="button"
-                              onClick={() => orderDelete(item.id)}
-                            >
+                            <BtnDeleteUI type="button" onClick={() => orderDelete(item.id)}>
                               주문취소
                             </BtnDeleteUI>
                           ) : null}
@@ -232,15 +217,11 @@ const OrderDetail = () => {
                 })
               )}
             </ul>
-            {isOpen && isOpen ? (
-              <ButtonFixed name={`주문하기`} onClickFn={handleModalOpen} />
-            ) : null}
+            {isOpen && isOpen ? <ButtonFixed name={`주문하기`} onClickFn={handleModalOpen} /> : null}
           </div>
         </OrderDetailUI>
       )}
-      {isModalOpen && isModalOpen ? (
-        <ModalKbSelect onClose={handleModalClose} returnFn={updateList} />
-      ) : null}
+      {isModalOpen && isModalOpen ? <ModalKbSelect onClose={handleModalClose} returnFn={updateList} /> : null}
     </>
   );
 };
@@ -313,7 +294,7 @@ const OrderDetailUI = styled.section`
           & + strong {
             padding-left: 0.4rem;
             &:before {
-              content: "+ ";
+              content: '+ ';
             }
           }
         }
@@ -366,7 +347,7 @@ const OrderDetailUI = styled.section`
               font-size: 1.4rem;
               transition: 0.3s;
               &:before {
-                content: "";
+                content: '';
                 position: absolute;
                 top: 0;
                 left: 1rem;
@@ -426,7 +407,7 @@ const BtnDeleteUI = styled.button`
   text-indent: -9999rem;
   border-radius: 100%;
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;
@@ -439,7 +420,7 @@ const BtnDeleteUI = styled.button`
     transition: 0.2s;
   }
   &:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     right: 0;

@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import styled from "@emotion/styled";
+import React from 'react';
+import Link from 'next/link';
+import styled from '@emotion/styled';
 
 const RenderNav = () => {
   return (
@@ -8,16 +8,16 @@ const RenderNav = () => {
       <NavBox>
         <ul>
           <li>
-            <Link href={"/render/csr"}>CSR</Link>
+            <Link href={'/render/csr'}>CSR</Link>
           </li>
           <li>
-            <Link href={"/render/ssr"}>SSR</Link>
+            <Link href={'/render/ssr'}>SSR</Link>
           </li>
           <li>
-            <Link href={"/render/ssg"}>SSG</Link>
+            <Link href={'/render/ssg'}>SSG</Link>
           </li>
           <li>
-            <Link href={"/render/isr"}>ISR</Link>
+            <Link href={'/render/isr'}>ISR</Link>
           </li>
         </ul>
       </NavBox>

@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "@emotion/styled";
-import RenderNav from "@components/renderNav";
-import { getData } from "@api/firestore";
+import React from 'react';
+import styled from '@emotion/styled';
+import RenderNav from '@components/renderNav';
+import { getData } from '@api/firestore';
 
 interface userListType {
   map(arg0: (item: userListType, idx: number) => JSX.Element): React.ReactNode;
@@ -40,7 +40,7 @@ const SSG = ({ userList }: ssrUserListType) => {
 
 export const getStaticProps = async () => {
   let userList = {};
-  await getData("user").then((data) => {
+  await getData('user').then((data) => {
     userList = data.docs.map((item: any) => {
       return { ...item.data(), id: item.id };
     });

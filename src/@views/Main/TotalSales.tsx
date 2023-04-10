@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
-import styled from "@emotion/styled";
-import MotionCount from "@components/@common/MotionCount";
-import useIntersectionObserver from "@hooks/useIntersectionObserver";
-import { getData } from "@api/firestore";
-import { IMAGES } from "@constants/images";
-import { BounceTurnMotion } from "@styles/keyframe";
-import { media } from "@styles/theme";
+import React, { useState, useRef, useEffect } from 'react';
+import styled from '@emotion/styled';
+import MotionCount from '@components/@common/MotionCount';
+import useIntersectionObserver from '@hooks/useIntersectionObserver';
+import { getData } from '@api/firestore';
+import { IMAGES } from '@constants/images';
+import { BounceTurnMotion } from '@styles/keyframe';
+import { media } from '@styles/theme';
 
 const TotalSales = () => {
   const itemRef = useRef<HTMLDivElement>(null);
@@ -16,7 +16,7 @@ const TotalSales = () => {
 
   const getResultData = async () => {
     let resultData = [];
-    await getData("orderList").then((data) => {
+    await getData('orderList').then((data) => {
       let totalPrice = 0;
       resultData = data.docs.map((item: any) => {
         return { ...item.data() };
@@ -42,8 +42,7 @@ const TotalSales = () => {
         <p ref={itemRef}>
           <span className={isVisible && !isLoading ? `active` : ``}>
             <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
-            {isVisible && !isLoading ? <MotionCount count={isTotalCount} /> : 0}
-            원
+            {isVisible && !isLoading ? <MotionCount count={isTotalCount} /> : 0}원
           </span>
         </p>
       </SalesUI>
@@ -85,7 +84,7 @@ const SalesUI = styled.div`
       font-size: 8rem;
       color: #000;
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         bottom: -1rem;
         left: 0;
@@ -96,7 +95,7 @@ const SalesUI = styled.div`
         z-index: -1;
       }
       &:after {
-        content: "";
+        content: '';
         position: absolute;
         bottom: -1rem;
         left: 0;

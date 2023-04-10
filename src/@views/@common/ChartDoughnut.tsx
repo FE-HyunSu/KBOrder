@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import styled from "@emotion/styled";
-import { BounceTurnMotion } from "@styles/keyframe";
-import { Chart as ChartJS } from "chart.js/auto";
-import { Doughnut } from "react-chartjs-2";
-import { ArcElement } from "chart.js";
-import MotionCount from "./MotionCount";
-import { IMAGES } from "@constants/images";
+import React, { useEffect, useState } from 'react';
+import styled from '@emotion/styled';
+import { BounceTurnMotion } from '@styles/keyframe';
+import { Chart as ChartJS } from 'chart.js/auto';
+import { Doughnut } from 'react-chartjs-2';
+import { ArcElement } from 'chart.js';
+import MotionCount from './MotionCount';
+import { IMAGES } from '@constants/images';
 ChartJS.register(ArcElement);
 
 interface ChartDataType {
@@ -35,8 +35,8 @@ const ChartDoughnut = (chartItemData: ChartItemDataType) => {
         data: [],
         backgroundColor: [],
         circumference: 0,
-        borderColor: "",
-        cutout: "",
+        borderColor: '',
+        cutout: '',
       },
     ],
   });
@@ -47,10 +47,10 @@ const ChartDoughnut = (chartItemData: ChartItemDataType) => {
       datasets: [
         {
           data: [percent, 100 - percent],
-          backgroundColor: ["#299438", "#ccc"],
+          backgroundColor: ['#299438', '#ccc'],
           circumference: 360,
-          borderColor: "transparent",
-          cutout: "85%",
+          borderColor: 'transparent',
+          cutout: '85%',
         },
       ],
     });
@@ -73,11 +73,7 @@ const ChartDoughnut = (chartItemData: ChartItemDataType) => {
             {chartItemData.name}
             <br />
             <em>
-              <MotionCount
-                count={Math.round(
-                  (chartItemData.value / chartItemData.totalCount) * 100
-                )}
-              />
+              <MotionCount count={Math.round((chartItemData.value / chartItemData.totalCount) * 100)} />
               %(
               <MotionCount count={chartItemData.value} />
               건)
@@ -112,7 +108,7 @@ const ChartBoxUI = styled.div`
       padding-top: 0.6rem;
       text-align: center;
       &:before {
-        content: "";
+        content: '';
         position: absolute;
         top: 0;
         bottom: 0;

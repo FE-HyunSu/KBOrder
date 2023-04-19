@@ -96,7 +96,10 @@ const OrderDetail = () => {
     const orderData = apiOrder('orderList', 'get', String(id));
     orderData.then((data: orderDataType[] | undefined) => {
       setOrderData(data);
-      if (!!data) data.forEach((item: orderDataType) => orderSum.push(item.menuName));
+      if (!!data)
+        data.forEach((item: orderDataType) => {
+          if (item.menuName !== '오늘은 다른거 먹을래요') orderSum.push(item.menuName);
+        });
       const selectList = Array.from(new Set(orderSum));
       selectList.forEach((item) => {
         orderResult.push({

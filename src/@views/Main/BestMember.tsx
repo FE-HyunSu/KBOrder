@@ -31,7 +31,7 @@ const BestMember = () => {
       });
     });
     resultData.forEach((item: OrderInfoType) => {
-      userCountList.push(item.userName);
+      if (item.menuName !== '오늘은 다른거 먹을래요') userCountList.push(item.userName);
     });
     const userList = new Set(userCountList);
     let userResult: ChartItemType[] = [];

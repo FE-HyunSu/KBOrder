@@ -17,6 +17,7 @@ const Header = () => {
   const [isAtomUserInfo, setAtomUserInfo] = useRecoilState(userAtom);
   const storeUserInfo = useRecoilValue(userAtom);
   const [isUserData, setUserData] = useState<userDataType>();
+  const [isBtnBackDisplay, setBtnBackDisplay] = useState<boolean>(false);
   const router = useRouter();
   const logout = () => {
     window.localStorage.removeItem('userUid');
@@ -28,6 +29,13 @@ const Header = () => {
     router.push(ROUTES.INDEX);
   };
 
+  const historyBack = () => {
+    router.push(ROUTES.LIST);
+  };
+
+  useEffect(() => {
+    router.pathname === '/list/[id]' ? setBtnBackDisplay(false) : setBtnBackDisplay(true);
+  }, [router]);
   useEffect(() => {
     setUserData(storeUserInfo);
   }, [storeUserInfo]);
@@ -36,10 +44,16 @@ const Header = () => {
     <>
       <HeaderUI>
         <h1>
-          <Link href={ROUTES.INDEX}>
-            <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
-            KBOrder
-          </Link>
+          {isBtnBackDisplay ? (
+            <Link href={ROUTES.INDEX}>
+              <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
+              KBOrder
+            </Link>
+          ) : (
+            <BtnPrev type="button" onClick={() => historyBack()}>
+              뒤로
+            </BtnPrev>
+          )}
         </h1>
         <p>
           {isUserData && isUserData.uid !== '' ? (
@@ -129,5 +143,27 @@ const HeaderUI = styled.header`
     @supports (-webkit-appearance: none) and (stroke-color: transparent) {
       min-height: calc(100vh - 10rem);
     }
+  }
+`;
+
+const BtnPrev = styled.button`
+  position: relative;
+  width: 5rem;
+  height: 3rem;
+  padding-left: 1rem;
+  background-color: transparent;
+  line-height: 1;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0.5rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin: auto;
+    border-bottom: 0.1rem solid #111;
+    border-left: 0.1rem solid #111;
+    transform: rotate(45deg);
   }
 `;

@@ -250,13 +250,13 @@ const OrderDetailUI = styled.section`
       position: relative;
       padding: 2rem 0 0.5rem;
       font-weight: 700;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       color: #1a1a1a;
       text-align: left;
       span {
         display: inline-block;
         padding-bottom: 0.5rem;
-        font-size: 2.4rem;
+        font-size: 2rem;
       }
       strong {
         display: inline-block;
@@ -282,7 +282,7 @@ const OrderDetailUI = styled.section`
     }
     .order-info {
       width: 100%;
-      margin: 2rem auto;
+      margin: 1rem auto 2rem;
       padding: 2rem;
       font-size: 1.4rem;
       text-align: left;

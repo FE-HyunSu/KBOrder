@@ -151,8 +151,10 @@ const BtnPrev = styled.button`
   width: 5rem;
   height: 3rem;
   padding-left: 1rem;
+  font-size: 1.4rem;
   background-color: transparent;
   line-height: 1;
+  color: #1a1a1a;
   &:before {
     content: '';
     position: absolute;

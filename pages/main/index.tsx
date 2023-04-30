@@ -11,7 +11,7 @@ import { ROUTES } from '@constants/routers';
 const Main = () => {
   const router = useRouter();
   const orderListMove = () => {
-    router.push(ROUTES.LIST);
+    router.push(ROUTES.LIST, undefined, { shallow: true });
   };
 
   return (

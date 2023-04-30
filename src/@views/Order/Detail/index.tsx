@@ -83,7 +83,7 @@ const OrderDetail = () => {
       todayCloseCheck();
     } else {
       alert('오픈전입니다. 돌아가세요.');
-      router.push('/main');
+      router.push('/main', undefined, { shallow: true });
     }
     orderListData();
   };

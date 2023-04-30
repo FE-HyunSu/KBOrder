@@ -52,7 +52,7 @@ const ModalKbSelect = (props: ModalProps) => {
   const validation = () => {
     if (atomUserInfo.email === '') {
       alert('주문 하시려면 로그인 후 이용해 주세요.');
-      router.push('/');
+      router.push('/', undefined, { shallow: true });
     } else if (!selectItem) {
       alert('메뉴를 선택해 주세요.');
     } else {

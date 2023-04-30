@@ -79,7 +79,7 @@ const Login = () => {
         const password: string = passwordRef && passwordRef.current ? passwordRef.current?.value : '';
         await loginAuth(email, password).then((data) => {
           getUserInfo(data.user.uid);
-          router.push('/main');
+          router.push('/main', undefined, { shallow: true });
         });
       } catch (e) {
         console.log(e);
@@ -129,7 +129,7 @@ const Login = () => {
         <button type="button" onClick={() => loginAction()}>
           로그인
         </button>
-        <button type="button" onClick={() => router.push('main')} className="btn-green">
+        <button type="button" onClick={() => router.push('main', undefined, { shallow: true })} className="btn-green">
           로그인 없이 구경하기
         </button>
         <p className="text-links">

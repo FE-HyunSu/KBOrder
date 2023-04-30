@@ -11,7 +11,7 @@ const Index = () => {
   const [isLogin, setLogin] = useState(storeUserInfo.uid !== '');
   useEffect(() => {
     setLogin(storeUserInfo.uid !== '');
-    isLogin ? router.push(ROUTES.MAIN) : null;
+    isLogin ? router.push(ROUTES.MAIN, undefined, { shallow: true }) : null;
   }, [storeUserInfo]);
   return <Login />;
 };

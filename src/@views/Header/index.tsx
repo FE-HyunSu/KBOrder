@@ -26,11 +26,11 @@ const Header = () => {
       name: '',
       email: '',
     });
-    router.push(ROUTES.INDEX);
+    router.push(ROUTES.INDEX, undefined, { shallow: true });
   };
 
   const historyBack = () => {
-    router.push(ROUTES.LIST);
+    router.push(ROUTES.LIST, undefined, { shallow: true });
   };
 
   useEffect(() => {
@@ -64,7 +64,7 @@ const Header = () => {
               </button>
             </>
           ) : router.pathname !== '/' ? (
-            <button type="button" onClick={() => router.push('/')}>
+            <button type="button" onClick={() => router.push('/', undefined, { shallow: true })}>
               로그인
             </button>
           ) : null}

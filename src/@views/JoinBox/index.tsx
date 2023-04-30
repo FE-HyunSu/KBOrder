@@ -67,7 +67,7 @@ const JoinBox = () => {
         await authJoin(email, password).then((data) => {
           alert('회원가입이 완료 되었습니다.\n로그인 페이지로 이동합니다.');
           if (nameVal) addUser(data.user.uid, nameVal, email);
-          router.push(ROUTES.INDEX);
+          router.push(ROUTES.INDEX, undefined, { shallow: true });
         });
       } catch (e) {
         console.log(e);

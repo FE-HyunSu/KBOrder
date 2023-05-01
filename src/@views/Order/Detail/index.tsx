@@ -4,11 +4,10 @@ import dayjs from 'dayjs';
 import styled from '@emotion/styled';
 import { BounceTurnMotion } from '@styles/keyframe';
 import { media } from '@styles/theme';
-import apiOrder from '../../../was/order';
 import Loading from '@components/@common/Loading';
 import ModalKbSelect from '../../modal/kbSelect';
 import { getData, setData, delData, updateData } from '@api/firestore';
-import { userAtom } from '../../../store/store';
+import { userAtom } from '@store/store';
 import { useRecoilValue } from 'recoil';
 import { unitWon, returnDate } from '@utils/returnData';
 import ButtonFixed from '@components/@common/ButtonFixed';
@@ -22,6 +21,15 @@ interface menuListType {
 }
 
 interface orderDataType {
+  id: string;
+  menuName: string;
+  price: number;
+  seq: string;
+  userEmail: string;
+  userName: string;
+}
+
+interface orderDetailType {
   id: string;
   menuName: string;
   price: number;
@@ -86,6 +94,18 @@ const OrderDetail = () => {
       router.push('/main', undefined, { shallow: true });
     }
     orderListData();
+  };
+
+  const apiOrder = async (code: string, method: string, param: string) => {
+    if (code === 'orderList' && method === 'get') {
+      let orderDetailData: orderDetailType[] = [];
+      await getData('orderList').then((data) => {
+        orderDetailData = data.docs.map((item: any) => {
+          return { ...item.data(), id: item.id };
+        });
+      });
+      return orderDetailData.filter((item: orderDetailType) => item.seq === String(param));
+    }
   };
 
   // 목록 갱신. 추후 주문 업데이트 시 해당 함수만 재실행.

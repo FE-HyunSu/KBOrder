@@ -33,7 +33,7 @@ const ChartHamUI = styled.strong`
   display: inline-block;
   position: relative;
   width: 0;
-  max-width: calc(100% - 15rem);
+  max-width: calc(100% - 18rem);
   height: 2rem;
   margin-right: 1.5rem;
   background-color: #f46b21;

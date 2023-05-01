@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { LogoMotion, BounceMotion, TextMotion } from '@styles/keyframe';
 import { getData, loginAuth } from '@api/firestore';
 import { useRecoilState } from 'recoil';
-import { userAtom } from '../../store/store';
+import { userAtom } from '@store/store';
 import { IMAGES } from '@constants/images';
 import { ROUTES } from '@constants/routers';
 import Link from 'next/link';

@@ -6,7 +6,7 @@ import styled from '@emotion/styled';
 import { BounceTurnMotion } from '@styles/keyframe';
 import { getData } from '@api/firestore';
 import Loading from '@components/@common/Loading';
-import { userAtom } from '../../../store/store';
+import { userAtom } from '@store/store';
 import { useRecoilValue } from 'recoil';
 import { IMAGES } from '@constants/images';
 

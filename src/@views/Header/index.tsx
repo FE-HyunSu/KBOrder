@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 import { IMAGES } from '@constants/images';
-import { userAtom } from '../../store/store';
+import { userAtom } from '@store/store';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { useRouter } from 'next/router';
 import { ROUTES } from '@constants/routers';

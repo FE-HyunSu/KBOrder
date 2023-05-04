@@ -21,6 +21,7 @@ interface OrderInfoType {
 const BestMember = () => {
   const [isLoading, setLoading] = useState<Boolean>(true);
   const [userDataList, setUserDataList] = useState<ChartItemType[]>([]);
+  const [totalCount, setTotalCount] = useState<number>(0);
 
   const getDataList = async () => {
     let resultData: OrderInfoType[] = [];
@@ -33,6 +34,7 @@ const BestMember = () => {
     resultData.forEach((item: OrderInfoType) => {
       if (item.menuName !== '오늘은 다른거 먹을래요') userCountList.push(item.userName);
     });
+    setTotalCount(userCountList.length);
     const userList = new Set(userCountList);
     let userResult: ChartItemType[] = [];
     let userRank: number = 1;
@@ -81,7 +83,7 @@ const BestMember = () => {
               {userDataList &&
                 userDataList.map((item: ChartItemType, idx: number) => (
                   <li key={idx}>
-                    <ChartHam count={item.value} />
+                    <ChartHam count={item.value} totalCount={totalCount} />
                     <span>
                       <em>{item.rank}위</em>
                       {item.rank === 1 ? (

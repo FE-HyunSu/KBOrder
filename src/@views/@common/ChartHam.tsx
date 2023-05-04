@@ -4,13 +4,14 @@ import useIntersectionObserver from '@hooks/useIntersectionObserver';
 
 interface ChartHamType {
   count: number;
+  totalCount: number;
 }
 
-const ChartHam = ({ count }: ChartHamType) => {
+const ChartHam = ({ count, totalCount }: ChartHamType) => {
   const itemRef = useRef<HTMLLIElement>(null);
   const viewCheck = useIntersectionObserver(itemRef, {});
   const isVisible = !!viewCheck?.isIntersecting;
-  const [hamWidth, setHamWidth] = useState<Number>(0);
+  const [hamWidth, setHamWidth] = useState<number>(0);
 
   useEffect(() => {
     if (isVisible) {
@@ -22,7 +23,9 @@ const ChartHam = ({ count }: ChartHamType) => {
 
   return (
     <>
-      <ChartHamUI style={{ width: (isVisible ? hamWidth : 0) + `rem` }} ref={itemRef}></ChartHamUI>
+      <ChartHamUI
+        style={{ width: (isVisible ? Math.floor((hamWidth / totalCount) * 100) : 0) + `%` }}
+        ref={itemRef}></ChartHamUI>
     </>
   );
 };

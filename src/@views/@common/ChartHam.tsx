@@ -24,7 +24,7 @@ const ChartHam = ({ count, totalCount }: ChartHamType) => {
   return (
     <>
       <ChartHamUI
-        style={{ width: (isVisible ? Math.floor((hamWidth / totalCount) * 100) : 0) + `%` }}
+        style={{ width: (isVisible ? Math.floor((hamWidth / totalCount) * 100) + 5 : 0) + `%` }}
         ref={itemRef}></ChartHamUI>
     </>
   );

@@ -2,9 +2,10 @@ import React, { useRef, useEffect } from 'react';
 
 interface CountType {
   count: number;
+  sec?: number;
 }
 
-const MotionCount = ({ count }: CountType) => {
+const MotionCount = ({ count, sec }: CountType) => {
   const countRef = useRef<HTMLElement>(null);
   const unitWon = (num: number) => {
     return Math.round(num)
@@ -14,22 +15,19 @@ const MotionCount = ({ count }: CountType) => {
 
   useEffect(() => {
     let resultNumber = 0;
-    let countInterval = setInterval(() => {
+    const requestCount = () => {
       try {
         if (resultNumber >= count && countRef.current) {
-          clearInterval(countInterval);
           countRef.current.innerHTML = unitWon(count);
         } else if (countRef.current) {
-          countRef.current.innerHTML = unitWon(Math.round((resultNumber += count / (2000 / 60))));
+          countRef.current.innerHTML = unitWon(Math.round((resultNumber += count / ((!!sec ? sec : 2000) / 60))));
+          requestAnimationFrame(requestCount);
         }
-      } catch {
-        clearInterval(countInterval);
+      } catch (e) {
+        console.log(e);
       }
-    }, 25);
-
-    return () => {
-      clearInterval(countInterval);
     };
+    requestAnimationFrame(requestCount);
   }, []);
   return <i ref={countRef}></i>;
 };

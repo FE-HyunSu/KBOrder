@@ -88,6 +88,9 @@ const Login = () => {
           case 'auth/user-not-found':
             alert('등록되지 않은 회원입니다.');
             break;
+          case 'auth/wrong-password':
+            alert('패스워드가 틀렸습니다.');
+            break;
           default:
             alert('오류가 발생 되었습니다. 다시 시도해 주세요.');
         }

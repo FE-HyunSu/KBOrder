@@ -42,7 +42,7 @@ const TotalSales = () => {
         <p ref={itemRef}>
           <span className={isVisible && !isLoading ? `active` : ``}>
             <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
-            {isVisible && !isLoading ? <MotionCount count={isTotalCount} sec={3000} /> : 0}원
+            {isVisible && !isLoading ? <MotionCount count={isTotalCount} sec={2000} /> : 0}원
           </span>
         </p>
       </SalesUI>

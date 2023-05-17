@@ -116,6 +116,7 @@ const SalesUI = styled.div`
         }
       }
     }
+
     ${media.mobile} {
       img {
         width: 5rem;

@@ -20,8 +20,7 @@ const MotionCount = ({ count, sec }: CountType) => {
     if (resultNumber >= count && countRef.current) {
       countRef.current.innerText = unitWon(count);
     } else if (countRef.current) {
-      countRef.current.innerText = unitWon(Math.round((resultNumber += count / ((timeSec / 1000) * 60))));
-      console.log(Math.round(count / ((timeSec / 1000) * 60)));
+      countRef.current.innerText = unitWon(Math.round((resultNumber += count / ((timeSec / 1000) * 40))));
       requestAnimationFrame(requestCount);
     }
   };
@@ -29,7 +28,7 @@ const MotionCount = ({ count, sec }: CountType) => {
   useEffect(() => {
     requestAnimationFrame(requestCount);
   }, []);
-  return <i ref={countRef}></i>;
+  return <i ref={countRef} />;
 };
 
 export default MotionCount;

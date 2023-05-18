@@ -22,7 +22,7 @@ const useMotionCount = ({ count, motionTime }: CountType) => {
       if (resultNumber >= count && countRef.current) {
         countRef.current.innerText = unitWon(count);
       } else if (countRef.current) {
-        countRef.current.innerText = unitWon(Math.round((resultNumber += count / ((timeSec / 1000) * 60))));
+        countRef.current.innerText = unitWon(Math.round((resultNumber += count / ((timeSec / 1000) * 40))));
         requestAnimationFrame(requestCount);
       }
     };

@@ -39,10 +39,12 @@ const BestMenu = () => {
     const dataList = new Set(menuCountList);
     let menuResult: ChartItemType[] = [];
     dataList.forEach((item) => {
-      menuResult.push({
-        name: item,
-        value: menuCountList.filter((subItem: string) => subItem === item).length,
-      });
+      if (item !== '오늘은 다른거 먹을래요') {
+        menuResult.push({
+          name: item,
+          value: menuCountList.filter((subItem: string) => subItem === item).length,
+        });
+      }
     });
     menuResult.sort((a: ChartItemType, b: ChartItemType) => b.value - a.value);
     setMenuDataList(menuResult.slice(0, 3));

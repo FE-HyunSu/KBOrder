@@ -21,6 +21,7 @@ const MotionCount = ({ count, sec }: CountType) => {
       countRef.current.innerText = unitWon(count);
     } else if (countRef.current) {
       countRef.current.innerText = unitWon(Math.round((resultNumber += count / ((timeSec / 1000) * 60))));
+      console.log(Math.round(count / ((timeSec / 1000) * 60)));
       requestAnimationFrame(requestCount);
     }
   };

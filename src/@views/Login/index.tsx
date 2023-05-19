@@ -105,7 +105,7 @@ const Login = () => {
 
   return (
     <>
-      {isLoading && isLoading ? <Loading /> : null}
+      {isLoading ? <Loading /> : null}
       <LoginUI>
         <img src={IMAGES.LOGO} alt="LOGO" className="img-logo" />
         <p>LOGIN</p>

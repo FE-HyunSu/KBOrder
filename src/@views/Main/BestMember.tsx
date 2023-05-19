@@ -66,7 +66,7 @@ const BestMember = () => {
     <>
       <BestMemberBox>
         <h1>🍜 프로 김밥러 5인</h1>
-        {isLoading && isLoading ? (
+        {isLoading ? (
           <SkeletonUl>
             {Array(5)
               .fill('')

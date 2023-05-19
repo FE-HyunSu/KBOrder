@@ -71,7 +71,7 @@ const ModalKbSelect = (props: ModalProps) => {
       <ModalOrderUI className={isModalView ? `active` : ``}>
         <h1>📝 주문하기 (메뉴를 선택해 주세요)</h1>
         <ul>
-          {isLoading && isLoading ? (
+          {isLoading ? (
             <Loading />
           ) : (
             <>

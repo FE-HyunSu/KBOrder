@@ -89,7 +89,7 @@ const JoinBox = () => {
   };
   return (
     <>
-      {isLoading && isLoading ? <Loading /> : null}
+      {isLoading ? <Loading /> : null}
       <JoinUI>
         <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
         <p>JOIN</p>
@@ -130,7 +130,7 @@ const JoinBox = () => {
           회원가입 완료
         </button>
         <p className="text-links">
-          <a href="/">로그인</a>
+          <a href={ROUTES.INDEX}>로그인</a>
         </p>
       </JoinUI>
     </>

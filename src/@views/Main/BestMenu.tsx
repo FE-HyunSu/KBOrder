@@ -61,7 +61,7 @@ const BestMenu = () => {
         <h1>
           🏅 인기김밥 Best3 <span>(2023.03.06 ~ )</span>
         </h1>
-        {isLoading && isLoading ? (
+        {isLoading ? (
           <SkeletonUl>
             {Array(3)
               .fill('')

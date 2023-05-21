@@ -3,11 +3,9 @@ import styled from '@emotion/styled';
 
 const Footer = () => {
   return (
-    <>
-      <FooterUI>
-        <p>KHS. ALL RIGHT RESERVED.</p>
-      </FooterUI>
-    </>
+    <FooterUI>
+      <p>KHS. ALL RIGHT RESERVED.</p>
+    </FooterUI>
   );
 };
 export default Footer;

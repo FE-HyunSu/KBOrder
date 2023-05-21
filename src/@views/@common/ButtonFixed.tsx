@@ -9,11 +9,9 @@ interface ButtonFixedType {
 
 const ButtonFixed = ({ name, onClickFn }: ButtonFixedType) => {
   return (
-    <>
-      <BtnBottomFixed type="button" onClick={() => onClickFn()}>
-        {name}
-      </BtnBottomFixed>
-    </>
+    <BtnBottomFixed type="button" onClick={() => onClickFn()}>
+      {name}
+    </BtnBottomFixed>
   );
 };
 

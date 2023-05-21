@@ -191,14 +191,15 @@ const OrderDetail = () => {
             </h1>
             <div className="order-info">
               <p>
-                {orderTotal &&
-                  orderTotal.map((item: menuListType, idx: number) => {
-                    return (
-                      <strong key={idx}>
-                        <span>{item.menuName}</span> <em>{item.count}줄</em>
-                      </strong>
-                    );
-                  })}
+                {orderTotal && orderTotal.length === 0
+                  ? `주문 내역이 없습니다.`
+                  : orderTotal.map((item: menuListType, idx: number) => {
+                      return (
+                        <strong key={idx}>
+                          <span>{item.menuName}</span> <em>{item.count}줄</em>
+                        </strong>
+                      );
+                    })}
               </p>
             </div>
             <ul>

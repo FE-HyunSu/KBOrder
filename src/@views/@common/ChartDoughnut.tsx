@@ -65,23 +65,21 @@ const ChartDoughnut = (chartItemData: ChartItemDataType) => {
   }, []);
 
   return (
-    <>
-      <ChartBoxUI>
-        <Doughnut data={chartData} />
-        <strong>
-          <span>
-            {chartItemData.name}
-            <br />
-            <em>
-              <MotionCount count={Math.round((chartItemData.value / chartItemData.totalCount) * 100)} />
-              %(
-              <MotionCount count={chartItemData.value} />
-              건)
-            </em>
-          </span>
-        </strong>
-      </ChartBoxUI>
-    </>
+    <ChartBoxUI>
+      <Doughnut data={chartData} />
+      <strong>
+        <span>
+          {chartItemData.name}
+          <br />
+          <em>
+            <MotionCount count={Math.round((chartItemData.value / chartItemData.totalCount) * 100)} />
+            %(
+            <MotionCount count={chartItemData.value} />
+            건)
+          </em>
+        </span>
+      </strong>
+    </ChartBoxUI>
   );
 };
 

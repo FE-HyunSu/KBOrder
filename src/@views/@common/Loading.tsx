@@ -5,14 +5,12 @@ import { IMAGES } from '@constants/images';
 
 const Loading = () => {
   return (
-    <>
-      <LoadingUI>
-        <LoadingBox>
-          <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
-          <p>LOADING</p>
-        </LoadingBox>
-      </LoadingUI>
-    </>
+    <LoadingUI>
+      <LoadingBox>
+        <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
+        <p>LOADING</p>
+      </LoadingBox>
+    </LoadingUI>
   );
 };
 export default Loading;

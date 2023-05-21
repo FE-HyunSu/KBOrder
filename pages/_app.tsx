@@ -16,26 +16,24 @@ dayjs.locale('ko'); // 언어 등록.
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
-      <RecoilRoot>
-        <Head>
-          <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
-          <meta property="og:title" content="KBOrder" />
-          <meta property="og:description" content="삼성동 이레 김밥주문 페이지" />
-          <meta property="og:image" content={IMAGES.META} />
-          <link rel="icon" href={ICONS.FAVICON} />
-          <title>🍙 KBOrder</title>
-        </Head>
-        <GlobalStyle />
-        <ThemeProvider theme={media}>
-          <Header />
-          <main>
-            <Component {...pageProps} />
-          </main>
-          <Footer />
-        </ThemeProvider>
-      </RecoilRoot>
-    </>
+    <RecoilRoot>
+      <Head>
+        <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+        <meta property="og:title" content="KBOrder" />
+        <meta property="og:description" content="삼성동 이레 김밥주문 페이지" />
+        <meta property="og:image" content={IMAGES.META} />
+        <link rel="icon" href={ICONS.FAVICON} />
+        <title>🍙 KBOrder</title>
+      </Head>
+      <GlobalStyle />
+      <ThemeProvider theme={media}>
+        <Header />
+        <main>
+          <Component {...pageProps} />
+        </main>
+        <Footer />
+      </ThemeProvider>
+    </RecoilRoot>
   );
 };
 

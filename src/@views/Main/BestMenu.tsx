@@ -56,40 +56,38 @@ const BestMenu = () => {
   }, []);
 
   return (
-    <>
-      <BestMenuBox>
-        <h1>
-          🏅 인기김밥 Best3 <span>(2023.03.06 ~ )</span>
-        </h1>
-        {isLoading ? (
-          <SkeletonUl>
-            {Array(3)
-              .fill('')
-              .map((item, idx) => (
+    <BestMenuBox>
+      <h1>
+        🏅 인기김밥 Best3 <span>(2023.03.06 ~ )</span>
+      </h1>
+      {isLoading ? (
+        <SkeletonUl>
+          {Array(3)
+            .fill('')
+            .map((item, idx) => (
+              <li key={idx}>
+                <span></span>
+              </li>
+            ))}
+        </SkeletonUl>
+      ) : (
+        <>
+          <ul>
+            {menuDataList &&
+              menuDataList.map((item: ChartItemType, idx: number) => (
                 <li key={idx}>
-                  <span></span>
+                  <ChartDoughnut
+                    name={item.name}
+                    value={item.value}
+                    totalCount={Number(isTotalCount)}
+                    delay={idx * 150}
+                  />
                 </li>
               ))}
-          </SkeletonUl>
-        ) : (
-          <>
-            <ul>
-              {menuDataList &&
-                menuDataList.map((item: ChartItemType, idx: number) => (
-                  <li key={idx}>
-                    <ChartDoughnut
-                      name={item.name}
-                      value={item.value}
-                      totalCount={Number(isTotalCount)}
-                      delay={idx * 150}
-                    />
-                  </li>
-                ))}
-            </ul>
-          </>
-        )}
-      </BestMenuBox>
-    </>
+          </ul>
+        </>
+      )}
+    </BestMenuBox>
   );
 };
 

@@ -41,36 +41,34 @@ const Header = () => {
   }, [storeUserInfo]);
 
   return (
-    <>
-      <HeaderUI>
-        <h1>
-          {isBtnBackDisplay ? (
-            <Link href={ROUTES.INDEX}>
-              <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
-              KBOrder
-            </Link>
-          ) : (
-            <BtnPrev type="button" onClick={() => historyBack()}>
-              뒤로
-            </BtnPrev>
-          )}
-        </h1>
-        <p>
-          {isUserData && isUserData.uid !== '' ? (
-            <>
-              <em>{isUserData.name}</em>님
-              <button type="button" onClick={() => logout()}>
-                로그아웃
-              </button>
-            </>
-          ) : router.pathname !== '/' ? (
-            <button type="button" onClick={() => router.push('/', undefined, { shallow: true })}>
-              로그인
+    <HeaderUI>
+      <h1>
+        {isBtnBackDisplay ? (
+          <Link href={ROUTES.INDEX}>
+            <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
+            KBOrder
+          </Link>
+        ) : (
+          <BtnPrev type="button" onClick={() => historyBack()}>
+            뒤로
+          </BtnPrev>
+        )}
+      </h1>
+      <p>
+        {isUserData && isUserData.uid !== '' ? (
+          <>
+            <em>{isUserData.name}</em>님
+            <button type="button" onClick={() => logout()}>
+              로그아웃
             </button>
-          ) : null}
-        </p>
-      </HeaderUI>
-    </>
+          </>
+        ) : router.pathname !== '/' ? (
+          <button type="button" onClick={() => router.push('/', undefined, { shallow: true })}>
+            로그인
+          </button>
+        ) : null}
+      </p>
+    </HeaderUI>
   );
 };
 

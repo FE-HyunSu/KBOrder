@@ -48,7 +48,7 @@ const ChartDoughnut = (chartItemData: ChartItemDataType) => {
       datasets: [
         {
           data: [percent, 100 - percent],
-          backgroundColor: [COLOR.green, '#ccc'],
+          backgroundColor: [COLOR.green, COLOR.grayCC],
           circumference: 360,
           borderColor: 'transparent',
           cutout: '85%',
@@ -121,7 +121,7 @@ const ChartBoxUI = styled.div`
       }
       em {
         font-size: 1.2rem;
-        color: #999;
+        color: ${COLOR.gray99};
       }
     }
   }

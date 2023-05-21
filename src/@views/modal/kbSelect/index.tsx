@@ -112,7 +112,7 @@ export const BtnClose = styled.button`
   right: 2rem;
   width: 4rem;
   height: 4rem;
-  text-indent: -999rem;
+  text-indent: -9999rem;
   &:before {
     content: '';
     position: absolute;
@@ -256,6 +256,6 @@ export const BtnComplete = styled.button`
   transition: 0.3s;
   &:disabled {
     color: ${COLOR.white};
-    background-color: #ccc;
+    background-color: ${COLOR.grayCC};
   }
 `;

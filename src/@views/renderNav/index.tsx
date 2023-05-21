@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import styled from '@emotion/styled';
+import { COLOR } from '@styles/theme';
 
 const RenderNav = () => {
   return (
@@ -48,7 +49,7 @@ export const NavBox = styled.nav`
         padding: 2rem 4rem;
         font-weight: 400;
         font-size: 1.4rem;
-        color: #000;
+        color: ${COLOR.realBlack};
         text-decoration: none;
       }
     }

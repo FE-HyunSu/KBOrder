@@ -4,11 +4,13 @@ export const COLOR = {
   realBlack: '#000',
   black: '#1a1a1a',
   white: '#fff',
-  gray: '#eee',
+  grayEE: '#eee',
+  grayCC: '#ccc',
+  gray99: '#999',
   green: '#299438',
 };
 
-export const media = {
+export const MEDIA = {
   custom: customMediaQuery,
   pc: customMediaQuery(1440),
   tablet: customMediaQuery(768),

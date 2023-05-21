@@ -3,14 +3,14 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from '@emotion/react';
-import { media } from '@styles/theme';
+import { MEDIA } from '@styles/theme';
+import { IMAGES, ICONS } from '@constants/images';
 import GlobalStyle from '@styles/global-style';
 import Header from '@components/Header';
 import Footer from '@components/Footer';
 import dayjs from 'dayjs';
 import isLeapYear from 'dayjs/plugin/isLeapYear'; // 윤년 판단 플러그인.
-import 'dayjs/locale/ko'; // 한국어 가져오기.
-import { IMAGES, ICONS } from '@constants/images';
+import 'dayjs/locale/ko'; // 한국어 import.
 dayjs.extend(isLeapYear); // 플러그인 등록.
 dayjs.locale('ko'); // 언어 등록.
 
@@ -26,7 +26,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <title>🍙 KBOrder</title>
       </Head>
       <GlobalStyle />
-      <ThemeProvider theme={media}>
+      <ThemeProvider theme={MEDIA}>
         <Header />
         <main>
           <Component {...pageProps} />

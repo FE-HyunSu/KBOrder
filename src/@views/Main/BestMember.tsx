@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { getData } from '@api/firestore';
 import MotionCount from '@components/@common/MotionCount';
 import ChartHam from '@components/@common/ChartHam';
+import { COLOR } from '@styles/theme';
 
 interface ChartItemType {
   name: string;
@@ -120,14 +121,14 @@ const SkeletonUl = styled.ul`
       display: inline-block;
       width: 2rem;
       height: 2rem;
-      background-color: #eee;
+      background-color: ${COLOR.grayEE};
     }
     em {
       display: inline-block;
       width: 10rem;
       height: 2rem;
       margin-left: 1rem;
-      background-color: #eee;
+      background-color: ${COLOR.grayEE};
     }
   }
 `;
@@ -152,7 +153,7 @@ const BestMemberBox = styled.div`
     span {
       font-size: 1.4rem;
       font-weight: 300;
-      color: #999;
+      color: ${COLOR.gray99};
     }
   }
   li {

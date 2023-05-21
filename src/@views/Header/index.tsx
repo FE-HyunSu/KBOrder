@@ -86,7 +86,7 @@ const HeaderUI = styled.header`
   height: 5rem;
   padding: 0 1.4rem;
   background-color: ${COLOR.white};
-  border: 0.1rem solid #eee;
+  border: 0.1rem solid ${COLOR.grayEE};
   box-sizing: border-box;
   z-index: 10;
   a {

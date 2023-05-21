@@ -5,7 +5,7 @@ import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import { getData } from '@api/firestore';
 import { IMAGES } from '@constants/images';
 import { BounceTurnMotion } from '@styles/keyframe';
-import { media } from '@styles/theme';
+import { MEDIA, COLOR } from '@styles/theme';
 
 const TotalSales = () => {
   const itemRef = useRef<HTMLDivElement>(null);
@@ -67,7 +67,7 @@ const SalesUI = styled.div`
     span {
       font-size: 1.4rem;
       font-weight: 300;
-      color: #999;
+      color: ${COLOR.gray99};
     }
   }
   p {
@@ -82,7 +82,7 @@ const SalesUI = styled.div`
       position: relative;
       font-weight: 200;
       font-size: 8rem;
-      color: #000;
+      color: ${COLOR.realBlack};
       &:before {
         content: '';
         position: absolute;
@@ -117,7 +117,7 @@ const SalesUI = styled.div`
       }
     }
 
-    ${media.mobile} {
+    ${MEDIA.mobile} {
       img {
         width: 5rem;
         height: 5rem;

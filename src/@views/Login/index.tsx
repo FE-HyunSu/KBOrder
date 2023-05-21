@@ -203,11 +203,11 @@ export const LoginUI = styled.div`
     font-size: 1.6rem;
     border-radius: 0.4rem;
     box-sizing: border-box;
-    border: 1px solid #999;
+    border: 1px solid ${COLOR.gray99};
     outline: none;
     &:active,
     &:hover {
-      border: 1px solid #999;
+      border: 1px solid ${COLOR.gray99};
     }
   }
   button {
@@ -235,7 +235,7 @@ export const LoginUI = styled.div`
     }
     &:hover {
       font-size: 1.6rem;
-      background-color: #000;
+      background-color: ${COLOR.realBlack};
       &:disabled {
         font-size: 1.4rem;
         background-color: #bbb;
@@ -265,7 +265,7 @@ export const LoginUI = styled.div`
           width: 0.1rem;
           height: 0.8rem;
           margin: auto;
-          border-right: 0.1rem solid #999;
+          border-right: 0.1rem solid ${COLOR.gray99};
         }
       }
     }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import RenderNav from '@components/renderNav';
 import { getData } from '@api/firestore';
+import { COLOR } from '@styles/theme';
 
 interface userListType {
   map(arg0: (item: userListType, idx: number) => JSX.Element): React.ReactNode;
@@ -76,7 +77,7 @@ const RenderTestBox = styled.section`
     padding-bottom: 2rem;
     font-weight: 700;
     font-size: 4rem;
-    color: #000;
+    color: ${COLOR.realBlack};
   }
   p {
     font-weight: 500;

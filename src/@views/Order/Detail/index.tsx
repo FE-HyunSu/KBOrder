@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import dayjs from 'dayjs';
 import styled from '@emotion/styled';
 import { BounceTurnMotion } from '@styles/keyframe';
-import { media } from '@styles/theme';
+import { MEDIA } from '@styles/theme';
 import Loading from '@components/@common/Loading';
 import ModalKbSelect from '../../modal/kbSelect';
 import { getData, setData, delData, updateData } from '@api/firestore';
@@ -331,7 +331,7 @@ const OrderDetailUI = styled.section`
           font-weight: 700;
           color: ${COLOR.green};
         }
-        ${media.mobile} {
+        ${MEDIA.mobile} {
           text-align: center;
         }
       }
@@ -353,7 +353,7 @@ const OrderDetailUI = styled.section`
           }
           dt,
           dd {
-            color: #ccc;
+            color: ${COLOR.grayCC};
           }
         }
         dl {
@@ -465,7 +465,7 @@ const BtnDeleteUI = styled.button`
       transform: rotate(-45deg);
     }
   }
-  ${media.mobile} {
+  ${MEDIA.mobile} {
     &:before {
       transform: rotate(45deg);
     }

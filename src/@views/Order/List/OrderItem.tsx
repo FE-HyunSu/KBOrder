@@ -8,6 +8,7 @@ import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import { viewEffect } from '@styles/keyframe';
 import { IMAGES } from '@constants/images';
 import { ROUTES } from '@constants/routers';
+import { COLOR } from '@styles/theme';
 
 interface dateListType {
   seq: string;
@@ -76,7 +77,7 @@ const OrderItemLi = styled.li`
     }
     dt,
     dd {
-      color: #ccc;
+      color: ${COLOR.grayCC};
     }
   }
   a {

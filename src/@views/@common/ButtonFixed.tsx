@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { IntroMotion } from '@styles/keyframe';
+import { COLOR } from '@styles/theme';
 
 interface ButtonFixedType {
   name: string;
@@ -29,7 +30,7 @@ const BtnBottomFixed = styled.button`
   font-weight: 500;
   font-size: 1.4rem;
   color: #fff;
-  background-color: #299438;
+  background-color: ${COLOR.green};
   border-radius: 6rem;
   overflow: hidden;
   animation: ${IntroMotion} 1s forwards;

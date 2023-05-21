@@ -14,6 +14,7 @@ import ButtonFixed from '@components/@common/ButtonFixed';
 import Link from 'next/link';
 import { IMAGES } from '@constants/images';
 import { ROUTES } from '@constants/routers';
+import { COLOR } from '@styles/theme';
 
 interface menuListType {
   menuName: string;
@@ -284,7 +285,7 @@ const OrderDetailUI = styled.section`
         flex: 1 auto;
         padding-left: 0.5rem;
         em {
-          color: #299438;
+          color: ${COLOR.green};
         }
         strong {
           color: #f0581a;
@@ -293,11 +294,11 @@ const OrderDetailUI = styled.section`
       a {
         display: inline-block;
         padding: 1rem;
-        color: #fff;
+        color: ${COLOR.white};
         font-size: 1.2rem;
         font-weight: 400;
         text-decoration: none;
-        background-color: #299438;
+        background-color: ${COLOR.green};
         border-radius: 4rem;
       }
     }
@@ -328,7 +329,7 @@ const OrderDetailUI = styled.section`
         }
         em {
           font-weight: 700;
-          color: #299438;
+          color: ${COLOR.green};
         }
         ${media.mobile} {
           text-align: center;
@@ -396,8 +397,8 @@ const OrderDetailUI = styled.section`
               margin: 0.2rem;
               padding: 0.6rem 1rem;
               font-size: 1.4rem;
-              color: #fff;
-              background-color: #299438;
+              color: ${COLOR.white};
+              background-color: ${COLOR.green};
               border-radius: 2rem;
             }
           }
@@ -418,7 +419,7 @@ const NoneOrderUI = styled.div`
   strong {
     font-weight: 400;
     em {
-      color: #299438;
+      color: ${COLOR.green};
     }
   }
 `;
@@ -440,7 +441,7 @@ const BtnDeleteUI = styled.button`
     width: 1rem;
     height: 0.1rem;
     margin: auto;
-    background-color: #fff;
+    background-color: ${COLOR.white};
     transition: 0.2s;
   }
   &:after {
@@ -453,7 +454,7 @@ const BtnDeleteUI = styled.button`
     width: 1rem;
     height: 0.1rem;
     margin: auto;
-    background-color: #fff;
+    background-color: ${COLOR.white};
     transition: 0.2s;
   }
   &:hover {
@@ -486,7 +487,7 @@ const BtnOrderClose = styled.button`
   display: inline-block;
   margin-right: 0.6rem;
   padding: 0.9rem 1rem;
-  color: #fff;
+  color: ${COLOR.white};
   font-size: 1.2rem;
   font-weight: 400;
   text-decoration: none;

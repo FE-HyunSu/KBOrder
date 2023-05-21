@@ -6,6 +6,7 @@ import { userAtom } from '@store/store';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { useRouter } from 'next/router';
 import { ROUTES } from '@constants/routers';
+import { COLOR } from '@styles/theme';
 
 interface userDataType {
   uid: string;
@@ -84,7 +85,7 @@ const HeaderUI = styled.header`
   width: 100%;
   height: 5rem;
   padding: 0 1.4rem;
-  background-color: #fff;
+  background-color: ${COLOR.white};
   border: 0.1rem solid #eee;
   box-sizing: border-box;
   z-index: 10;
@@ -117,14 +118,14 @@ const HeaderUI = styled.header`
     em {
       display: inline-block;
       padding: 0 0.3rem;
-      color: #299438;
+      color: ${COLOR.green};
     }
     button {
       display: inline-block;
       margin-left: 0.8rem;
       padding: 0.5rem;
       font-size: 1.2rem;
-      color: #fff;
+      color: ${COLOR.white};
       background-color: #3a3a3a;
       border-radius: 0.4rem;
     }

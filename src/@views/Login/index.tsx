@@ -9,6 +9,7 @@ import { userAtom } from '@store/store';
 import { IMAGES } from '@constants/images';
 import { ROUTES } from '@constants/routers';
 import Link from 'next/link';
+import { COLOR } from '@styles/theme';
 
 interface ErrorType {
   name: string;
@@ -223,10 +224,10 @@ export const LoginUI = styled.div`
     animation: ${TextMotion} 0.6s 1.2s both;
     transition: 0.2s;
     &.btn-green {
-      background-color: #299438;
+      background-color: ${COLOR.green};
       &:hover {
         font-size: 1.6rem;
-        background-color: #299438;
+        background-color: ${COLOR.green};
       }
     }
     &:disabled {

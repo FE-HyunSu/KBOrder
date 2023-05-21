@@ -4,6 +4,7 @@ import { setData, getData } from '@api/firestore';
 import Loading from '@components/@common/Loading';
 import OrderItem from '@components/Order/List/OrderItem';
 import dayjs from 'dayjs';
+import { COLOR } from '@styles/theme';
 
 interface dateListType {
   seq: string;
@@ -115,7 +116,7 @@ const BtnCreateOrder = styled.button`
   font-size: 1.4rem;
   color: #fff;
   text-indent: -9999rem;
-  background-color: #299438;
+  background-color: ${COLOR.green};
   border-radius: 100%;
   transition: 0.2s;
   transform-origin: 50% 50%;

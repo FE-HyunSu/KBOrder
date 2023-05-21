@@ -9,6 +9,7 @@ import Loading from '@components/@common/Loading';
 import { userAtom } from '@store/store';
 import { useRecoilValue } from 'recoil';
 import { IMAGES } from '@constants/images';
+import { COLOR } from '@styles/theme';
 
 interface ModalProps {
   onClose: () => void;
@@ -173,7 +174,7 @@ export const ModalOrderUI = styled.div`
           appearance: none;
           &:checked + span {
             font-weight: 700;
-            color: #299438;
+            color: ${COLOR.green};
             &:before {
               opacity: 0;
             }
@@ -186,15 +187,15 @@ export const ModalOrderUI = styled.div`
               width: 1.2rem;
               height: 0.7rem;
               margin: auto;
-              border-left: 0.2rem solid #299438;
-              border-bottom: 0.2rem solid #299438;
+              border-left: 0.2rem solid ${COLOR.green};
+              border-bottom: 0.2rem solid ${COLOR.green};
               background: none;
               animation: none;
               transform: rotate(-45deg);
             }
             & + em {
               font-weight: 700;
-              color: #299438;
+              color: ${COLOR.green};
               &:before {
                 background-color: #f2fcf1;
               }
@@ -229,7 +230,7 @@ export const ModalOrderUI = styled.div`
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #fff;
+            background-color: ${COLOR.white};
             transition: 0.3s;
             z-index: -1;
           }
@@ -249,12 +250,12 @@ export const BtnComplete = styled.button`
   padding: 1.8rem 0;
   font-weight: 500;
   font-size: 1.6rem;
-  color: #fff;
-  background-color: #299438;
+  color: ${COLOR.white};
+  background-color: ${COLOR.green};
   cursor: pointer;
   transition: 0.3s;
   &:disabled {
-    color: #fff;
+    color: ${COLOR.white};
     background-color: #ccc;
   }
 `;

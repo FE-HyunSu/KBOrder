@@ -6,6 +6,7 @@ import { Doughnut } from 'react-chartjs-2';
 import { ArcElement } from 'chart.js';
 import MotionCount from './MotionCount';
 import { IMAGES } from '@constants/images';
+import { COLOR } from '@styles/theme';
 ChartJS.register(ArcElement);
 
 interface ChartDataType {
@@ -47,7 +48,7 @@ const ChartDoughnut = (chartItemData: ChartItemDataType) => {
       datasets: [
         {
           data: [percent, 100 - percent],
-          backgroundColor: ['#299438', '#ccc'],
+          backgroundColor: [COLOR.green, '#ccc'],
           circumference: 360,
           borderColor: 'transparent',
           cutout: '85%',

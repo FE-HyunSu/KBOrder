@@ -7,6 +7,7 @@ import { IMAGES } from '@constants/images';
 import { LogoMotion, BounceMotion, TextMotion } from '@styles/keyframe';
 import { validationName, validationEmail, validationPassword, validationMatch } from '@utils/validation';
 import { ROUTES } from '@constants/routers';
+import { COLOR } from '@styles/theme';
 
 interface ErrorType {
   name: string;
@@ -219,7 +220,7 @@ export const JoinUI = styled.div`
     }
     &:hover {
       font-size: 1.6rem;
-      background-color: #000;
+      background-color: ${COLOR.realBlack};
       &:disabled {
         font-size: 1.4rem;
         background-color: #bbb;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { MotionTextView } from '@styles/keyframe';
+import { COLOR } from '@styles/theme';
 
 const Intro = () => {
   const introContents = [
@@ -57,7 +58,7 @@ const IntroUI = styled.div`
     line-height: 1.4;
     animation: ${MotionTextView} 0.8s both;
     em {
-      color: #299438;
+      color: ${COLOR.green};
     }
   }
 `;

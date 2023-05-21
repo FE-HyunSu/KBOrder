@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { MEDIA, COLOR } from '@styles/theme';
 import { getData } from '@api/firestore';
+import { MotionIntro } from '@styles/keyframe';
 
 interface ChartItemType {
   name: string;
@@ -107,6 +108,17 @@ const SkeletonUl = styled.ul`
       border: 1.2rem solid ${COLOR.grayEE};
       border-radius: 100%;
       box-sizing: border-box;
+      animation: ${MotionIntro} 0.5s both;
+    }
+    &:nth-of-type(2) {
+      span {
+        animation-delay: 0.1s;
+      }
+    }
+    &:nth-of-type(3) {
+      span {
+        animation-delay: 0.2s;
+      }
     }
   }
   ${MEDIA.mobile} {

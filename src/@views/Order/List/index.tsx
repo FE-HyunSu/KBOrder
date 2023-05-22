@@ -88,7 +88,6 @@ const OrderListUI = styled.section`
     min-height: 20rem;
     margin: auto;
     padding: 1.6rem;
-    background-color: ${COLOR.grayEE};
     box-sizing: border-box;
     h1 {
       display: block;

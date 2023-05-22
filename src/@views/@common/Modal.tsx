@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 import { MotionIntro } from '@styles/keyframe';
+import { COLOR } from '@styles/theme';
 
 interface ModalProps {
   onClose: () => void;
@@ -66,7 +67,7 @@ export const ModalInner = styled.div`
   max-width: 80rem;
   height: auto;
   max-height: 80%;
-  background-color: #fff;
+  background-color: ${COLOR.white};
   border-radius: 1rem;
   transform: scale(0.1, 0.1);
   overflow: hidden;

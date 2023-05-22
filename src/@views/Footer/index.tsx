@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { COLOR } from '@styles/theme';
 
 const Footer = () => {
   return (
@@ -13,7 +14,7 @@ export default Footer;
 const FooterUI = styled.footer`
   display: block;
   height: 5rem;
-  background-color: #fff;
+  background-color: ${COLOR.white};
   border-top: 0.1rem solid rgba(0, 0, 0, 0.05);
   border-bottom: 0.1rem solid rgba(0, 0, 0, 0.05);
   transition: 0.3s;

@@ -15,17 +15,15 @@ const Main = () => {
   };
 
   return (
-    <>
-      <MainBox>
-        <div className="inner">
-          <Intro />
-          <BestMenu />
-          <TotalSales />
-          <BestMember />
-          <ButtonFixed name={`주문목록보기`} onClickFn={orderListMove} />
-        </div>
-      </MainBox>
-    </>
+    <MainBox>
+      <div className="inner">
+        <Intro />
+        <BestMenu />
+        <TotalSales />
+        <BestMember />
+        <ButtonFixed name={`주문목록보기`} onClickFn={orderListMove} />
+      </div>
+    </MainBox>
   );
 };
 

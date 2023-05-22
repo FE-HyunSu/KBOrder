@@ -8,6 +8,7 @@ export const COLOR = {
   grayCC: '#ccc',
   gray99: '#999',
   green: '#299438',
+  orange: '#f0581a',
 };
 
 export const MEDIA = {

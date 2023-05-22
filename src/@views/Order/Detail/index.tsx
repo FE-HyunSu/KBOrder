@@ -287,7 +287,7 @@ const OrderDetailUI = styled.section`
           color: ${COLOR.green};
         }
         strong {
-          color: #f0581a;
+          color: ${COLOR.orange};
         }
       }
       a {
@@ -307,7 +307,7 @@ const OrderDetailUI = styled.section`
       padding: 2rem;
       font-size: 1.4rem;
       text-align: left;
-      border: 0.1rem solid #ddd;
+      border: 0.1rem solid ${COLOR.grayCC};
       border-radius: 0.8rem;
       box-sizing: border-box;
       p {
@@ -490,7 +490,7 @@ const BtnOrderClose = styled.button`
   font-size: 1.2rem;
   font-weight: 400;
   text-decoration: none;
-  background-color: #f0581a;
+  background-color: ${COLOR.orange};
   border-radius: 4rem;
   outline: 0;
   box-sizing: border-box;

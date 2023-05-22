@@ -29,7 +29,7 @@ const BtnBottomFixed = styled.button`
   margin: auto;
   font-weight: 500;
   font-size: 1.4rem;
-  color: #fff;
+  color: ${COLOR.white};
   background-color: ${COLOR.green};
   border-radius: 6rem;
   overflow: hidden;

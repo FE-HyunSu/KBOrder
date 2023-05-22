@@ -212,7 +212,7 @@ export const JoinUI = styled.div`
     background-color: #1a1a1a;
     font-weight: 500;
     font-size: 1.4rem;
-    color: #fff;
+    color: ${COLOR.white};
     animation: ${TextMotion} 0.6s 1.2s both;
     transition: 0.2s;
     &:disabled {

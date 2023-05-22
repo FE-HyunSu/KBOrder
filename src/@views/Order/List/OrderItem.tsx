@@ -20,6 +20,8 @@ const OrderItem = ({ seq, liIndex, orderClose }: dateListType) => {
   const itemRef = useRef<HTMLLIElement>(null);
   const viewCheck = useIntersectionObserver(itemRef, {});
   const isVisible = !!viewCheck?.isIntersecting;
+  const dateNumber = seq.split('_')[0];
+  const madeUser = seq.split('_')[1];
   const [isDelay, setDelay] = useState<Number>(liIndex);
   useEffect(() => {
     setTimeout(() => {
@@ -30,7 +32,9 @@ const OrderItem = ({ seq, liIndex, orderClose }: dateListType) => {
     <>
       <OrderItemLi
         className={
-          dayjs(new Date(returnDate(seq))).format('YYYY/MM/DD') === dayjs(new Date()).format('YYYY/MM/DD')
+          dayjs(new Date(returnDate(dateNumber)))
+            .format('YYYY/MM/DD')
+            .includes(dayjs(new Date()).format('YYYY/MM/DD'))
             ? `open`
             : `closed`
         }
@@ -42,10 +46,11 @@ const OrderItem = ({ seq, liIndex, orderClose }: dateListType) => {
           <dl>
             <dt>
               <span></span>
-              {dayjs(new Date(returnDate(seq))).format('M월D일(ddd)')} 김밥주문
+              {dayjs(new Date(returnDate(dateNumber))).format('M월D일(ddd)')} 김밥주문{' '}
+              {!!madeUser ? `(` + madeUser + `)` : ``}
             </dt>
             <dd>
-              {dayjs(new Date(returnDate(seq))).format('YYYY/MM/DD') !== dayjs(new Date()).format('YYYY/MM/DD')
+              {dayjs(new Date(returnDate(dateNumber))).format('YYYY/MM/DD') !== dayjs(new Date()).format('YYYY/MM/DD')
                 ? `마감`
                 : orderClose
                 ? `주문마감`

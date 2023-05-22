@@ -50,6 +50,8 @@ const OrderDetail = () => {
   const [isOpen, setOpen] = useState<Boolean>(false);
   const [isOrderClose, setOrderClose] = useState<Boolean>(false);
   const atomUserInfo = useRecoilValue(userAtom);
+  const dateNumber = !!id ? String(id).split('_')[0] : '';
+  const madeUser = !!id ? String(id).split('_')[1] : '';
 
   const todayCloseCheck = async () => {
     await getData('dateList').then((data) => {
@@ -90,9 +92,6 @@ const OrderDetail = () => {
     } else if (dayjs(new Date(dateText)).format('YYYY/MM/DD') === dayjs(new Date()).format('YYYY/MM/DD')) {
       setOpen(true);
       todayCloseCheck();
-    } else {
-      alert('오픈전입니다. 돌아가세요.');
-      router.push('/main', undefined, { shallow: true });
     }
     orderListData();
   };
@@ -168,7 +167,7 @@ const OrderDetail = () => {
   };
   useEffect(() => {
     if (!router.isReady) return;
-    if (typeof id === 'string') pageInfoSet(id);
+    if (typeof id === 'string') pageInfoSet(dateNumber);
   }, [router.isReady]);
   return (
     <>
@@ -181,7 +180,7 @@ const OrderDetail = () => {
               <span>🍙</span>
               <strong>
                 <em>{dateTitle}</em>
-                {isOrderClose ? <strong>주문마감</strong> : `주문`}
+                {isOrderClose ? <strong>주문마감</strong> : ` 주문`}({madeUser})
               </strong>
               {!isOrderClose ? (
                 <BtnOrderClose type="button" onClick={() => orderClose()}>

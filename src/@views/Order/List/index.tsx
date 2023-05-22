@@ -5,6 +5,8 @@ import Loading from '@components/@common/Loading';
 import OrderItem from '@components/Order/List/OrderItem';
 import dayjs from 'dayjs';
 import { COLOR } from '@styles/theme';
+import { useRecoilValue } from 'recoil';
+import { userAtom } from '@store/store';
 
 interface dateListType {
   seq: string;
@@ -14,6 +16,7 @@ interface dateListType {
 const OrderList = () => {
   const [isOrderList, setOrderList] = useState<dateListType[]>([]);
   const [isLoading, setLoading] = useState<Boolean>(true);
+  const userInfo = useRecoilValue(userAtom);
   const setItem = async () => {
     setLoading(true);
     const today: string = dayjs(new Date()).format('YYYYMMDD');
@@ -22,11 +25,19 @@ const OrderList = () => {
       if (item.seq === today) dataCheck = true;
     });
     if (confirm('오늘의 주문을 만드시겠습니까?')) {
-      if (dataCheck) {
-        alert('오늘의 주문이 이미 생성 되어있습니다.');
+      // if (dataCheck) {
+      //   alert('오늘의 주문이 이미 생성 되어있습니다.');
+      //   setLoading(false);
+      // } else {
+      //   await setData('dateList', { seq: today }).then((data) => {
+      //     getList();
+      //   });
+      // }
+      if (userInfo.uid === '') {
+        alert('로그인 후 이용해 주세요.');
         setLoading(false);
       } else {
-        await setData('dateList', { seq: today }).then((data) => {
+        await setData('dateList', { seq: today + '_' + userInfo.name }).then((data) => {
           getList();
         });
       }
@@ -42,11 +53,12 @@ const OrderList = () => {
         return { ...item.data() };
       });
     });
-    setOrderList(dataList.sort((a: dateListType, b: dateListType) => Number(b.seq) - Number(a.seq)));
+    setOrderList(dataList.sort((a, b) => Number(b.seq.substr(0, 8)) - Number(a.seq.substr(0, 8))));
     setLoading(false);
   };
   useEffect(() => {
     getList();
+    console.log(userInfo.uid);
   }, []);
   return (
     <>

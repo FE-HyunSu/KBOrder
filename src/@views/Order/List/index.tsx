@@ -88,7 +88,7 @@ const OrderListUI = styled.section`
     min-height: 20rem;
     margin: auto;
     padding: 1.6rem;
-    background-color: eee;
+    background-color: ${COLOR.grayEE};
     box-sizing: border-box;
     h1 {
       display: block;
@@ -114,7 +114,7 @@ const BtnCreateOrder = styled.button`
   width: 5rem;
   height: 5rem;
   font-size: 1.4rem;
-  color: #fff;
+  color: ${COLOR.white};
   text-indent: -9999rem;
   background-color: ${COLOR.green};
   border-radius: 100%;
@@ -154,7 +154,7 @@ const BtnCreateOrder = styled.button`
     height: 2.2rem;
     margin: auto;
     transition: 0.2s;
-    background-color: #fff;
+    background-color: ${COLOR.white};
     transform: rotate(45deg);
   }
   &:after {
@@ -167,7 +167,7 @@ const BtnCreateOrder = styled.button`
     width: 0.5rem;
     height: 0.5rem;
     margin: auto;
-    background-color: #fff;
+    background-color: ${COLOR.white};
     transition: 0.2s;
   }
 `;

@@ -34,15 +34,15 @@ export const NavBox = styled.nav`
   top: 5rem;
   left: 0;
   width: 100%;
-  border-bottom: 0.1rem solid #eee;
+  border-bottom: 0.1rem solid ${COLOR.grayEE};
   ul {
     display: flex;
     justify-content: center;
-    background-color: #fff;
+    background-color: ${COLOR.white};
     li {
-      border-right: 0.1rem solid #eee;
+      border-right: 0.1rem solid ${COLOR.grayEE};
       &:first-of-type {
-        border-left: 0.1rem solid #eee;
+        border-left: 0.1rem solid ${COLOR.grayEE};
       }
       a {
         display: block;

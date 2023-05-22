@@ -264,7 +264,6 @@ const OrderDetailUI = styled.section`
     min-height: 20rem;
     margin: auto;
     padding: 1.6rem;
-    background-color: eee;
     box-sizing: border-box;
     h1 {
       display: flex;
@@ -273,7 +272,7 @@ const OrderDetailUI = styled.section`
       padding: 2rem 0 0.5rem;
       font-weight: 700;
       font-size: 1.4rem;
-      color: #1a1a1a;
+      color: ${COLOR.black};
       text-align: left;
       span {
         display: inline-block;
@@ -325,7 +324,7 @@ const OrderDetailUI = styled.section`
         }
         span {
           font-weight: 700;
-          color: #111;
+          color: ${COLOR.black};
         }
         em {
           font-weight: 700;
@@ -338,9 +337,9 @@ const OrderDetailUI = styled.section`
     }
     ul {
       li {
-        border-bottom: 0.1rem solid #eee;
+        border-bottom: 0.1rem solid ${COLOR.grayEE};
         &:first-of-type {
-          border-top: 0.1rem solid #eee;
+          border-top: 0.1rem solid ${COLOR.grayEE};
         }
         &.open {
           dd {
@@ -390,7 +389,7 @@ const OrderDetailUI = styled.section`
               display: inline-block;
               padding: 0.6rem;
               font-size: 1.4rem;
-              color: #111;
+              color: ${COLOR.black};
             }
             strong {
               display: inline-block;

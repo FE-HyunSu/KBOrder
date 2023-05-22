@@ -62,9 +62,9 @@ export default OrderItem;
 
 const OrderItemLi = styled.li`
   animation: ${viewEffect} 1s forwards;
-  border-bottom: 0.1rem solid #eee;
+  border-bottom: 0.1rem solid ${COLOR.grayEE};
   &:first-of-type {
-    border-top: 0.1rem solid #eee;
+    border-top: 0.1rem solid ${COLOR.grayEE};
   }
   &.open {
     dd {
@@ -85,7 +85,7 @@ const OrderItemLi = styled.li`
     position: relative;
     padding: 2rem 1rem 2rem 1.6rem;
     font-size: 1.4rem;
-    color: #111;
+    color: ${COLOR.black};
     text-decoration: none;
     box-sizing: border-box;
     transform: translateX(-10rem);

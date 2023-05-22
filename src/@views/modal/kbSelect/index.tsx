@@ -123,7 +123,7 @@ export const BtnClose = styled.button`
     width: 0.1rem;
     height: 2rem;
     margin: auto;
-    background-color: #1a1a1a;
+    background-color: ${COLOR.black};
     transform: rotate(45deg);
   }
   &:after {
@@ -136,7 +136,7 @@ export const BtnClose = styled.button`
     width: 2rem;
     height: 0.1rem;
     margin: auto;
-    background-color: #1a1a1a;
+    background-color: ${COLOR.black};
     transform: rotate(45deg);
   }
 `;
@@ -147,8 +147,8 @@ export const ModalOrderUI = styled.div`
     padding-bottom: 1.5rem;
     font-weight: 700;
     font-size: 1.6rem;
-    color: #1a1a1a;
-    border-bottom: 0.1rem solid #eee;
+    color: ${COLOR.black};
+    border-bottom: 0.1rem solid ${COLOR.grayEE};
   }
   ul {
     position: relative;
@@ -160,7 +160,7 @@ export const ModalOrderUI = styled.div`
       max-height: 40rem;
     }
     li {
-      border-bottom: 0.1rem solid #eee;
+      border-bottom: 0.1rem solid ${COLOR.grayEE};
       label {
         display: flex;
         align-items: center;

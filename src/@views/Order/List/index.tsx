@@ -22,19 +22,14 @@ const OrderList = () => {
     const today: string = dayjs(new Date()).format('YYYYMMDD');
     let dataCheck: Boolean = false;
     isOrderList.forEach((item) => {
-      if (item.seq === today) dataCheck = true;
+      if (item.seq === today + '_' + userInfo.name) dataCheck = true;
     });
     if (confirm('오늘의 주문을 만드시겠습니까?')) {
-      // if (dataCheck) {
-      //   alert('오늘의 주문이 이미 생성 되어있습니다.');
-      //   setLoading(false);
-      // } else {
-      //   await setData('dateList', { seq: today }).then((data) => {
-      //     getList();
-      //   });
-      // }
       if (userInfo.uid === '') {
         alert('로그인 후 이용해 주세요.');
+        setLoading(false);
+      } else if (dataCheck) {
+        alert('한 계정당 하루에 1개의 주문만 생성 가능합니다.');
         setLoading(false);
       } else {
         await setData('dateList', { seq: today + '_' + userInfo.name }).then((data) => {

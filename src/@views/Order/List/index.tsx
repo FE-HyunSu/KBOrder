@@ -53,7 +53,6 @@ const OrderList = () => {
   };
   useEffect(() => {
     getList();
-    console.log(userInfo.uid);
   }, []);
   return (
     <>

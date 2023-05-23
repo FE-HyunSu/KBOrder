@@ -41,7 +41,7 @@ const TotalSales = () => {
         </h1>
         <p ref={itemRef}>
           <span className={isVisible && !isLoading ? `active` : ``}>
-            <img src={IMAGES.LOGO} className="img-logo" alt="logo" />
+            <img src={IMAGES.LOGO} className="img-logo" alt="logo" />{' '}
             {isVisible && !isLoading ? <MotionCount count={isTotalCount} sec={2500} /> : 0}원
           </span>
         </p>

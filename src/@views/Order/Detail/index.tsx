@@ -108,6 +108,17 @@ const OrderDetail = () => {
     }
   };
 
+  // 전체데이터 삭제.
+  const orderDeleteAll = async (id: string) => {
+    if (await confirm('주문 전체를 삭제 할까요?')) {
+      // 전체데이터 삭제 로직 추가 필요.
+      await alert('주문 전체가 삭제되었습니다.');
+      router.push(ROUTES.LIST);
+    } else {
+      alert('주문 전체 삭제를 취소 하셨습니다.');
+    }
+  };
+
   // 목록 갱신. 추후 주문 업데이트 시 해당 함수만 재실행.
   const orderListData = () => {
     let orderSum: string[] = [];

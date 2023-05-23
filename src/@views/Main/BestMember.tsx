@@ -94,7 +94,7 @@ const BestMember = () => {
                       ) : item.rank === 3 ? (
                         <span>🥉</span>
                       ) : (
-                        ``
+                        ` `
                       )}
                       {item.name}(
                       <MotionCount count={item.value} />

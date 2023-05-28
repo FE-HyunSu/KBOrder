@@ -10,6 +10,7 @@ import { userAtom } from '@store/store';
 import { useRecoilValue } from 'recoil';
 import { IMAGES } from '@constants/images';
 import { COLOR } from '@styles/theme';
+import { ROUTES } from '@constants/routers';
 
 interface ModalProps {
   onClose: () => void;
@@ -53,7 +54,7 @@ const ModalKbSelect = (props: ModalProps) => {
   const validation = () => {
     if (atomUserInfo.email === '') {
       alert('주문 하시려면 로그인 후 이용해 주세요.');
-      router.push('/', undefined, { shallow: true });
+      router.push(ROUTES.INDEX, undefined, { shallow: true });
     } else if (!selectItem) {
       alert('메뉴를 선택해 주세요.');
     } else {

@@ -80,7 +80,7 @@ const Login = () => {
         const password: string = passwordRef && passwordRef.current ? passwordRef.current?.value : '';
         await loginAuth(email, password).then((data) => {
           getUserInfo(data.user.uid);
-          router.push('/main', undefined, { shallow: true });
+          router.push(ROUTES.MAIN, undefined, { shallow: true });
         });
       } catch (e) {
         console.log(e);

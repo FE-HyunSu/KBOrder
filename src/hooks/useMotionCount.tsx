@@ -1,38 +1,28 @@
-import React, { useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-interface CountType {
-  count: number;
-  motionTime?: number;
+interface useMotionCountT {
+  endCount: number;
+  sec: number;
 }
 
-const unitWon = (num: number) => {
-  return Math.round(num)
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-};
-
-const useMotionCount = ({ count, motionTime }: CountType) => {
-  const countRef = useRef<HTMLElement>(null);
-  const timeSec = !!motionTime ? motionTime : 2000; // 초기값 설정.
-  let requestCount: () => void;
-
+const useMotionCount = ({ endCount, sec }: useMotionCountT) => {
+  const [count, setCount] = useState<number>(0);
+  const intervalCount = (endCount / sec) * 40; // 40은 주사율. 쓰로틀 로직 업뎃 필요.
+  let returnCount = 0;
   useEffect(() => {
-    let resultNumber = 0;
-    requestCount = () => {
-      if (resultNumber >= count && countRef.current) {
-        countRef.current.innerText = unitWon(count);
-      } else if (countRef.current) {
-        countRef.current.innerText = unitWon(Math.round((resultNumber += count / ((timeSec / 1000) * 40))));
-        requestAnimationFrame(requestCount);
+    const countCalcFn = () => {
+      if (returnCount >= endCount) {
+        returnCount = endCount;
+        setCount(returnCount);
+      } else {
+        returnCount += intervalCount;
+        setCount(returnCount);
+        requestAnimationFrame(countCalcFn);
       }
     };
-    let rafRequestCount = requestAnimationFrame(requestCount);
-    return () => {
-      cancelAnimationFrame(rafRequestCount);
-    };
-  }, []);
-
-  return { countRef };
+    requestAnimationFrame(countCalcFn);
+  }, [endCount]);
+  return [count];
 };
 
 export default useMotionCount;

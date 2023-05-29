@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from '@emotion/styled';
-import MotionCount from '@components/@common/MotionCount';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import { getData } from '@api/firestore';
 import { IMAGES } from '@constants/images';
 import { BounceTurnMotion } from '@styles/keyframe';
 import { MEDIA, COLOR } from '@styles/theme';
+import useMotionCount from '@hooks/useMotionCount';
+import { unitWon } from '@utils/returnData';
 
 const TotalSales = () => {
   const itemRef = useRef<HTMLDivElement>(null);
@@ -13,6 +14,8 @@ const TotalSales = () => {
   const isVisible = !!viewCheck?.isIntersecting;
   const [isTotalCount, setTotalCount] = useState<number>(0);
   const [isLoading, setLoading] = useState<boolean>(true);
+  const [isViewCount, setViewCount] = useState<number>(0);
+  const totalCount = useMotionCount({ endCount: Number(isViewCount), sec: 2000 });
 
   const getResultData = async () => {
     let resultData = [];
@@ -33,6 +36,11 @@ const TotalSales = () => {
     getResultData();
   }, []);
 
+  useEffect(() => {
+    setViewCount(isTotalCount);
+    isVisible ? setViewCount(isTotalCount) : setViewCount(0);
+  }, [isTotalCount, isVisible, isLoading]);
+
   return (
     <>
       <SalesUI>
@@ -41,8 +49,7 @@ const TotalSales = () => {
         </h1>
         <p ref={itemRef}>
           <span className={isVisible && !isLoading ? `active` : ``}>
-            <img src={IMAGES.LOGO} className="img-logo" alt="logo" />{' '}
-            {isVisible && !isLoading ? <MotionCount count={isTotalCount} sec={2500} /> : 0}원
+            <img src={IMAGES.LOGO} className="img-logo" alt="logo" /> {unitWon(Number(totalCount))}
           </span>
         </p>
       </SalesUI>

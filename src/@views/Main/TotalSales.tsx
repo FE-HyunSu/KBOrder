@@ -49,7 +49,7 @@ const TotalSales = () => {
         </h1>
         <p ref={itemRef}>
           <span className={isVisible && !isLoading ? `active` : ``}>
-            <img src={IMAGES.LOGO} className="img-logo" alt="logo" /> {unitWon(Number(totalCount))}
+            <img src={IMAGES.LOGO} className="img-logo" alt="logo" /> {unitWon(Number(totalCount))}원
           </span>
         </p>
       </SalesUI>

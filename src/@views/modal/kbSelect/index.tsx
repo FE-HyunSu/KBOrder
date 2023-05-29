@@ -90,7 +90,7 @@ const ModalKbSelect = (props: ModalProps) => {
                         }}
                       />
                       <span>{item.name}</span>
-                      <em>{unitWon(item.price)}</em>
+                      <em>{unitWon(item.price)}원</em>
                     </label>
                   </li>
                 ))}

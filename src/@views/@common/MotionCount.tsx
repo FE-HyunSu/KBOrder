@@ -1,15 +1,10 @@
 import React, { useRef, useEffect } from 'react';
+import { unitWon } from '@utils/returnData';
 
 interface CountType {
   count: number;
   sec?: number;
 }
-
-const unitWon = (num: number) => {
-  return Math.round(num)
-    .toString()
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-};
 
 const MotionCount = ({ count, sec }: CountType) => {
   const countRef = useRef<HTMLElement>(null);

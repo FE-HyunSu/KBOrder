@@ -1,9 +1,7 @@
 export const unitWon = (value: number) => {
-  return (
-    Math.round(value)
-      .toString()
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ',') + '원'
-  );
+  return Math.round(value)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 };
 
 export const returnDate = (value: number | string) => {

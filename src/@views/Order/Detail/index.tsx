@@ -236,7 +236,7 @@ const OrderDetail = () => {
                         </dt>
                         <dd>
                           <strong>{item.userName}</strong>
-                          <em>{unitWon(item.price)}</em>
+                          <em>{unitWon(item.price)}원</em>
                           {atomUserInfo.email !== '' &&
                           isOpen &&
                           !isOrderClose &&

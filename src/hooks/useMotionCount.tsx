@@ -20,7 +20,11 @@ const useMotionCount = ({ endCount, sec }: useMotionCountT) => {
         requestAnimationFrame(countCalcFn);
       }
     };
-    requestAnimationFrame(countCalcFn);
+    const rafCountCalcFn = requestAnimationFrame(countCalcFn);
+
+    return () => {
+      cancelAnimationFrame(rafCountCalcFn);
+    };
   }, [endCount]);
   return [count];
 };

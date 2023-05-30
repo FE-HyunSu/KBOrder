@@ -154,7 +154,7 @@ export const JoinUI = styled.div`
     padding-top: 1rem;
     font-weight: 500;
     font-size: 2.4rem;
-    color: #1a1a1a;
+    color: ${COLOR.black};
     text-align: center;
     animation: ${TextMotion} 0.6s forwards;
     opacity: 0;
@@ -209,7 +209,7 @@ export const JoinUI = styled.div`
     margin: 0.8rem auto 0;
     padding: 0 1.3rem;
     border-radius: 0.5rem;
-    background-color: #1a1a1a;
+    background-color: ${COLOR.black};
     font-weight: 500;
     font-size: 1.4rem;
     color: ${COLOR.white};

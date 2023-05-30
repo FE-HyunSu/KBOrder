@@ -43,7 +43,7 @@ const IntroUI = styled.div`
     padding: 2rem 0;
     font-weight: 700;
     font-size: 2.4rem;
-    color: #1a1a1a;
+    color: ${COLOR.black};
     text-align: left;
     em {
       display: inline-block;

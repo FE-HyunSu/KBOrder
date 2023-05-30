@@ -161,7 +161,7 @@ export const LoginUI = styled.div`
     padding-top: 1rem;
     font-weight: 500;
     font-size: 2.4rem;
-    color: #1a1a1a;
+    color: ${COLOR.black};
     text-align: center;
     animation: ${TextMotion} 0.6s forwards;
     opacity: 0;

@@ -153,7 +153,7 @@ const BtnPrev = styled.button`
   font-size: 1.4rem;
   background-color: transparent;
   line-height: 1;
-  color: #1a1a1a;
+  color: ${COLOR.black};
   &:before {
     content: '';
     position: absolute;
@@ -163,8 +163,8 @@ const BtnPrev = styled.button`
     width: 0.8rem;
     height: 0.8rem;
     margin: auto;
-    border-bottom: 0.1rem solid #111;
-    border-left: 0.1rem solid #111;
+    border-bottom: 0.1rem solid ${COLOR.black};
+    border-left: 0.1rem solid ${COLOR.black};
     transform: rotate(45deg);
   }
 `;

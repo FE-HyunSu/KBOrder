@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { LogoMotion, BounceMotion, TextMotion, TextAfter } from '@styles/keyframe';
 import { IMAGES } from '@constants/images';
+import { COLOR } from '@styles/theme';
 
 const Loading = () => {
   return (
@@ -50,7 +51,7 @@ const LoadingUI = styled.div`
     padding: 1rem 0rem 1rem 1rem;
     font-weight: 500;
     font-size: 1.6rem;
-    color: #1a1a1a;
+    color: ${COLOR.black};
     text-align: center;
     animation: ${TextMotion} 0.6s forwards;
     opacity: 0;

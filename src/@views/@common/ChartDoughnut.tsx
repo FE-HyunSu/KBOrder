@@ -4,9 +4,9 @@ import { BounceTurnMotion } from '@styles/keyframe';
 import { Chart as ChartJS } from 'chart.js/auto';
 import { Doughnut } from 'react-chartjs-2';
 import { ArcElement } from 'chart.js';
-import MotionCount from './MotionCount';
 import { IMAGES } from '@constants/images';
 import { COLOR } from '@styles/theme';
+import useMotionCount from '@hooks/useMotionCount';
 ChartJS.register(ArcElement);
 
 interface ChartDataType {
@@ -30,6 +30,10 @@ interface ChartItemDataType {
 
 const ChartDoughnut = (chartItemData: ChartItemDataType) => {
   const [isChartReady, setChartReady] = useState<Boolean>(false);
+  const [viewCount, setViewCount] = useState<number>(0);
+  const valueCount = useMotionCount({ endCount: viewCount, sec: 2000 });
+  const [viewCountPer, setViewCountPer] = useState<number>(0);
+  const valueCountPer = useMotionCount({ endCount: viewCountPer, sec: 2000 });
   const [chartData, setChartData] = useState<ChartDataType>({
     datasets: [
       {
@@ -61,6 +65,8 @@ const ChartDoughnut = (chartItemData: ChartItemDataType) => {
   useEffect(() => {
     const chartViewDelay = setTimeout(() => {
       showChart(chartItemData);
+      setViewCount(chartItemData.value);
+      setViewCountPer((chartItemData.value / chartItemData.totalCount) * 100);
     }, chartItemData.delay);
     return () => clearTimeout(chartViewDelay);
   }, []);
@@ -73,9 +79,9 @@ const ChartDoughnut = (chartItemData: ChartItemDataType) => {
           {chartItemData.name}
           <br />
           <em>
-            <MotionCount count={Math.round((chartItemData.value / chartItemData.totalCount) * 100)} />
+            {Math.round(Number(valueCountPer))}
             %(
-            <MotionCount count={chartItemData.value} />
+            {Math.round(Number(valueCount))}
             건)
           </em>
         </span>

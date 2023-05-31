@@ -217,7 +217,7 @@ export const LoginUI = styled.div`
     margin: 0.8rem auto 0;
     padding: 0 1.3rem;
     border-radius: 0.5rem;
-    background-color: #1a1a1a;
+    background-color: ${COLOR.black};
     font-weight: 500;
     font-size: 1.4rem;
     color: ${COLOR.white};
@@ -231,14 +231,14 @@ export const LoginUI = styled.div`
       }
     }
     &:disabled {
-      background-color: #bbb;
+      background-color: ${COLOR.grayCC};
     }
     &:hover {
       font-size: 1.6rem;
       background-color: ${COLOR.realBlack};
       &:disabled {
         font-size: 1.4rem;
-        background-color: #bbb;
+        background-color: ${COLOR.grayCC};
       }
     }
   }

@@ -321,7 +321,7 @@ const OrderDetailUI = styled.section`
       border-radius: 0.8rem;
       box-sizing: border-box;
       p {
-        color: #777;
+        color: ${COLOR.gray99};
         strong {
           display: inline-block;
           line-height: 1.3;

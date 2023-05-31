@@ -97,7 +97,7 @@ const HeaderUI = styled.header`
     text-decoration: none;
     font-weight: 500;
     font-size: 1.4rem;
-    color: #1a1a1a;
+    color: ${COLOR.black};
     img {
       display: inline-block;
       width: 2rem;

@@ -1,29 +1,14 @@
-import React, { useRef, useEffect } from 'react';
-import { unitWon } from '@utils/returnData';
+import React from 'react';
+import useMotionCount from '@hooks/useMotionCount';
 
-interface CountType {
-  count: number;
-  sec?: number;
+interface MotionCountT {
+  endCount: number;
 }
 
-const MotionCount = ({ count, sec }: CountType) => {
-  const countRef = useRef<HTMLElement>(null);
-  const timeSec = !!sec ? sec : 2000;
+const MotionCount = ({ endCount }: MotionCountT) => {
+  const returnCount = useMotionCount({ endCount: endCount, sec: 2000 });
 
-  let resultNumber = 0;
-  const requestCount = () => {
-    if (resultNumber >= count && countRef.current) {
-      countRef.current.innerText = unitWon(count);
-    } else if (countRef.current) {
-      countRef.current.innerText = unitWon(Math.round((resultNumber += count / ((timeSec / 1000) * 40))));
-      requestAnimationFrame(requestCount);
-    }
-  };
-
-  useEffect(() => {
-    requestAnimationFrame(requestCount);
-  }, []);
-  return <i ref={countRef} />;
+  return <React.Fragment>{Math.round(Number(returnCount))}</React.Fragment>;
 };
 
 export default MotionCount;

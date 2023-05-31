@@ -97,7 +97,7 @@ const BestMember = () => {
                         ` `
                       )}
                       {item.name}(
-                      <MotionCount count={item.value} />
+                      <MotionCount endCount={item.value} />
                       줄)
                     </span>
                   </li>

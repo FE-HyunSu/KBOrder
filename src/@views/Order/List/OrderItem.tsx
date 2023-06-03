@@ -73,7 +73,7 @@ const OrderItemLi = styled.li`
   }
   &.open {
     dd {
-      color: #ff7111;
+      color: ${COLOR.orangeL};
     }
   }
   &.closed {

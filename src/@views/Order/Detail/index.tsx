@@ -353,7 +353,7 @@ const OrderDetailUI = styled.section`
         }
         &.open {
           dd {
-            color: #ff7111;
+            color: ${COLOR.orangeL};
           }
         }
         &.closed {

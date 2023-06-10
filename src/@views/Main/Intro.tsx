@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from '@emotion/styled';
 import { MotionTextView } from '@styles/keyframe';
 import { COLOR } from '@styles/theme';
+import useIntersectionObserver from '@hooks/useIntersectionObserver';
 
 const Intro = () => {
+  const itemRef = useRef<HTMLDivElement>(null);
+  const viewCheck = useIntersectionObserver(itemRef, {});
+  const isVisible = !!viewCheck?.isIntersecting;
   const introContents = [
     '안녕하세요.',
     <>
@@ -20,7 +24,7 @@ const Intro = () => {
   ];
   return (
     <>
-      <IntroUI>
+      <IntroUI ref={itemRef} className={isVisible ? `active` : ``}>
         <h1>🍱 소개</h1>
         {introContents.map((item, idx) => (
           <p key={idx} style={{ animationDelay: idx * 0.2 + `s` }}>
@@ -51,12 +55,16 @@ const IntroUI = styled.div`
       font-size: 3rem;
     }
   }
+  &.active {
+    p {
+      animation: ${MotionTextView} 0.8s both;
+    }
+  }
   p {
     padding: 0.3rem 0;
     font-weight: 400;
     font-size: 1.5rem;
     line-height: 1.4;
-    animation: ${MotionTextView} 0.8s both;
     em {
       color: ${COLOR.green};
     }

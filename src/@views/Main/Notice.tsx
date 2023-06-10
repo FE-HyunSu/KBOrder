@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styled from '@emotion/styled';
 import { MotionTextView } from '@styles/keyframe';
 import { COLOR } from '@styles/theme';
+import useIntersectionObserver from '@hooks/useIntersectionObserver';
 
 const Notice = () => {
+  const itemRef = useRef<HTMLDivElement>(null);
+  const viewCheck = useIntersectionObserver(itemRef, {});
+  const isVisible = !!viewCheck?.isIntersecting;
   const introContents = [
     <>
       안녕하세요 <em>Mason</em> 입니다.
@@ -23,8 +27,8 @@ const Notice = () => {
   ];
   return (
     <>
-      <NoticeUI>
-        <h1>🏂 공지사항</h1>
+      <NoticeUI className={isVisible ? `active` : ``}>
+        <h1 ref={itemRef}>🏂 공지사항</h1>
         {introContents.map((item, idx) => (
           <p key={idx} style={{ animationDelay: idx * 0.2 + `s` }}>
             {item}
@@ -54,12 +58,16 @@ const NoticeUI = styled.div`
       font-size: 3rem;
     }
   }
+  &.active {
+    p {
+      animation: ${MotionTextView} 0.8s both;
+    }
+  }
   p {
     padding: 0.3rem 0;
     font-weight: 400;
     font-size: 1.5rem;
     line-height: 1.4;
-    animation: ${MotionTextView} 0.8s both;
     em {
       color: ${COLOR.green};
     }

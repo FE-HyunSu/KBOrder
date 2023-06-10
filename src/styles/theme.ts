@@ -10,6 +10,7 @@ export const COLOR = {
   green: '#299438',
   orange: '#f0581a',
   orangeL: '#ff7111',
+  blue: '#2E8BC0',
 };
 
 export const MEDIA = {

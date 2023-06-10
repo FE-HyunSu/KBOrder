@@ -7,6 +7,7 @@ import BestMember from '@components/Main/BestMember';
 import BestMenu from '@components/Main/BestMenu';
 import TotalSales from '@components/Main/TotalSales';
 import { ROUTES } from '@constants/routers';
+import Notice from '@components/Main/Notice';
 
 const Main = () => {
   const router = useRouter();
@@ -21,6 +22,7 @@ const Main = () => {
         <BestMenu />
         <TotalSales />
         <BestMember />
+        <Notice />
         <ButtonFixed name={`주문목록보기`} onClickFn={orderListMove} />
       </div>
     </MainBox>

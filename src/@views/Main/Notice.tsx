@@ -3,38 +3,41 @@ import styled from '@emotion/styled';
 import { MotionTextView } from '@styles/keyframe';
 import { COLOR } from '@styles/theme';
 
-const Intro = () => {
+const Notice = () => {
   const introContents = [
-    '안녕하세요.',
     <>
-      삼성동 이레 김밥주문 페이지 <em>KB-Order</em> 입니다.
+      안녕하세요 <em>Mason</em> 입니다.
     </>,
     <>
-      오늘 점심 김밥을 드실 분들은 <em>주문을 신청</em>해 주세요.
+      저는 <em>2023년 5월 31일</em> 부로 삼성동을 떠나게 되었습니다.
     </>,
     <>
-      <em>12:00</em> 까지 신청된 주문건에 한해서 일괄 전화 주문 들어갑니다.
+      <em>메뉴 수정</em>, <em>비밀번호 초기화</em>, <em>기타 문의 및 요청사항</em>이 있으신분은
     </>,
+    <>
+      <a href="mailto:mason.dev@kakaocorp.com">mason.dev@kakaocorp.com</a> 메일로 연락 바랍니다.
+    </>,
+    '감사합니다.',
     ' ',
     '- Mason(김현수) -',
   ];
   return (
     <>
-      <IntroUI>
-        <h1>🍱 소개</h1>
+      <NoticeUI>
+        <h1>🏂 공지사항</h1>
         {introContents.map((item, idx) => (
           <p key={idx} style={{ animationDelay: idx * 0.2 + `s` }}>
             {item}
           </p>
         ))}
-      </IntroUI>
+      </NoticeUI>
     </>
   );
 };
 
-export default Intro;
+export default Notice;
 
-const IntroUI = styled.div`
+const NoticeUI = styled.div`
   display: block;
   width: 100%;
   padding-bottom: 6rem;
@@ -59,6 +62,10 @@ const IntroUI = styled.div`
     animation: ${MotionTextView} 0.8s both;
     em {
       color: ${COLOR.green};
+    }
+    a {
+      color: ${COLOR.blue};
+      text-decoration: none;
     }
   }
 `;

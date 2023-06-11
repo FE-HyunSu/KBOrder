@@ -1,8 +1,9 @@
 import React, { useRef } from 'react';
 import styled from '@emotion/styled';
-import { MotionTextView } from '@styles/keyframe';
+import { MotionTextView, ViewUp } from '@styles/keyframe';
 import { COLOR } from '@styles/theme';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
+import IconMason from '@components/icon/IconMason';
 
 const Notice = () => {
   const itemRef = useRef<HTMLDivElement>(null);
@@ -22,13 +23,14 @@ const Notice = () => {
       <a href="mailto:mason.dev@kakaocorp.com">mason.dev@kakaocorp.com</a> 메일로 연락 바랍니다.
     </>,
     '감사합니다.',
-    ' ',
-    '- Mason(김현수) -',
   ];
   return (
     <>
       <NoticeUI className={isVisible ? `active` : ``}>
         <h1 ref={itemRef}>🏂 공지사항</h1>
+        <IconBox className={isVisible ? `active` : ``}>
+          <IconMason iconSize={'1rem'} />
+        </IconBox>
         {introContents.map((item, idx) => (
           <p key={idx} style={{ animationDelay: idx * 0.2 + `s` }}>
             {item}
@@ -76,5 +78,14 @@ const NoticeUI = styled.div`
       color: ${COLOR.blue};
       text-decoration: none;
     }
+  }
+`;
+
+const IconBox = styled.div`
+  width: 10rem;
+  height: 8rem;
+  opacity: 0;
+  &.active {
+    animation: ${ViewUp} 0.8s both;
   }
 `;

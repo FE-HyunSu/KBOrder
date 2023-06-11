@@ -55,3 +55,36 @@ export const viewEffect = keyframes`
   40%{transform: translateX(.5rem); opacity:1;}
   100%{transform: translateX(0rem); opacity:1;}
 `;
+
+export const ViewUp = keyframes`
+  0% {transform:translateY(2rem); opacity: 0;}
+  100% {transform:translateY(0); opacity: 1;}
+`;
+
+export const FaceEffect = keyframes`
+  0% {transform:translateY(0);}
+  20% {transform:translateY(.2rem);}
+  40% {transform:translateY(0);}
+  100% {transform:translateY(0);}
+`;
+
+export const EyeEffect = keyframes`
+  0% {transform: scale(1, 1); opacity: 1;}
+  10% {transform: scale(1, 0.2); opacity: 0.3;}
+  20% {transform: scale(1, 1); opacity: 1;}
+  30% {transform: scale(1, 0.2); opacity: 0.3;}
+  40% {transform: scale(1, 1); opacity: 1;}
+  100% {transform: scale(1, 1); opacity: 1;}
+`;
+
+export const MouthEffect = keyframes`
+  0% {width: 1.5em;}
+  25% {width: 2em;}
+  50% {width: 1.5em;}
+  100% {width: 1.5em;}
+`;
+
+export const MotionBounceTop = keyframes`
+  0% {margin-top: 0; background-color: rgba(0,0,0,.1);}
+  100% {margin-top: 0.5rem; background-color: rgba(0,0,0,.2);}
+`;

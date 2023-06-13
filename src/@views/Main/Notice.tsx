@@ -25,19 +25,18 @@ const Notice = () => {
     '감사합니다.',
   ];
   return (
-    <>
-      <NoticeUI className={isVisible ? `active` : ``}>
-        <h1 ref={itemRef}>🏂 공지사항</h1>
-        <IconBox className={isVisible ? `active` : ``}>
-          <IconMason iconSize={'1rem'} />
-        </IconBox>
-        {introContents.map((item, idx) => (
-          <p key={idx} style={{ animationDelay: idx * 0.2 + `s` }}>
-            {item}
-          </p>
-        ))}
-      </NoticeUI>
-    </>
+    <NoticeUI className={isVisible ? `active` : ``}>
+      <h1>🏂 공지사항</h1>
+      <IconBox className={isVisible ? `active` : ``}>
+        <IconMason iconSize={'1rem'} />
+      </IconBox>
+      {introContents.map((item, idx) => (
+        <p key={idx} style={{ animationDelay: idx * 0.2 + `s` }}>
+          {item}
+        </p>
+      ))}
+      <span ref={itemRef}></span>
+    </NoticeUI>
   );
 };
 
@@ -45,6 +44,7 @@ export default Notice;
 
 const NoticeUI = styled.div`
   display: block;
+  position: relative;
   width: 100%;
   padding-bottom: 6rem;
   h1 {

@@ -87,7 +87,7 @@ const SalesUI = styled.div`
     span {
       display: inline-block;
       position: relative;
-      font-weight: 200;
+      font-weight: 100;
       font-size: 8rem;
       color: ${COLOR.realBlack};
       &:before {

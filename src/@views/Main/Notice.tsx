@@ -19,9 +19,7 @@ const Notice = () => {
     <>
       <em>메뉴 수정</em>, <em>비밀번호 초기화</em>, <em>기타 문의 및 요청사항</em>이 있으신분은
     </>,
-    <>
-      <a href="mailto:mason.dev@kakaocorp.com">mason.dev@kakaocorp.com</a> 메일로 연락 바랍니다.
-    </>,
+    <>개별 연락 바랍니다.</>,
     '감사합니다.',
   ];
   return (

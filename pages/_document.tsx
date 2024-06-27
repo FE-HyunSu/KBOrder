@@ -11,7 +11,7 @@ class MyDocument extends Document {
           <meta property="og:title" content="KB-Order" />
           <meta property="og:image" content={IMAGES.META} />
           <meta property="og:description" content="삼성동 이레 김밥주문 페이지" />
-          <meta property="og:url" content="https://kb-order.vercel.app" />
+          <meta property="og:url" content="https://aaw.kakaogames.com" />
           <meta name="description" content="삼성동 이레 김밥주문 페이지" />
           <meta name="keywords" content="김밥주문" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
